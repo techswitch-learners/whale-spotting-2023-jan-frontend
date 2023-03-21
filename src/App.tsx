@@ -1,4 +1,4 @@
-import './App.css'
+import './App.scss'
 import { BackendConnectionChecker } from "./components/BackendConnectionChecker";
 
 function App() {
