@@ -3,12 +3,11 @@
 .image-info-section {
     position: relative;
     width: 200;
-
 }
-// temporary border to set the layout of homepage. can be deleted once working images are in place.
+// Temporary border to set the layout of homepage. Can be deleted once working images are in place.
 img {
     border: 5px solid #555;
-  }
+}
 
 .main-header {
     text-align: center;
@@ -20,8 +19,6 @@ img {
 
 .main-image {
     height: 200px;
-    
-
     .main-image-tag {
         margin: 0 auto;
         max-width: 98%;
@@ -36,7 +33,6 @@ img {
         height: 100px;
         max-width: 250px;
     }
-
     .main-image {
         max-height: 200px;
     }
@@ -46,7 +42,6 @@ img {
     .main-image {
         height: 250px;
     }
-
     .main-image-description {
         height: 100px;
     }
