@@ -1,5 +1,6 @@
 import './App.css'
 import { BackendConnectionChecker } from "./components/BackendConnectionChecker";
+import { Footer } from './components/Footer';
 
 function App() {
   
@@ -10,6 +11,7 @@ function App() {
       <h1>Whale Spotting</h1>
       
       <BackendConnectionChecker />
+      <Footer />
     </>
   )
 }
