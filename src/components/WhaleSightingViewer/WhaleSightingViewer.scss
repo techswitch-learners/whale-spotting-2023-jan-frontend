@@ -1,13 +1,3 @@
-@import "../../App.scss";
-
-* {
-    font: $fontType;
-}
-
-h2 {
-   font-size: $titleSizeDesktop;
-}
-
 .whale-sighting-page {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -42,13 +32,21 @@ h2 {
     grid-column-end: 4;
 }
 
-.whale-sighting-post{  
+.whale-sighting-posts{  
     grid-row-start: 2;
     grid-row-end: 3;
     grid-column-start: 1;
     grid-column-end: 4;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
+    list-style: none;
+
+    display: flex;
+	justify-content: space-between;
+    flex-wrap: wrap;
+	
+    .whale-sighting-post{
+        width: 30%;
+		display: flex;
+		flex-direction: column;
+    }
 }
