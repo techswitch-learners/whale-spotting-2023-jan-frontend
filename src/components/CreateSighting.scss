@@ -1,0 +1,18 @@
+@import "../App.scss";
+
+body{
+    background: $background;
+}
+
+h1{
+    color:$light-font-color;
+}
+
+form{
+    background: $darker-background;
+}
+
+button.create-sighting-submit{
+    background: $button-color;
+    border-radius: $buttonRadius;
+}
