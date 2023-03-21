@@ -1,13 +1,11 @@
-// Possible colour schemes - see the colourSchemeChecker.txt 
-//Currently using 1. 
+// Possible colour schemes - see the ColourSchemeChecker.txt 
+// Currently using 1. 
 $background: #043949;
 $darker-background: #022A39;
 $default-foreground: #0C4A5B;
 $button-color: #ffcd70;
 $dark-font-color: #090B0C;
 $light-font-color: #f0f2f5;
-//make primary colour brighter
-//next, try out the colours like on the trello board
 
 $fontType: Helvetica;
 $fontTypeBackup: "Source Sans Pro";
@@ -33,5 +31,4 @@ $fontTypeBackup: "Source Sans Pro";
 #colour-block-4 {
     background-color: $button-color;
     color: $dark-font-color
-
 }
