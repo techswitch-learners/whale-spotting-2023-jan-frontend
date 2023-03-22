@@ -1,5 +1,3 @@
-@import "../../App.scss";
-
 .float-container {
     display: flex;
     flex-wrap: wrap;
@@ -25,12 +23,14 @@
     .float-container {
         flex-direction: column;
     }
+
     .float-child1 {
         flex: 1;
         border: 2px solid black;
         margin-right: 0px;
         margin-bottom: 10px;
     }
+
     .float-child2 {
         flex: 2;
         border: 2px solid black;
@@ -43,12 +43,14 @@
     .float-container {
         flex-direction: column;
     }
+
     .float-child1 {
         flex: 1;
         border: 2px solid black;
         margin-right: 0px;
         margin-bottom: 10px;
     }
+
     .float-child2 {
         flex: 2;
         border: 2px solid black;
