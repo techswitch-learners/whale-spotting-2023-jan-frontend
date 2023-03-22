@@ -28,13 +28,13 @@ export function CreateSighting() {
 
     return (
         <main className="create-sighting">
-            <h1>Post your whale sighting!</h1>
+            <h1 className="sighting-form">Post your whale sighting!</h1>
             {/* <p>{error}</p> */}
             <form className="create-sighting-form" onSubmit={(e) => {
                 handleSubmit(e)
             }
             }>
-                <label htmlFor="date">
+                <label className="create-sighting-label" htmlFor="date">
                     Date of Sighting:
                 </label>
                 <input className="create-sighting-input"
@@ -47,7 +47,7 @@ export function CreateSighting() {
 
                 <br />
                 <p></p>
-                <label htmlFor="photoUrl">
+                <label className="create-sighting-label" htmlFor="photoUrl">
                     URL of photo:
                 </label>
                 <input className="create-sighting-input "
@@ -59,10 +59,10 @@ export function CreateSighting() {
 
                 <br />
                 <p></p>
-                <label htmlFor="latitude">
+                <label className="create-sighting-label" htmlFor="latitude">
                     Latitude
                 </label>
-                <input className="create-sighting-input "
+                <input className="create-sighting-input"
                     type="number"
                     step="any"
                     name="latitude"
@@ -71,10 +71,10 @@ export function CreateSighting() {
 
                 <br />
                 <p></p>
-                <label htmlFor="longitude">
+                <label className="create-sighting-label" htmlFor="longitude">
                     Longitude:
                 </label>
-                <input className="create-sighting-input "
+                <input className="create-sighting-input"
                     type="number"
                     step="any"
                     id="longitude"
@@ -84,10 +84,10 @@ export function CreateSighting() {
 
                 <br />
                 <p></p>
-                <label htmlFor="number">
+                <label className="create-sighting-label" htmlFor="number">
                     Number of Whales:
                 </label>
-                <input className="create-sighting-input "
+                <input className="create-sighting-input"
                     type="number"
                     id="number"
                     name="number"
@@ -96,10 +96,10 @@ export function CreateSighting() {
 
                 <br />
                 <p></p>
-                <label htmlFor="species">
+                <label htmlFor="species" className="create-sighting-label">
                     Species:
                 </label>
-                <input className="create-sighting-input "
+                <input className="create-sighting-input"
                     type="string"
                     id="species"
                     name="species"
@@ -108,18 +108,18 @@ export function CreateSighting() {
                 
                 <br />
                 <p></p>
-                <label htmlFor="description">
+                <label htmlFor="description" className="create-sighting-label">
                     Description:
                 </label>
-                <input className="create-sighting-input "
-                    type="string"
+                <textarea className="create-sighting-input"
+                    // type="string"
                     id="description"
                     name="description"
                     onChange={event => setDescription(event.target.value)}
                 />
                 <br />
                 <p></p>
-                <button className="create-sighting-submit" type="submit">Submit</button>
+                <button id="create-sighting-submit" className="create-sighting-submit" type="submit">Submit</button>
             </form>
         </main>
     )

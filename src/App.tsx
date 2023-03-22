@@ -14,7 +14,6 @@ function App() {
       <BackendConnectionChecker />
 
       <Routes>
-        <Route path="/colours" element={<ColourSchemeChecker/>} />
         <Route path="/createsighting" element={<CreateSighting />} />
       </Routes>
 
