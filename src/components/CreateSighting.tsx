@@ -3,8 +3,6 @@ import { useState } from "react";
 import { FormEvent } from "react";
 import './CreateSighting.scss';
 
-//import { useNavigate } from "react-router-dom";
-
 export function CreateSighting() {
     const [date, setDate] = useState<string>("");
     const [photoUrl, setPhotoUrl] = useState<string>("");
