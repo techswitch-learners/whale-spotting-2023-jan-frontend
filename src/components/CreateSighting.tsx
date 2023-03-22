@@ -1,4 +1,4 @@
-import React from "react";  // import React (to provide access to TSX)
+import React from "react"; 
 import { useState } from "react";
 import { FormEvent } from "react";
 import './CreateSighting.scss';
@@ -13,23 +13,14 @@ export function CreateSighting() {
     const [numberOfWhales, setNumberOfWhales] = useState<number>(0);
     const [species, setSpecies] = useState<string>("");
     const [description, setDescription] = useState<string>("");
-    //const [error, setError] = useState<string>("");
-
-    //const navigate = useNavigate();
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
-        // call the api function:
-        // createSighting(date, photoUrl, latitude, longitude, numberOfWhales, species, description)
-        //     .then(() => {
-        //     })
-        //     .catch((e) => setError(e.message))
     }
 
     return (
         <main className="create-sighting">
             <h1 className="sighting-form">Post your whale sighting!</h1>
-            {/* <p>{error}</p> */}
             <form className="create-sighting-form" onSubmit={(e) => {
                 handleSubmit(e)
             }
@@ -112,7 +103,6 @@ export function CreateSighting() {
                     Description:
                 </label>
                 <textarea className="create-sighting-input"
-                    // type="string"
                     id="description"
                     name="description"
                     onChange={event => setDescription(event.target.value)}
