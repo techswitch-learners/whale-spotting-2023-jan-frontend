@@ -1,0 +1,21 @@
+Possible Colour Schemes
+
+Note that the viewport background colour should be white. 
+Do not apply 'background' colours to the whole page background
+1. https://www.designspiration.com/save/5597549351211/
+
+2. https://www.designspiration.com/save/382621002886/
+#022A39
+#043949
+#0C4A5B
+#3B6C7D
+#ABB4BE
+
+--
+
+Spacing: 
+- As for the MyFace card
+
+Fonts: 
+- Copy MyFace again 
+-  If time use https://www.fontpair.co/ to select a new fontpair;
