@@ -1,5 +1,3 @@
-// @import"../App.scss";
-
 // Temporary border constants for designing. Remove or set to transparent 0px after use
 $border: 2px solid rgb(255, 0, 0);
 
@@ -52,50 +50,49 @@ $border: 2px solid rgb(255, 0, 0);
     align-items: center;
 }
 
-@media (max-width: 425px){
-    
-.tripplanner-container {
-    width: 350px;
-    display: grid;
-    grid-template-rows: 10% 10% 80%;
-    justify-items: center;
-    border: $border;
-    margin: 1%;
-}
+@media (max-width: 425px) {
 
-.tripplanner-header {
-    border: $border;
-    margin: 1%;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    display: grid;
-    align-items: center;
-    font-size: 0.75em;
-}
+    .tripplanner-container {
+        width: 350px;
+        display: grid;
+        grid-template-rows: 10% 10% 80%;
+        justify-items: center;
+        border: $border;
+        margin: 1%;
+    }
 
-.tripplanner-search {
-    border: $border;
-    width: 40%;
-    margin: 1%;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    display: grid;
-    align-items: center;
-}
+    .tripplanner-header {
+        border: $border;
+        margin: 1%;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        display: grid;
+        align-items: center;
+        font-size: 0.75em;
+    }
 
-.tripplanner-map {
-    display: none;
+    .tripplanner-search {
+        border: $border;
+        width: 40%;
+        margin: 1%;
+        grid-row-start: 2;
+        grid-row-end: 3;
+        display: grid;
+        align-items: center;
+    }
 
-}
+    .tripplanner-map {
+        display: none;
 
-.tripplanner-table {
-    border: $border;
-    margin: 1%;
-    width: 80%;
-    grid-row-start: 3;
-    grid-row-end: 4;
-    display: grid;
-    align-items: center;
-}
+    }
 
+    .tripplanner-table {
+        border: $border;
+        margin: 1%;
+        width: 80%;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        display: grid;
+        align-items: center;
+    }
 }
