@@ -9,7 +9,7 @@
 
 .password-input {
 	position: relative;
-  }
+}
   
 .password-toggle {
 	position: absolute;
@@ -19,7 +19,7 @@
 	border: none;
 	background: none;
 	cursor: pointer;
-  }
+}
 
 .password-toggle {
 	position: absolute;
@@ -30,11 +30,11 @@
 	background: none;
 	cursor: pointer;
 	padding:0 10px 0 0;
-  }
+}
 
-  .password-toggle:hover,
-  .password-toggle:focus,
-  .password-toggle:focus-visible {
+.password-toggle:hover,
+.password-toggle:focus,
+.password-toggle:focus-visible {
 	outline: none;
-  }
+}
   
