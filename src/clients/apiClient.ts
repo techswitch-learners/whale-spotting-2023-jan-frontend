@@ -22,7 +22,7 @@ export const checkBackendConnection = async (): Promise<boolean> => {
 }
 
 export async function createSighting(newSighting: NewSighting): Promise<Response> {
-    const response = await fetch(`https://${backendUrl}/createsighting`, {
+    const response = await fetch(`https://${backendUrl}/sighting/create`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
