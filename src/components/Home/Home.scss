@@ -1,0 +1,48 @@
+@import "../../App.scss";
+
+.image-info-section {
+    position: relative;
+    width: 200;
+}
+// Temporary border to set the layout of homepage. Can be deleted once working images are in place.
+img {
+    border: 5px solid #555;
+}
+
+.main-header {
+    text-align: center;
+}
+
+.main-welcome-message {
+    text-align: center;
+}
+
+.main-image {
+    height: 200px;
+    .main-image-tag {
+        margin: 0 auto;
+        max-width: 98%;
+        max-height: 98%;
+        align-items: center;
+        display: block;
+    }
+}
+
+@media(max-width: 320px) {
+    .main-image-description {
+        height: 100px;
+        max-width: 250px;
+    }
+    .main-image {
+        max-height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-image {
+        height: 250px;
+    }
+    .main-image-description {
+        height: 100px;
+    }
+}

@@ -1,24 +1,21 @@
 import './App.scss'
 import { BackendConnectionChecker } from "./components/BackendConnectionChecker";
+import { Home } from "./components/Home/Home";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import { Login } from './components/Login/Login';
 import { CreateSighting } from './components/CreateSighting';
 import { ColourSchemeChecker } from './ColourSchemeChecker';
 
 function App() {
-
   return (
     <>
-      <img src="/logo.png" alt="The logo of the site: a cartoon whale, looking through a pair of binoculars." width="200" />
-      <h1>Whale Spotting</h1>
-      <BackendConnectionChecker />
-
       <Routes>
-        <Route path="/createsighting" element={<CreateSighting />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />  
+        <Route path="/backend-checker" element={<BackendConnectionChecker />} />
       </Routes>
-
     </>
   )
 }
-
 export default App
