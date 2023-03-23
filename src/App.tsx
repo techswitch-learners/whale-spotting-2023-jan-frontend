@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import { Login } from './components/Login/Login';
 import { CreateSighting } from './components/CreateSighting';
 import { ColourSchemeChecker } from './ColourSchemeChecker';
+import { WhaleInfo } from './components/WhaleInfo/WhaleInfo';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />  
         <Route path="/backend-checker" element={<BackendConnectionChecker />} />
+        <Route path="/whale/about" element={<WhaleInfo />} />
       </Routes>
     </>
   )
