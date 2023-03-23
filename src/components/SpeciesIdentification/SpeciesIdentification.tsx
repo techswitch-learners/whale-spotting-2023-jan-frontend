@@ -11,7 +11,9 @@ export const SpeciesIdentification: React.FunctionComponent = () => {
         </section>
         <section className="info-container">
             <div className="info-item">Species Information </div>
-            <div ><img className="info-img" src="" alt="Image" /> </div>
+            <div >
+                <img className="info-img" src="" alt="Image" />
+            </div>
         </section>
     </main>
 };
