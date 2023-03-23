@@ -7,10 +7,9 @@ import { Route, Routes } from "react-router-dom";
 function App() {
   return (
     <>
-      <Home />
-      <BackendConnectionChecker />
       <Routes>
-        <Route path="/" element={<></>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/backend-checker" element={<BackendConnectionChecker />} />
       </Routes>
     </>
   )
