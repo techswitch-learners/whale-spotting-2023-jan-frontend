@@ -14,7 +14,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<></>} />
-        <Route path="/whale-sighting-viewer" element={<WhaleSightingViewer />} />
+        <Route path="/sighting" element={<WhaleSightingViewer />} />
       </Routes>
 
     </>
