@@ -1,6 +1,6 @@
-import React from 'react';
 import './App.scss'
 import { BackendConnectionChecker } from "./components/BackendConnectionChecker";
+import { WhaleSightingDetail } from "./components/WhaleSightingDetail/WhaleSightingDetail"
 import { Home } from "./components/Home/Home";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
