@@ -1,3 +1,4 @@
+
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export const checkBackendConnection = async (): Promise<boolean> => {
@@ -9,4 +10,11 @@ export const checkBackendConnection = async (): Promise<boolean> => {
   }
   
   return response.ok;
+
+
+}
+
+export async function fetchSpeciesQuery(tailType: number, size: number, colour: string ) {
+  const response = await fetch(`https://localhost:7127/species?TailType=${tailType}&Size=${size}&Colour=${colour}`);
+  return await response.json();
 }
