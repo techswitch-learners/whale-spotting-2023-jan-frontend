@@ -1,0 +1,97 @@
+@import '../../Constants.scss';
+
+.button-icon {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border-radius: 50%;
+}
+
+.image-info-section {
+    position: relative;
+}
+
+.left-right-home-buttons {
+    opacity: 95%;
+
+    :hover {
+        cursor: pointer;
+        background-color: $default-foreground;
+    }
+}
+
+.main-header {
+    text-align: center;
+}
+
+.main-image {
+    display: block;
+    height: 450px;
+
+    .main-image-tag {
+        margin: 0 auto;
+        max-width: 98%;
+        max-height: 98%;
+        float: center;
+    }
+}
+
+.next-right-button {
+    color: $light-font-color;
+    position: absolute;
+    right: 12%;
+    top: 35%;
+}
+
+.previous-left-button {
+    color: $light-font-color;
+    background-color: $darker-background;
+    position: absolute;
+    left: 12%;
+    top: 35%;
+}
+
+@media (max-width: 1001px) {
+    .next-right-button {
+        position: absolute;
+        right: 0%;
+        top: 35%;
+        opacity: 55%;
+    }
+
+    .previous-left-button {
+        position: absolute;
+        left: 0%;
+        top: 35%;
+        opacity: 55%;
+    }
+}
+
+@media(max-width: 376px) {
+    .next-right-button {
+        position: absolute;
+        right: 0%;
+        top: 20%;
+        opacity: 45%;
+    }
+
+    .previous-left-button {
+        position: absolute;
+        left: 0%;
+        top: 20%;
+        opacity: 45%
+    }
+
+    .button-icon {
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        border-radius: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-image {
+        height: 250px;
+    }
+};
