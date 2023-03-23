@@ -1,7 +1,9 @@
 import React from "react";
-import './WhaleInfo.scss'
+import './WhaleInfo.scss';
+import { WhaleFacts } from "./WhaleFacts";
 
 export function WhaleInfo() {
+
     return <main className="whaleinfo">
         <h1 className="whaleinfo-header">
             All about whales!
@@ -12,7 +14,7 @@ export function WhaleInfo() {
                 Contents sidebar
             </div>
             <div className="whaleinfo-main-info">
-                Main info
+                <WhaleFacts />
             </div>
         </section>
     </main>
