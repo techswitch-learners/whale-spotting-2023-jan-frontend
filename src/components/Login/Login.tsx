@@ -17,7 +17,9 @@ export function Login() {
       <form className="login-form" onSubmit={handleSubmit}>
         <label className="input-field">
           Username
+          <div>
           <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} />
+          </div>
         </label>
         <label className="input-field">
           Password
