@@ -28,7 +28,7 @@ export function Login() {
         </label>
         <button className= "login-button" type="submit">Login</button>
       </form>
-	  <Link to="/create-account">Create account</Link>
+      <Link to="/user/create">Create account</Link>
     </div>
   );
 }

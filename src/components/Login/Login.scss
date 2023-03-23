@@ -1,40 +1,40 @@
 .login-form .input-field {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .login-button {
-	margin-top: 20px;
+  margin-top: 20px;
 }
 
 .password-input {
-	position: relative;
+  position: relative;
 }
   
 .password-toggle {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	right: -2px;
-	border: none;
-	background: none;
-	cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -2px;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .password-toggle {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	right: 0px;
-	border: none;
-	background: none;
-	cursor: pointer;
-	padding:0 10px 0 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding:0 10px 0 0;
 }
 
 .password-toggle:hover,
 .password-toggle:focus,
 .password-toggle:focus-visible {
-	outline: none;
+  outline: none;
 }
   
