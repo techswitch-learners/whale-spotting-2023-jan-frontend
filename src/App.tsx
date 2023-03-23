@@ -1,4 +1,3 @@
-import './App.scss'
 import { BackendConnectionChecker } from "./components/BackendConnectionChecker";
 import { Home } from "./components/Home/Home";
 import React from "react";
@@ -12,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/backend-checker" element={<BackendConnectionChecker />} />
-        <Route path="/createsighting" element={<CreateSighting />} />
+        <Route path="/sighting/create" element={<CreateSighting />} />
       </Routes>
     </>
   )

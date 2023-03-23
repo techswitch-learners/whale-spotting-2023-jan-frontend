@@ -1,94 +1,48 @@
-@import "../App.scss";
+@import "../Constants.scss";
 
-@media only screen and (max-width: 430px){
-    h1.sighting-form{
-        font-size:40px;
-    }
-
-    form{
-        background: $darker-background;
-        position:relative;
-        padding:20px;
-        height:380px;
-    }
-
-    label.create-sighting-label{
-        width: 45%;
-        position: absolute;
-        left: 5%;
-        text-align: left;
-        margin-right: 5px;
-        font-size:15px;
-    }
-    
-    input.create-sighting-input{
-        position: absolute;
-        width:40%;
-        height:20px;
-        left: 48%;
-        background-color: #9AE5F8;
-        border-radius: 5px;
-    }
-
-    textarea.create-sighting-input{
-        position: absolute;
-        width:40%;
-        height:50px;
-        left: 48%;
-        background-color: #9AE5F8;
-        border-radius: 5px;
-    }
-
-    button#create-sighting-submit{
-        background: $button-color;
-        border-radius: $buttonRadius;
-        position:absolute;
-        bottom:5%;
-        left:38%;
-}
+main.create-sighting{
+    background-color: $background;
 }
 
-body{
-    background: $background;
-}
-
-h1{
+h1.sighting-form-title{
     color:$light-font-color;
+    font-family: $fontType;
+    padding-top:25px;
 }
 
-form{
+form.create-sighting-form{
     background: $darker-background;
     position:relative;
     padding:20px;
     height:380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1rem;
 }
 
-label,input{
-    display:inline-block;
+div.sighting-field{
+    display: flex;
+    justify-content: left;
 }
 
-label{
-    width: 30%;
-    position: absolute;
-    left: 20%;
+label.create-sighting-label{
+    width: 250px;
     text-align: left;
-    margin-right: 30px;
+    margin-right: 5px;
+    color:$light-font-color;
 }
 
-input{
-    position: absolute;
-    width:30%;
+input.create-sighting-input{
+    width:300px;
     height:20px;
-    left: 45%;
     background-color: #9AE5F8;
     border-radius: 5px;
 }
 
-textarea{
-    position: absolute;
-    width:30%;
+textarea.create-sighting-input{
+    width:300px;
     height:50px;
-    left: 45%;
     background-color: #9AE5F8;
     border-radius: 5px;
 }
@@ -98,7 +52,7 @@ button.create-sighting-submit:hover{
     background-color: rgb(193, 152, 17);
 }
 
-input:hover{
+input.create-sighting-input:hover{
     border:solid 2px white;
     cursor:pointer;
 }
@@ -109,4 +63,31 @@ button.create-sighting-submit{
     position:absolute;
     bottom:5%;
     left:45%;
+}
+
+@media only screen and (max-width: 430px){
+    h1.sighting-form-title{
+        font-size:40px;
+    }
+
+    label.create-sighting-label{
+        width: 150px;
+        text-align: left;
+        margin-right: 5px;
+        color:$light-font-color;
+    }
+    
+    input.create-sighting-input{
+        width:150px;
+        height:20px;
+        background-color: #9AE5F8;
+        border-radius: 5px;
+    }
+    
+    textarea.create-sighting-input{
+        width:150px;
+        height:50px;
+        background-color: #9AE5F8;
+        border-radius: 5px;
+    }
 }
