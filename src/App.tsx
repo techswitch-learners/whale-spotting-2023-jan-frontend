@@ -12,7 +12,7 @@ function App() {
       <BackendConnectionChecker />
       <Routes>
         <Route path="/" element={<></>} />
-        <Route path="/species-identification" element={<SpeciesIdentification />} />
+        <Route path="/whale/species-identification" element={<SpeciesIdentification />} />
       </Routes>
     </>
   )
