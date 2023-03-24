@@ -1,0 +1,9 @@
+@import "../../Constants.scss";
+
+div.info-side-bar{
+    position: fixed;
+    text-align: left;
+    font-family: $fontType;
+    font-size: $buttonSizeDesktop;
+    color: $light-font-color;
+}
