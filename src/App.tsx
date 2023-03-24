@@ -7,6 +7,7 @@ import { WhaleSightingViewer } from './components/WhaleSightingViewer/WhaleSight
 import { CreateSighting } from "./components/CreateSighting/CreateSighting";
 import { ColourSchemeChecker } from './ColourSchemeChecker';
 import { Login } from './components/Login/Login';
+import { Footer } from './components/Footer';
 import './App.scss';
 
 function App() {
