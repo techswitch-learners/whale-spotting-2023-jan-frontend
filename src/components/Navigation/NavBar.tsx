@@ -52,15 +52,15 @@ export const Navbar: React.FunctionComponent = () => {
                           Whale Information
                       </button>
                           <div id="myDropdown1" className={dropDownOpen1 ? "dropdown-content show" : "dropdown-content"}>
-                              <a href="whale/about">
+                              <a href="/whale/about">
                                   <GiWhaleTail />
                                   <br />
-                                  About Whales
+                                  About
                               </a>
-                              <a href="whale/species-identification">
+                              <a href="/whale/species">
                                   <GiArchiveResearch />
                                   <br />
-                                  Whale Species
+                                  Species
                               </a>
                           </div>
                   </div>  
@@ -73,15 +73,15 @@ export const Navbar: React.FunctionComponent = () => {
                           Whale Sightings
                       </button>
                           <div id="myDropdown2" className={dropDownOpen2 ? "dropdown-content show" : "dropdown-content"}>
-                              <a href="sightings/sightings-overview">
+                              <a href="/sightings">
                                   <GiBinoculars />
                                   <br />
                                   Sightings
                               </a>
-                            <a href="sightings/submit-whale-sighting">
+                            <a href="/sightings/submit">
                                 <AiOutlineForm />
                                 <br />
-                                Submit Whale Sighting
+                                Submit
                               </a>
                           </div>
                   </div>  
@@ -101,12 +101,12 @@ export const Navbar: React.FunctionComponent = () => {
                           User
                       </button>
                           <div id="myDropdown3" className={dropDownOpen3 ? "dropdown-content show" : "dropdown-content"}>
-                              <a href="users/create">
+                              <a href="/users/create">
                                   <AiOutlinePlusCircle />
                                   <br />
-                                  Create a User
+                                  Create
                               </a>
-                              <a href="users/leaderboard">
+                              <a href="/users/leaderboard">
                                   <ImTrophy />
                                   <br />
                                   Leaderboard
