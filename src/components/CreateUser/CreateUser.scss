@@ -1,0 +1,49 @@
+.create-user-form label {
+    display: inline-block;
+    margin: 0;
+}
+
+.create-user-form input {
+    vertical-align: top;
+    margin: 0;
+}
+
+.user-input label {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.input-field {
+    display: inline-block;
+    width: calc(100% - 160px);
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.create-user-submit {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.create-user-submit:hover {
+    background-color: #4caf50;
+}
+
+@media screen and (max-width: 768px) {
+    .user-input label {
+        width: 100%;
+        text-align: left;
+    }
+
+    .input-field {
+        width: 100%;
+    }
+}
