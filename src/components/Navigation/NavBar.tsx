@@ -19,17 +19,14 @@ export const Navbar: React.FunctionComponent = () => {
 
     const toggleDropdown1 = () => {
         setDropDownOpen1(!dropDownOpen1);
-        document.getElementById("myDropdown1").classList.toggle("show");
     };
 
     const toggleDropdown2 = () => {
         setDropDownOpen2(!dropDownOpen2);
-        document.getElementById("myDropdown2").classList.toggle("show");
     };
 
     const toggleDropdown3 = () => {
         setDropDownOpen3(!dropDownOpen3);
-        document.getElementById("myDropdown3").classList.toggle("show");
     };
 
   return (
@@ -54,7 +51,7 @@ export const Navbar: React.FunctionComponent = () => {
                           <br />
                           Whale Information
                       </button>
-                          <div id="myDropdown1" className="dropdown-content">
+                          <div id="myDropdown1" className={dropDownOpen1 ? "dropdown-content show" : "dropdown-content"}>
                               <a href="whale/about">
                                   <GiWhaleTail />
                                   <br />
@@ -75,7 +72,7 @@ export const Navbar: React.FunctionComponent = () => {
                           <br />
                           Whale Sightings
                       </button>
-                          <div id="myDropdown2" className="dropdown-content">
+                          <div id="myDropdown2" className={dropDownOpen2 ? "dropdown-content show" : "dropdown-content"}>
                               <a href="sightings/sightings-overview">
                                   <GiBinoculars />
                                   <br />
@@ -103,7 +100,7 @@ export const Navbar: React.FunctionComponent = () => {
                           <br />
                           User
                       </button>
-                          <div id="myDropdown3" className="dropdown-content">
+                          <div id="myDropdown3" className={dropDownOpen3 ? "dropdown-content show" : "dropdown-content"}>
                               <a href="users/create">
                                   <AiOutlinePlusCircle />
                                   <br />
@@ -128,5 +125,3 @@ export const Navbar: React.FunctionComponent = () => {
       </nav>
   );
 };
-
-

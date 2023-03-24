@@ -8,7 +8,7 @@ import { Navbar } from './components/Navigation/NavBar';
 function App() {
   return (
     <>
-    <Navbar/>
+      <Navbar/>
       <Home />
       <BackendConnectionChecker />
       <Routes>
