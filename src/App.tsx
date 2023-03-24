@@ -1,10 +1,12 @@
-import './App.scss'
 import { BackendConnectionChecker } from "./components/BackendConnectionChecker";
 import { WhaleSightingDetail } from "./components/WhaleSightingDetail/WhaleSightingDetail"
 import { Home } from "./components/Home/Home";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import { CreateSighting } from "./components/CreateSighting/CreateSighting";
+import { ColourSchemeChecker } from './ColourSchemeChecker';
 import { Login } from './components/Login/Login';
+import './App.scss';
 
 function App() {
   return (
@@ -13,7 +15,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />  
         <Route path="/backend-checker" element={<BackendConnectionChecker />} />
-        <Route path="/sighting/:id" element={<WhaleSightingDetail />}></Route>
+        <Route path="/sightings/submit" element={<CreateSighting />} />
+        <Route path="/sightings/:id" element={<WhaleSightingDetail />}></Route>
       </Routes>
     </>
   )
