@@ -1,4 +1,4 @@
-@import "../Constants.scss";
+@import "../../Constants.scss";
 
 main.create-sighting{
     background-color: $background;
@@ -8,6 +8,11 @@ h1.sighting-form-title{
     color:$light-font-color;
     font-family: $fontType;
     padding-top:25px;
+}
+
+p.status-msg{
+    color: $light-font-color;
+    font-family: $fontType;
 }
 
 form.create-sighting-form{
