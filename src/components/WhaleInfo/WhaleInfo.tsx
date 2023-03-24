@@ -14,11 +14,11 @@ export function WhaleInfo() {
             <div className="whaleinfo-sidebar">
                 <WhaleInfoSidebar />
             </div>
-            <div className="whaleinfo-main-info">
-                <h1 >
+            <div className="whaleinfo-main-info" id="whale-facts">
+                <h2 >
                 Amazing Whale Facts!
-                </h1>
-                <section id="whale-facts">
+                </h2>
+                <section>
                     <WhaleFacts />
                 </section>
             </div>
