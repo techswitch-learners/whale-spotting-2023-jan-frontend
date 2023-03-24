@@ -10,3 +10,18 @@ export const checkBackendConnection = async (): Promise<boolean> => {
   
   return response.ok;
 }
+
+export interface Login {
+  id: number;
+  username: string;
+  isLoggedIn: boolean;
+}
+
+export async function fetchLogin(encodedUsernamePassword: string): Promise<Login> {
+  const response = await fetch(`https://localhost:7127/login`, {
+      headers: {
+          'Authorization': `Basic ${encodedUsernamePassword}`
+      }
+  });
+  return await response.json();
+}

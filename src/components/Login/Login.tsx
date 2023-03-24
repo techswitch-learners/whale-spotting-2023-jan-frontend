@@ -1,14 +1,25 @@
 import "./Login.scss";
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
+import { LoginContext } from "./LoginManager";
+import { fetchLogin } from "../../clients/apiClient";
 
 export function Login() {
+
+  const loginContext = useContext(LoginContext);
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const authHeader = btoa(`${username}:${password}`);
+    const loginResponse = await fetchLogin(authHeader);
+    if (loginResponse.isLoggedIn) {
+        loginContext.logIn(authHeader);
+    }
   }
 
   return (
