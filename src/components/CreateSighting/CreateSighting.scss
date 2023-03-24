@@ -1,0 +1,93 @@
+@import "../Constants.scss";
+
+main.create-sighting{
+    background-color: $background;
+}
+
+h1.sighting-form-title{
+    color:$light-font-color;
+    font-family: $fontType;
+    padding-top:25px;
+}
+
+form.create-sighting-form{
+    background: $darker-background;
+    position:relative;
+    padding:20px;
+    height:380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1rem;
+}
+
+div.sighting-field{
+    display: flex;
+    justify-content: left;
+}
+
+label.create-sighting-label{
+    width: 250px;
+    text-align: left;
+    margin-right: 5px;
+    color:$light-font-color;
+}
+
+input.create-sighting-input{
+    width:300px;
+    height:20px;
+    background-color: #9AE5F8;
+    border-radius: 5px;
+}
+
+textarea.create-sighting-input{
+    width:300px;
+    height:50px;
+    background-color: #9AE5F8;
+    border-radius: 5px;
+}
+
+button.create-sighting-submit:hover{
+    cursor:pointer;
+    background-color: rgb(193, 152, 17);
+}
+
+input.create-sighting-input:hover{
+    border:solid 2px white;
+    cursor:pointer;
+}
+
+button.create-sighting-submit{
+    background: $button-color;
+    border-radius: $buttonRadius;
+    position:absolute;
+    bottom:5%;
+    left:45%;
+}
+
+@media only screen and (max-width: 430px){
+    h1.sighting-form-title{
+        font-size:40px;
+    }
+
+    label.create-sighting-label{
+        width: 150px;
+        text-align: left;
+        margin-right: 5px;
+        color:$light-font-color;
+    }
+    
+    input.create-sighting-input{
+        width:150px;
+        height:20px;
+        background-color: #9AE5F8;
+        border-radius: 5px;
+    }
+    
+    textarea.create-sighting-input{
+        width:150px;
+        height:50px;
+        background-color: #9AE5F8;
+        border-radius: 5px;
+    }
+}
