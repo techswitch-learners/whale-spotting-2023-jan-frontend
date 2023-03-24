@@ -1,7 +1,7 @@
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export interface NewSighting{
-    dateOfSighting: string;
+    dateOfSighting: Date;
     locationLatitude: number;
     locationLongitude: number;
     photoImageURL: string;

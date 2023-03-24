@@ -5,7 +5,7 @@ import { createSighting } from "../../clients/apiClient";
 import './CreateSighting.scss';
 
 export function CreateSighting() {
-    const [date, setDate] = useState<string>("");
+    const [date, setDate] = useState<Date>(new Date());
     const [photoUrl, setPhotoUrl] = useState<string>("");
     const [latitude, setLatitude] = useState<number>(0);
     const [longitude, setLongitutde] = useState<number>(0);
@@ -36,7 +36,7 @@ export function CreateSighting() {
                     name="date"
                     id="date"
                     required
-                    onChange={event => setDate(event.target.value)}
+                    onChange={event => setDate(new Date(event.target.value))}
                 />
             </div>
 
