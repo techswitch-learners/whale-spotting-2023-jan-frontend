@@ -1,9 +1,9 @@
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export interface NewUser {
-  Username: string;
-  Password: string;
-  UserBio: string;
+  username: string;
+  password: string;
+  userBio: string;
   profileImageUrl: string;
 }
 
@@ -14,25 +14,23 @@ export const checkBackendConnection = async (): Promise<boolean> => {
   } catch {
     return false;
   }
-  
   return response.ok;
 }
 
-export async function createNewUser(newUser: NewUser) {
+export async function createNewUser(newUser: NewUser): Promise<Response> {
   let response: Response;
-  try{
-   response = await fetch(`https://localhost:5173/users/create`, {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify(newUser),
-   });
-  }
-  catch {
-    return false;
-  }
+
+  response = await fetch(`${backendUrl}/users/create`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newUser),
+  });
   if (!response.ok) {
-      throw new Error(await response.json())
+    throw new Error;
+  }
+  else {
+    return response;
   }
 }
