@@ -18,9 +18,7 @@ export const checkBackendConnection = async (): Promise<boolean> => {
 }
 
 export async function createNewUser(newUser: NewUser): Promise<Response> {
-  let response: Response;
-
-  response = await fetch(`${backendUrl}/users/create`, {
+  const response = await fetch(`${backendUrl}/users/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -28,7 +26,7 @@ export async function createNewUser(newUser: NewUser): Promise<Response> {
     body: JSON.stringify(newUser),
   });
   if (!response.ok) {
-    throw new Error;
+    throw new Error(await response.json());
   }
   else {
     return response;
