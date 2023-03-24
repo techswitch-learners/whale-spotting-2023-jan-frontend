@@ -27,28 +27,43 @@
 .main-image {
     display: block;
     height: 450px;
+    overflow: hidden;
+    background-color: $darker-background;
+    max-width: 1332px;
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: $buttonRadius;
 
     .main-image-tag {
         margin: 0 auto;
         max-width: 98%;
         max-height: 98%;
-        float: center;
+        object-fit: cover;
+        /* Resize the image to cover the container while maintaining its aspect ratio */
+        object-position: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: $buttonRadius;
+
     }
 }
 
 .next-right-button {
     color: $light-font-color;
     position: absolute;
-    right: 12%;
-    top: 35%;
+    right: 8%;
+    top: 40%;
 }
 
 .previous-left-button {
     color: $light-font-color;
     background-color: $darker-background;
     position: absolute;
-    left: 12%;
-    top: 35%;
+    left: 8%;
+    top: 40%;
 }
 
 @media (max-width: 1001px) {
@@ -94,4 +109,6 @@
     .main-image {
         height: 250px;
     }
-};
+}
+
+;
