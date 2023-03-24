@@ -1,6 +1,7 @@
 import { BackendConnectionChecker } from "./components/BackendConnectionChecker";
 import { WhaleSightingDetail } from "./components/WhaleSightingDetail/WhaleSightingDetail"
 import { Home } from "./components/Home/Home";
+import { SpeciesIdentification } from "./components/SpeciesIdentification/SpeciesIdentification";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { WhaleSightingViewer } from './components/WhaleSightingViewer/WhaleSightingViewer';
@@ -19,7 +20,8 @@ function App() {
         <Route path="/backend-checker" element={<BackendConnectionChecker />} />
         <Route path="/sighting" element={<WhaleSightingViewer />} />
         <Route path="/sightings/submit" element={<CreateSighting />} />
-        <Route path="/sightings/:id" element={<WhaleSightingDetail />}></Route>
+        <Route path="/sightings/:id" element={<WhaleSightingDetail />} />
+        <Route path="/whale/species-identification" element={<SpeciesIdentification />} />
       </Routes>
     </>
   )
