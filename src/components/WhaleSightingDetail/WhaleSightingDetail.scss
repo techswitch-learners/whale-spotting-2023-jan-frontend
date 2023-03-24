@@ -1,0 +1,60 @@
+.float-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.float-child1 {
+    flex: 1;
+    border: 2px solid black;
+    margin-right: 20px;
+}
+
+.float-child2 {
+    flex: 1;
+    border: 2px solid black;
+    margin-left: 20px;
+}
+
+.main-header {
+    text-align: center;
+}
+
+@media(max-width: 320px) {
+    .float-container {
+        flex-direction: column;
+    }
+
+    .float-child1 {
+        flex: 1;
+        border: 2px solid black;
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+
+    .float-child2 {
+        flex: 2;
+        border: 2px solid black;
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .float-container {
+        flex-direction: column;
+    }
+
+    .float-child1 {
+        flex: 1;
+        border: 2px solid black;
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+
+    .float-child2 {
+        flex: 2;
+        border: 2px solid black;
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+}
