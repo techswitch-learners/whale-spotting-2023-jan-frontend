@@ -1,17 +1,17 @@
 import React from "react";
 import './WhaleInfo.scss'
 
-export function WhaleInfo() {
-    return <main className="whaleinfo">
-        <h1 className="whaleinfo-header">
+export const WhaleInfo: React.FC = () => {
+    return <main className="whale-info">
+        <h1 className="whale-info-header">
             All about whales!
         </h1>
 
-        <section className="whaleinfo-container">
-            <div className="whaleinfo-sidebar">
+        <section className="whale-info-container">
+            <div className="whale-info-sidebar">
                 Contents sidebar
             </div>
-            <div className="whaleinfo-main-info">
+            <div className="whale-info-main-info">
                 Main info
             </div>
         </section>
