@@ -8,13 +8,20 @@ export const checkBackendConnection = async (): Promise<boolean> => {
   } catch {
     return false;
   }
-  
   return response.ok;
-
-
 }
 
-export async function fetchSpeciesQuery(tailType: number, size: number, colour: string ) {
-  const response = await fetch(`https://localhost:7127/species?TailType=${tailType}&Size=${size}&Colour=${colour}`);
-  return await response.json();
+export interface SpeciesSearch {
+  tailType: number;
+  size: number;
+  colour: string;
+}
+
+export async function fetchSpeciesQuery(speciesSearch: SpeciesSearch): Promise<Response> {
+  const response = await fetch(`${backendUrl}/species?TailType=${speciesSearch.tailType}&Size=${speciesSearch.size}&Colour=${speciesSearch.colour}`);
+  if (!response.ok) {
+    throw new Error(await response.json());
+  } else {
+    return await response.json();
+  }
 }
