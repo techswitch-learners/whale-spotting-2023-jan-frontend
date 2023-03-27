@@ -7,10 +7,6 @@ main.whale-info{
     background-color: $background;
 }
 
-h1.whale-info-header{
-    
-}
-
 section.whale-info-container {
     height: 100%;
     display: grid;
@@ -20,7 +16,6 @@ section.whale-info-container {
 }
 
 h1.whale-info-header {
-    // border: $border;
     padding-top:20px;
     align-items: center;
     font-size: 2em;
