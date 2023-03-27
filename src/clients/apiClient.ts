@@ -26,7 +26,6 @@ export enum Size {
   Medium5To10m,
   Large10To20m,
   VeryLargeOver20m,
-
 }
 
 export interface WhaleSpecies {
@@ -39,7 +38,6 @@ export interface WhaleSpecies {
   Colour: string,
   Location: string,
   Diet: string,
-
 }
 
 export interface User {
@@ -48,8 +46,6 @@ export interface User {
   UserBio: string,
   ProfileImageUrl: string,
   UserType: UserType
-  //  public string? HashedPassword { get; set; }
-  // List<WhaleSighting> WhaleSighting { get; set; }
 }
 
 export interface WhaleSighting {
@@ -76,6 +72,11 @@ export const checkBackendConnection = async (): Promise<boolean> => {
 }
 
 export async function fetchSighting(sightingId: string | number): Promise<WhaleSighting> {
-  const response = await fetch(`https://localhost:5001/sightings/${sightingId}`);
-  return await response.json();
+  let response = await fetch(`${backendUrl}/sightings/${sightingId}`);
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return await response.json();
+  }
 }
