@@ -7,10 +7,10 @@ import { Route, Routes } from "react-router-dom";
 import { Navbar } from './components/Navigation/NavBar';
 import { WhaleSightingViewer } from './components/WhaleSightingViewer/WhaleSightingViewer';
 import { CreateSighting } from "./components/CreateSighting/CreateSighting";
-import { ColourSchemeChecker } from './ColourSchemeChecker';
 import { Login } from './components/Login/Login';
 import { Footer } from './components/Footer';
 import './App.scss';
+import { WhaleInfo } from './components/WhaleInfo/WhaleInfo';
 
 function App() {
   return (
@@ -26,6 +26,7 @@ function App() {
         <Route path="/sightings/submit" element={<CreateSighting />} />
         <Route path="/sightings/:id" element={<WhaleSightingDetail />} />
         <Route path="/whale/species-identification" element={<SpeciesIdentification />} />
+        <Route path="/whale/about" element={<WhaleInfo />} />
       </Routes>
     </>
   )
