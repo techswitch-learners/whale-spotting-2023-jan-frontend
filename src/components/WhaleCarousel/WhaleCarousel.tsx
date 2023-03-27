@@ -48,8 +48,7 @@ export const WhaleCarousel: React.FunctionComponent = () => {
                 </button>
                 <button className="next-right-button"
                     onClick={() => { scrollNextImage() }}>
-                    <FaArrowCircleRight
-                        className="button-icon" />
+                    <FaArrowCircleRight className="button-icon" />
                 </button>
             </article>
         </section >
