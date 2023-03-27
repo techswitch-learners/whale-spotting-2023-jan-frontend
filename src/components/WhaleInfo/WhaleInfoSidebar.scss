@@ -5,15 +5,10 @@ div.info-side-bar{
     font-family: $fontType;
     font-size: $buttonSizeDesktop;
     color: $light-font-color;
-    position: absolute;
-    top: 0%;
-}
-
-div.info-fixed{
-    position: fixed;
+    position: sticky;
     width: 600px;
     height: 200px;
-    left: 50%;
+    left: 20%;
     top: 0%;
     margin-left: -300px; /*half the width*/
 }
@@ -21,9 +16,11 @@ div.info-fixed{
 ol.info-side-bar-list{
     list-style: none;
     color:$light-font-color;
+    position: absolute;
     width: 600px;
     height: 200px;
-    margin-left: -300px; /*half the width*/
+    left: 40%;
+    top: 0%;
 }
 
 li.info-side-bar-item {
