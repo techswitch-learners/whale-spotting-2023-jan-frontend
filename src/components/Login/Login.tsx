@@ -18,14 +18,26 @@ export function Login() {
         <label className="input-field">
           Username
           <div>
-          <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} />
+            <input 
+              type="text" 
+              value={username} 
+              onChange={(event) => setUsername(event.target.value)} 
+            />
           </div>
         </label>
         <label className="input-field">
           Password
           <div className="password-input">
-          <input type={showPassword ? 'text' : 'password'} value={password} onChange={(event) => setPassword(event.target.value)} />
-          <button className="password-toggle" type="button" onClick={() => setShowPassword(!showPassword)}>👁</button>
+            <input 
+              type={showPassword ? 'text' : 'password'} 
+              value={password} 
+              onChange={(event) => setPassword(event.target.value)} 
+            />
+            <button 
+              className="password-toggle" 
+              type="button" 
+              onClick={() => setShowPassword(!showPassword)}>👁
+            </button>
           </div>
         </label>
         <button className= "login-button" type="submit">Login</button>
