@@ -1,4 +1,9 @@
-export function amazingWhaleFacts() {
+interface Fact {
+    header: string;
+    detail: string;
+}
+
+export function amazingWhaleFacts(): Array<Fact>  {
     const factsHeader1 = "1. Whales are Not Fish";
     const factsHeader2 = "2. Relatives of Hippos";
     const factsHeader3 = "3. Giant Ancient Whales";
@@ -41,7 +46,7 @@ export function amazingWhaleFacts() {
     const factsDetail19 = "Depending on the species, whales may take 5 to 20 years to reach maturity. They mate with different partners but give birth to only one baby each time.";
     const factsDetail20 = "Mating rituals vary. Among right whales, up to 20 males may compete for female attention through gentle courtship. Meanwhile, humpback males will fight and sustain battle scars to get noticed.";    
 
-    const factsArray: Array<any> = [
+    const factsArray: Array<Fact> = [
         { header: factsHeader1, detail : factsDetail1},
         { header: factsHeader2, detail : factsDetail2}, 
         { header: factsHeader3, detail : factsDetail3},  

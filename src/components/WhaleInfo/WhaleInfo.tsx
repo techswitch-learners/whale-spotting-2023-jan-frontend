@@ -5,16 +5,16 @@ import { WhaleInfoSidebar } from "./WhaleInfoSidebar";
 
 export function WhaleInfo() {
 
-    return <main className="whaleinfo">
-        <h1 className="whaleinfo-header" id="top-of-page">
+    return <main className="whale-info">
+        <h1 className="whale-info-header" id="top-of-page">
             All about whales!
         </h1>
 
-        <section className="whaleinfo-container">
-            <div className="whaleinfo-sidebar">
+        <section className="whale-info-container">
+            <div className="whale-info-sidebar">
                 <WhaleInfoSidebar />
             </div>
-            <div className="whaleinfo-main-info" id="whale-facts">
+            <div className="whale-info-main-info" id="whale-facts">
                 <h2 >
                 Amazing Whale Facts!
                 </h2>
