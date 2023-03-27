@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import { useState } from "react";
 import { FormEvent } from "react";
 import './CreateSighting.scss';
@@ -16,13 +16,11 @@ export function CreateSighting() {
         event.preventDefault()
     }
 
-    return (
-        <main className="create-sighting">
-            <h1 className="sighting-form">Post your whale sighting!</h1>
-            <form className="create-sighting-form" onSubmit={(e) => {
-                handleSubmit(e)
-            }
-            }>
+    return <main className="create-sighting">
+        <h1 className="sighting-form-title">Post your whale sighting!</h1>
+        <form className="create-sighting-form"
+            onSubmit={(e) => { handleSubmit(e) }}>
+            <div className="sighting-field">
                 <label className="create-sighting-label" htmlFor="date">
                     Date of Sighting:
                 </label>
@@ -33,9 +31,9 @@ export function CreateSighting() {
                     required
                     onChange={event => setDate(event.target.value)}
                 />
+            </div>
 
-                <br />
-                <p></p>
+            <div className="sighting-field">
                 <label className="create-sighting-label" htmlFor="photoUrl">
                     URL of photo:
                 </label>
@@ -45,11 +43,11 @@ export function CreateSighting() {
                     id="photoUrl"
                     onChange={event => setPhotoUrl(event.target.value)}
                 />
+            </div>
 
-                <br />
-                <p></p>
+            <div className="sighting-field">
                 <label className="create-sighting-label" htmlFor="latitude">
-                    Latitude
+                    Latitude:
                 </label>
                 <input className="create-sighting-input"
                     type="number"
@@ -57,9 +55,9 @@ export function CreateSighting() {
                     name="latitude"
                     onChange={event => setLatitude(event.target.valueAsNumber)}
                 />
+            </div>
 
-                <br />
-                <p></p>
+            <div className="sighting-field">
                 <label className="create-sighting-label" htmlFor="longitude">
                     Longitude:
                 </label>
@@ -70,9 +68,9 @@ export function CreateSighting() {
                     name="longitude"
                     onChange={event => setLongitutde(event.target.valueAsNumber)}
                 />
+            </div>
 
-                <br />
-                <p></p>
+            <div className="sighting-field">
                 <label className="create-sighting-label" htmlFor="number">
                     Number of Whales:
                 </label>
@@ -82,9 +80,9 @@ export function CreateSighting() {
                     name="number"
                     onChange={event => setNumberOfWhales(event.target.valueAsNumber)}
                 />
+            </div>
 
-                <br />
-                <p></p>
+            <div className="sighting-field">
                 <label htmlFor="species" className="create-sighting-label">
                     Species:
                 </label>
@@ -94,9 +92,9 @@ export function CreateSighting() {
                     name="species"
                     onChange={event => setSpecies(event.target.value)}
                 />
-                
-                <br />
-                <p></p>
+            </div>
+
+            <div className="sighting-field">
                 <label htmlFor="description" className="create-sighting-label">
                     Description:
                 </label>
@@ -105,10 +103,9 @@ export function CreateSighting() {
                     name="description"
                     onChange={event => setDescription(event.target.value)}
                 />
-                <br />
-                <p></p>
-                <button id="create-sighting-submit" className="create-sighting-submit" type="submit">Submit</button>
-            </form>
-        </main>
-    )
+            </div>
+
+            <button id="create-sighting-submit" className="create-sighting-submit" type="submit">Submit</button>
+        </form>
+    </main>
 }
