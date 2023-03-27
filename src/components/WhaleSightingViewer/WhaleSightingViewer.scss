@@ -2,7 +2,7 @@
     display: grid;
     text-align: lef;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 30% 90%;
+    grid-template-rows: 2% 96% 2%;
 }
 
 .whale-sighting-heading{
@@ -32,3 +32,21 @@
     grid-column-start: 3;
     grid-column-end: 4;
 }
+
+.page-buttons {
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    button {
+        width: 100px;
+        margin-left: 4px;
+
+        @media screen and (max-width: 430px){
+            margin-bottom: 10px;
+        } 
+    }
+}
+
+

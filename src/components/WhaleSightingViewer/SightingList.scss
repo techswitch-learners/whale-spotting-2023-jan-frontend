@@ -1,10 +1,11 @@
-//whale-sighting-page in whalesigtingviewer.tsx need to be changed, the height seems to have expanded pushing the list of post down.
+@import "../../Constants.scss";
 
 .whale-sighting-posts{  
     grid-row-start: 2;
     grid-row-end: 3;
     grid-column-start: 1;
     grid-column-end: 4;
+
     list-style: none;
     display: flex;
 	justify-content: space-between;
@@ -13,8 +14,11 @@
     .whale-sighting-post{
         margin-bottom: 5%;
         border: solid 5px grey;
-        display: flex;
-        flex-direction: column;
+
+        p {
+            color: $dark-font-color;
+            font-weight: $fontNormal;
+        }
     }
 
     @media screen and (max-width: 430px){
@@ -39,18 +43,23 @@
 .post-container {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .sighting-info {
     display: flex;
-    align-items: center;
-    margin-top: 0.5rem;
-}
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 1rem;
+  }
   
-.sighting-info p {
-    margin-right: 1rem;
-}
+  .sighting-info p {
+    margin: 0;
+    text-align: left;
+  }
   
-.sighting-info button {
+  .sighting-info button {
     margin-left: auto;
-}
+    margin-top: 1%;
+  }
