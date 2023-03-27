@@ -4,21 +4,19 @@ import { WhaleFacts } from "./WhaleFacts";
 import { WhaleInfoSidebar } from "./WhaleInfoSidebar";
 
 export function WhaleInfo() {
-
     return <main className="whale-info">
         <h1 className="whale-info-header" id="top-of-page">
             All about whales!
         </h1>
-
         <section className="whale-info-container">
             <div className="whale-info-sidebar">
                 <WhaleInfoSidebar />
             </div>
             <div className="whale-info-main-info" id="whale-facts">
-                <h2 >
-                Amazing Whale Facts!
+                <h2 className="whale-facts-header">
+                    Amazing Whale Facts!
                 </h2>
-                <section>
+                <section className = "whale-facts-section">
                     <WhaleFacts />
                 </section>
             </div>

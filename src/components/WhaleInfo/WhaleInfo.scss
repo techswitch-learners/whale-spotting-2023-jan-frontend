@@ -32,6 +32,7 @@ h1.whale-info-header {
     grid-column-start: 1;
     grid-column-end: 1;
     align-items: center;
+    position: relative;
 }
 
 .whale-info-main-info {
@@ -40,6 +41,10 @@ h1.whale-info-header {
     grid-column-start: 2;
     grid-column-end: 3;
     align-items: center;
+}
+
+section.whale-facts,h2.whale-facts-header{
+    color:$light-font-color;
 }
 
 @media (max-width: 425px) {

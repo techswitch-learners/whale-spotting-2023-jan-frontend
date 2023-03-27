@@ -1,13 +1,31 @@
 @import "../../Constants.scss";
 
 div.info-side-bar{
-    position: fixed;
     text-align: left;
     font-family: $fontType;
     font-size: $buttonSizeDesktop;
     color: $light-font-color;
+    position: absolute;
+    top: 0%;
+}
+
+div.info-fixed{
+    position: fixed;
+    width: 600px;
+    height: 200px;
+    left: 50%;
+    top: 0%;
+    margin-left: -300px; /*half the width*/
 }
 
 ol.info-side-bar-list{
     list-style: none;
+    color:$light-font-color;
+    width: 600px;
+    height: 200px;
+    margin-left: -300px; /*half the width*/
+}
+
+li.info-side-bar-item {
+    color:$light-font-color;
 }
