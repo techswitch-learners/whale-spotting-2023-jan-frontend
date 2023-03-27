@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { FormEvent } from "react";
 import { createSighting } from "../../clients/apiClient";
+import { NewSighting } from "../../clients/apiClient";
 import './CreateSighting.scss';
 
 export function CreateSighting() {
@@ -16,7 +17,18 @@ export function CreateSighting() {
     
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        createSighting({ dateOfSighting: date, locationLatitude: latitude, locationLongitude: longitude, photoImageURL: photoUrl, numberOfWhales: numberOfWhales, description: description, whaleSpecies: species })
+
+        const newSighting: NewSighting = {
+            dateOfSighting: date,
+            locationLatitude: latitude,
+            locationLongitude: longitude,
+            photoImageURL: photoUrl,
+            numberOfWhales: numberOfWhales,
+            description: description,
+            whaleSpecies: species
+        }
+    
+        createSighting(newSighting)
             .then(() => { setStatus("Great! Your sighting has been submitted successfully.")
             })
             .catch((e) => setStatus(e.message))
