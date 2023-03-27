@@ -35,7 +35,7 @@ export function LoginManager(props: LoginManagerProps): JSX.Element {
     };
     
     return (
-        <LoginContext.Provider value={context}>
+        <LoginContext.Provider value={{...context, logIn, logOut}}>
             {props.children}
         </LoginContext.Provider>
     );

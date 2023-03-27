@@ -43,20 +43,21 @@ export async function createSighting(newSighting: NewSighting): Promise<Response
     }
 }
 
-export interface Login {
-  id: number;
-  username: string;
-  isLoggedIn: boolean;
-}
+// export interface Login {
+//   id: number;
+//   username: string;
+//   isLoggedIn: boolean;
+// }
 
-export async function fetchLogin(encodedUsernamePassword: string): Promise<Login> {
+export async function fetchLogin(encodedUsernamePassword: string): Promise<Response> {
   const response = await fetch(`https://localhost:7127/login`, {
       headers: {
           'Authorization': `Basic ${encodedUsernamePassword}`
       }
   });
-  return await response.json();
+  return await response;
 }
+
 export async function createNewUser(newUser: NewUser): Promise<Response> {
   const response = await fetch(`${backendUrl}/users/create`, {
     method: "POST",

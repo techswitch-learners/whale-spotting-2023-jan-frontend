@@ -5,7 +5,6 @@ import { LoginContext } from "./LoginManager";
 import { fetchLogin } from "../../clients/apiClient";
 
 export function Login() {
-
   const loginContext = useContext(LoginContext);
 
   const [username, setUsername] = useState('');
@@ -17,7 +16,7 @@ export function Login() {
     event.preventDefault();
     const authHeader = btoa(`${username}:${password}`);
     const loginResponse = await fetchLogin(authHeader);
-    if (loginResponse.isLoggedIn) {
+    if (loginResponse.status == 200) {
         loginContext.logIn(authHeader);
     }
   }
@@ -52,6 +51,7 @@ export function Login() {
           </div>
         </label>
         <button className= "login-button" type="submit">Login</button>
+        <p>{!loginContext.isLoggedIn ? '' : 'Successfully logged in!'}</p>
       </form>
       <Link to="/user/create">Create account</Link>
     </div>
