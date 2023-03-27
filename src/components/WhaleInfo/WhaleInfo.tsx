@@ -3,7 +3,7 @@ import './WhaleInfo.scss';
 import { WhaleFacts } from "./WhaleFacts";
 import { WhaleInfoSidebar } from "./WhaleInfoSidebar";
 
-export function WhaleInfo() {
+export const WhaleInfo: React.FC = () =>{
     return <main className="whale-info">
         <h1 className="whale-info-header" id="top-of-page">
             All about whales!
