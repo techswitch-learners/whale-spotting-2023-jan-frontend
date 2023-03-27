@@ -16,9 +16,7 @@ import './App.scss';
 function App() {
   return (
     <>
-      <Navbar/>
-      <Home />
-      <BackendConnectionChecker />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />  
