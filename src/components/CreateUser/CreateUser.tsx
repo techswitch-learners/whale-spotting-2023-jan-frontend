@@ -23,6 +23,7 @@ export function CreateUser() {
                     type="text"
                     name="username"
                     id="username"
+                    required
                     onChange={e => setUsername(e.target.value)}
                 />
             </div>
@@ -33,6 +34,7 @@ export function CreateUser() {
                     type="password"
                     name="password"
                     id="password"
+                    required
                     onChange={e => setPassword(e.target.value)}
                 />
             </div>
@@ -43,6 +45,7 @@ export function CreateUser() {
                     type="url"
                     name="profileImageUrl"
                     id="profileImageUrl"
+                    required
                     onChange={e => setProfileImageUrl(e.target.value)}
                 />
 
@@ -54,6 +57,7 @@ export function CreateUser() {
                     type="text"
                     name="userBio"
                     id="userBio"
+                    required
                     onChange={e => setUserBio(e.target.value)}
                 />
             </div>
