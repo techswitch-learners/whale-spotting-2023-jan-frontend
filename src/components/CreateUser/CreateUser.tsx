@@ -17,41 +17,46 @@ export function CreateUser() {
         <h1 className="createUser-Title">Create User</h1>
         <form className="create-user-form"
             onSubmit={(e) => { handleSubmit(e) }}>
-            <label className="user-input">Username  &nbsp;
+            <div className="user-input-div">
+                <label className="user-input-label">Username</label>
                 <input className="input-field"
                     type="text"
                     name="username"
                     id="username"
                     onChange={e => setUsername(e.target.value)}
                 />
-            </label>
+            </div>
             <br /><br />
-            <label className="user-input"> Password&nbsp;
+            <div className="user-input-div">
+                <label className="user-input-label">Password</label>
                 <input className="input-field"
                     type="password"
                     name="password"
                     id="password"
                     onChange={e => setPassword(e.target.value)}
                 />
-            </label>
+            </div>
             <br /><br />
-            <label className="user-input"> ProfileImageUrl&nbsp;
+            <div className="user-input-div">
+                <label className="user-input-label" htmlFor="profileImageUrl">Profile Image Url</label>
                 <input className="input-field"
                     type="url"
                     name="profileImageUrl"
                     id="profileImageUrl"
                     onChange={e => setProfileImageUrl(e.target.value)}
                 />
-            </label>
+
+            </div>
             <br /><br />
-            <label className="user-input"> UserBio&nbsp;
+            <div className="user-input-div">
+                <label className="user-input-label" htmlFor="userBio">User Bio</label>
                 <input className="input-field"
                     type="text"
                     name="userBio"
                     id="userBio"
                     onChange={e => setUserBio(e.target.value)}
                 />
-            </label>
+            </div>
             <br /><br />
             <button className="create-user-submit" type="submit">Submit</button>
         </form>

@@ -1,34 +1,38 @@
-.create-user-form label {
-    display: inline-block;
-    margin: 0;
+@import "../../Constants.scss";
+
+h1.createUser-Title {
+    font-size: $titleSizeDesktop;
+    padding-top: 25px;
 }
 
-.create-user-form input {
-    vertical-align: top;
-    margin: 0;
+.create-user-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.user-input label {
-    display: inline-block;
-    width: 150px;
-    font-weight: bold;
-    margin-right: 10px;
-    text-align: right;
+.user-input-div {
+    display: flex;
+    justify-content: left;
+}
+
+.user-input-label {
+    width: 120px;
+    text-align: left;
+    margin-right: 5px;
 }
 
 .input-field {
-    display: inline-block;
-    width: calc(100% - 160px);
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    height: 20px;
+    padding: 10px 15px;
+    box-sizing: border-box;
 }
 
 .create-user-submit {
-    color: white;
+    color: $light-font-color;
     border: none;
+    width: 120px;
     padding: 10px 20px;
     cursor: pointer;
 }
@@ -37,13 +41,18 @@
     background-color: #4caf50;
 }
 
-@media screen and (max-width: 768px) {
-    .user-input label {
-        width: 100%;
-        text-align: left;
+@media screen and (max-width: 430px) {
+    createUser-Title {
+        font-size: $titleSizeMobile;
     }
 
-    .input-field {
-        width: 100%;
+    .user-input-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .create-user-submit {
+        width: 100px;
     }
 }
