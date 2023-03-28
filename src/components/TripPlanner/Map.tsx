@@ -1,40 +1,60 @@
 import React from "react";
+import {useState, useEffect} from "react";
+import {GeoProjection} from "d3-geo";
 import {
   ComposableMap,
   Geographies,
   Geography,
   Marker
 } from "react-simple-maps";
+import { fetchListSighting, WhaleSighting } from "../../clients/apiClient";
 
 const geoUrl =
-  "https://raw.githubusercontent.com/deldersveld/topojson/master/continents/south-america.json";
+  // "https://raw.githubusercontent.com/deldersveld/topojson/master/continents/south-america.json";
+  "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
 
-const markers = [
+  let markers: any[] = [];
+  function getMarkers()
   {
-    markerOffset: -30,
-    name: "Buenos Aires",
-    coordinates: [-58.3816, -34.6037]
-  },
-  { markerOffset: 15, name: "La Paz", coordinates: [-68.1193, -16.4897] },
-  { markerOffset: 15, name: "Brasilia", coordinates: [-47.8825, -15.7942] },
-  { markerOffset: 15, name: "Santiago", coordinates: [-70.6693, -33.4489] },
-  { markerOffset: 15, name: "Bogota", coordinates: [-74.0721, 4.711] },
-  { markerOffset: 15, name: "Quito", coordinates: [-78.4678, -0.1807] },
-  { markerOffset: -30, name: "Georgetown", coordinates: [-58.1551, 6.8013] },
-  { markerOffset: -30, name: "Asuncion", coordinates: [-57.5759, -25.2637] },
-  { markerOffset: 15, name: "Paramaribo", coordinates: [-55.2038, 5.852] },
-  { markerOffset: 15, name: "Montevideo", coordinates: [-56.1645, -34.9011] },
-  { markerOffset: 15, name: "Caracas", coordinates: [-66.9036, 10.4806] },
-  { markerOffset: 15, name: "Lima", coordinates: [-77.0428, -12.0464] }
-];
+  // fetch list of whale sightings
+    const [listWhaleSighting, setListWhaleSighting] = useState<WhaleSighting[]>([]);
+    useEffect(() => {
+        fetchListSighting()
+            .then(response => setListWhaleSighting(response));
+    }, []);
+    markers = listWhaleSighting.map(ws => {coordinates: [ws.LocationLatitude, ws.LocationLongitude] })
+    return markers;
+    }
+  // loop through list and add markers with each iteration
+  
+// const markers = [
+//   {
+//     markerOffset: -30,
+//     name: "Buenos Aires",
+//     coordinates: [-58.3816, -34.6037]
+//   },
+//   { markerOffset: 15, name: "La Paz", coordinates: [-68.1193, -16.4897] },
+//   { markerOffset: 15, name: "Brasilia", coordinates: [-47.8825, -15.7942] },
+//   { markerOffset: 15, name: "Santiago", coordinates: [-70.6693, -33.4489] },
+//   { markerOffset: 15, name: "Bogota", coordinates: [-74.0721, 4.711] },
+//   { markerOffset: 15, name: "Quito", coordinates: [-78.4678, -0.1807] },
+//   { markerOffset: -30, name: "Georgetown", coordinates: [-58.1551, 6.8013] },
+//   { markerOffset: -30, name: "Asuncion", coordinates: [-57.5759, -25.2637] },
+//   { markerOffset: 15, name: "Paramaribo", coordinates: [-55.2038, 5.852] },
+//   { markerOffset: 15, name: "Montevideo", coordinates: [-56.1645, -34.9011] },
+//   { markerOffset: 15, name: "Caracas", coordinates: [-66.9036, 10.4806] },
+//   { markerOffset: 15, name: "Lima", coordinates: [-77.0428, -12.0464] }
+// ];
 
+// var projection = d3.geoEquirectangular();
+getMarkers();
 const MapChart = () => {
   return (
     <ComposableMap
-      projection="geoAzimuthalEqualArea"
+      projection="geoEqualEarth"
       projectionConfig={{
         rotate: [58, 20, 0],
-        scale: 400
+        scale: 200
       }}
     >
       <Geographies geography={geoUrl}>
@@ -49,8 +69,8 @@ const MapChart = () => {
           ))
         }
       </Geographies>
-      {markers.map(({ name, coordinates, markerOffset }) => (
-        <Marker key={name} coordinates={coordinates}>
+      {markers.map(({ coordinates }) => (
+        <Marker coordinates={coordinates}>
           <g
             fill="none"
             stroke="#FF5533"
@@ -64,10 +84,10 @@ const MapChart = () => {
           </g>
           <text
             textAnchor="middle"
-            y={markerOffset}
+            // y={markerOffset}
             style={{ fontFamily: "system-ui", fill: "#5D5A6D" }}
           >
-            {name}
+            {/* {name} */}
           </text>
         </Marker>
       ))}
