@@ -8,8 +8,10 @@ import { Login } from './components/Login/Login';
 import { Navbar } from './components/Navigation/NavBar';
 import { WhaleSightingViewer } from './components/WhaleSightingViewer/WhaleSightingViewer';
 import { CreateSighting } from "./components/CreateSighting/CreateSighting";
-import { ColourSchemeChecker } from './ColourSchemeChecker';
 import { WhaleInfo } from './components/WhaleInfo/WhaleInfo';
+import { CreateUser } from "./components/CreateUser/CreateUser";
+import { ColourSchemeChecker } from './ColourSchemeChecker';
+import { Login } from './components/Login/Login';
 import { Footer } from './components/Footer';
 import './App.scss';
 
@@ -19,13 +21,15 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />  
+        <Route path="/login" element={<Login />} />
         <Route path="/backend-checker" element={<BackendConnectionChecker />} />
         <Route path="/whale/about" element={<WhaleInfo />} />
         <Route path="/sighting" element={<WhaleSightingViewer />} />
         <Route path="/sightings/submit" element={<CreateSighting />} />
-        <Route path="/sightings/:id" element={<WhaleSightingDetail />} />
+        <Route path="/sightings/:id" element={<WhaleSightingDetail />}></Route>
+        <Route path="/users/create" element={<CreateUser />}></Route>
         <Route path="/whale/species-identification" element={<SpeciesIdentification />} />
+        <Route path="/whale/about" element={<WhaleInfo />} />
       </Routes>
     </>
   )
