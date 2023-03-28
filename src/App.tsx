@@ -11,20 +11,17 @@ import { Login } from './components/Login/Login';
 import { Footer } from './components/Footer';
 import './App.scss';
 import { LoginContext, LoginManager } from "./components/Login/LoginManager";
+import { AdminPage } from "./components/Admin/AdminPage";
 
 function App() {
-	const loginContext = useContext(LoginContext);
 
-	// useEffect(() => { console.log(`${loginContext.isLoggedIn}`) }, [loginContext]);
-
-	return (
+  return (
 		<LoginManager>
 			<Navbar />
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/backend-checker" element={<BackendConnectionChecker />} />
-        
 				<Route path="/sightings" element={
 					<LoginContext.Consumer>
 						{value => value.isLoggedIn
@@ -35,6 +32,12 @@ function App() {
 					<LoginContext.Consumer>
 						{value => value.isLoggedIn
 							? <CreateSighting />
+							: <Login />}
+					</LoginContext.Consumer>} />
+        <Route path="/sightings/admin" element={
+					<LoginContext.Consumer>
+						{value => value.isAdmin
+							? <AdminPage />
 							: <Login />}
 					</LoginContext.Consumer>} />
 				<Route path="/sightings/:id" element={<WhaleSightingDetail />} />
