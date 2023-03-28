@@ -61,6 +61,13 @@ export interface WhaleSighting {
   User: User,
 }
 
+export interface Like {
+  Id: number,
+  DateOfLike: string,
+  WhaleSightingId: number,
+  UserId: number,
+}
+
 export interface NewUser {
   username: string;
   password: string;
@@ -137,6 +144,16 @@ export async function fetchSpeciesQuery(speciesSearch: SpeciesSearch): Promise<R
 
 export async function fetchSightingById(sightingId: number): Promise<WhaleSighting> {
   const response = await fetch(`${backendUrl}/sightings/${sightingId}`);
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return await response.json();
+  }
+}
+
+export async function deleteLike(likeId: number): Promise<Like> {
+  const response = await fetch(`${backendUrl}/likes/delete/${likeId}`);
   if (!response.ok) {
     throw new Error(await response.json());
   }
