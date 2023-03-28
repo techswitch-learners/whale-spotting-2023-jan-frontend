@@ -144,3 +144,13 @@ export async function fetchSightingById(sightingId: number): Promise<WhaleSighti
     return await response.json();
   }
 }
+
+export async function fetchListSightings(): Promise<Response> {
+  const response = await fetch(`${backendUrl}/sightings`);
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return await response.json();
+  }
+}
