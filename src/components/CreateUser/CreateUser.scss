@@ -18,12 +18,13 @@ h1.createUser-Title {
 }
 
 .user-input-label {
-    width: 120px;
+    width: 130px;
     text-align: left;
     margin-right: 5px;
 }
 
 .input-field {
+    width: 180px;
     height: 20px;
     padding: 10px 15px;
     box-sizing: border-box;
@@ -35,6 +36,7 @@ h1.createUser-Title {
     width: 120px;
     padding: 10px 20px;
     cursor: pointer;
+    margin-top: 24px;
 }
 
 .create-user-submit:hover {

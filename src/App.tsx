@@ -11,7 +11,6 @@ import { CreateSighting } from "./components/CreateSighting/CreateSighting";
 import { WhaleInfo } from './components/WhaleInfo/WhaleInfo';
 import { CreateUser } from "./components/CreateUser/CreateUser";
 import { ColourSchemeChecker } from './ColourSchemeChecker';
-import { Login } from './components/Login/Login';
 import { Footer } from './components/Footer';
 import './App.scss';
 
@@ -31,6 +30,7 @@ function App() {
         <Route path="/whale/species-identification" element={<SpeciesIdentification />} />
         <Route path="/whale/about" element={<WhaleInfo />} />
       </Routes>
+      <Footer />
     </>
   )
 }
