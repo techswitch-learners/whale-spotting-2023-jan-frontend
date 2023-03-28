@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { FormEvent } from "react";
+import { LoginContext } from "../Login/LoginManager";
 import './CreateSighting.scss';
 
 export function CreateSighting() {
+    const loginContext = useContext(LoginContext);
     const [date, setDate] = useState<string>("");
     const [photoUrl, setPhotoUrl] = useState<string>("");
     const [latitude, setLatitude] = useState<number>(0);
@@ -13,7 +15,8 @@ export function CreateSighting() {
     const [description, setDescription] = useState<string>("");
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault()
+        event.preventDefault();
+        console.log(loginContext.authHeader);
     }
 
     return <main className="create-sighting">

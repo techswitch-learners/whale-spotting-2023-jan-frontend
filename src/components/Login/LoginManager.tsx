@@ -15,15 +15,18 @@ interface LoginManagerProps {
 export function LoginManager(props: LoginManagerProps): JSX.Element {
     const [loggedIn, setLoggedIn] = useState(false);
     const [authHeader, setAuthHeader] = useState("");
+    // const [isAdmin, setIsAdmin] = useState(false);
     
     function logIn(newAuthHeader: string) {
         setLoggedIn(true);
         setAuthHeader(newAuthHeader);
+        // setIsAdmin(isAdmin);
     }
     
     function logOut() {
         setLoggedIn(false);
         setAuthHeader("");
+        // setIsAdmin(false);
     }
     
     const context = {
@@ -35,7 +38,7 @@ export function LoginManager(props: LoginManagerProps): JSX.Element {
     };
     
     return (
-        <LoginContext.Provider value={{...context, logIn, logOut}}>
+        <LoginContext.Provider value={context}>
             {props.children}
         </LoginContext.Provider>
     );
