@@ -38,7 +38,7 @@ h1.createUser-Title {
 }
 
 .create-user-submit:hover {
-    background-color: #4caf50;
+    background-color: $default-foreground;
 }
 
 @media screen and (max-width: 430px) {
