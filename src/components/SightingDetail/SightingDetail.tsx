@@ -1,20 +1,24 @@
 import "./SightingDetail.scss"
 import React, { useEffect, useState } from 'react';
-import {fetchSightingById, WhaleSighting} from "../../clients/apiClient";
+import { fetchSightingById, WhaleSighting } from "../../clients/apiClient";
 import "./SightingDetail.scss";
 
-export function SightingDetail(props:{sightingId:number}): JSX.Element {
-        const [sighting, setSighting] = useState<WhaleSighting|null>(null); 
+interface SightingDetailProps {
+    sightingId: number;
+}
+export function SightingDetail(props: SightingDetailProps): JSX.Element {
+    const [sighting, setSighting] = useState<WhaleSighting | null>(null);
 
-        useEffect(() => {
-            fetchSightingById(props.sightingId)
-                .then(response => setSighting(response));
-        }, [props.sightingId]);
+    useEffect(() => {
+        fetchSightingById(props.sightingId)
+            .then(response => { setSighting(response); });
+    }, [props.sightingId]);
 
-        if (!sighting) {
-            return <section>No Sightings found for the provided id</section>
-        }
-    
+    if (!sighting) {
+        return <section>No Sightings found for the provided id</section>
+    }
+    console.log(`Sighting:${sighting}`);
+    console.log(`Number of Whales:${sighting.NumberOfWhales}`);
     return (
         <main>
             <p className="main-header">Sighting Details</p>
@@ -26,8 +30,8 @@ export function SightingDetail(props:{sightingId:number}): JSX.Element {
                     <div className="sighting-info">DateOfSighting : {sighting.DateOfSighting}</div>
                     <div className="sighting-info">NumberOfWhales : {sighting.NumberOfWhales}</div>
                     <div className="sighting-info">Description : {sighting.Description}</div>
-                    <div className="sighting-info">WhaleSpecies : {sighting.WhaleSpecies.Name}</div>
-                    <div className="sighting-info">User : {sighting.User.Username}</div>
+                    {/* <div className="sighting-info">WhaleSpecies : {sighting.WhaleSpecies.Name}</div>
+                    <div className="sighting-info">User : {sighting.User.Username}</div> */}
                 </article>
             </section>
         </main>

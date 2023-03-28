@@ -6,7 +6,6 @@ export const WhaleSightingDetail: React.FunctionComponent = () => {
     const { id } = useParams();
    
     if (id === undefined) {
-        // return <SightingDetail sightingId= "0" />
         return <h1> No Whale Sighting Found </h1>
     }
     return <main>
