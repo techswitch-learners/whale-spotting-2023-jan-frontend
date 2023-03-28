@@ -24,7 +24,13 @@ function App() {
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/backend-checker" element={<BackendConnectionChecker />} />
-				<Route path="/sightings" element={<WhaleSightingViewer />} />
+        
+				<Route path="/sightings" element={
+					<LoginContext.Consumer>
+						{value => value.isLoggedIn
+							? <WhaleSightingViewer loggedIn = {true}/>
+							: <WhaleSightingViewer loggedIn = {false}/>}
+					</LoginContext.Consumer>} />
 				<Route path="/sightings/submit" element={
 					<LoginContext.Consumer>
 						{value => value.isLoggedIn
