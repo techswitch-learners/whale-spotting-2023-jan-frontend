@@ -1,0 +1,28 @@
+@import "../../Constants.scss";
+
+div.info-side-bar{
+    text-align: left;
+    font-family: $fontType;
+    font-size: $buttonSizeDesktop;
+    color: $light-font-color;
+    position: sticky;
+    width: 600px;
+    height: 200px;
+    left: 20%;
+    top: 0%;
+    margin-left: -300px;
+}
+
+ol.info-side-bar-list{
+    list-style: none;
+    color:$light-font-color;
+    position: absolute;
+    width: 600px;
+    height: 200px;
+    left: 40%;
+    top: 0%;
+}
+
+li.info-side-bar-item {
+    color:$light-font-color;
+}
