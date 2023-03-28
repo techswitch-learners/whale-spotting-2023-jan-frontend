@@ -1,7 +1,7 @@
 import { HashLink } from "react-router-hash-link";
 import "./WhaleInfoSidebar.scss";
 
-export function WhaleInfoSidebar() {
+export const  WhaleInfoSidebar: React.FC = () => {
   return (
     <div className="info-side-bar">
         <ol className="info-side-bar-list">
