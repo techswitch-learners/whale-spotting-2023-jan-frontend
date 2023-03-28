@@ -1,20 +1,15 @@
 import "./SightingDetail.scss"
 import React, { useEffect, useState } from 'react';
-import {fetchSighting, WhaleSighting} from "../../clients/apiClient";
+import {fetchSightingById, WhaleSighting} from "../../clients/apiClient";
 import "./SightingDetail.scss";
 
-
-interface SightingDetailProps {
-    sightingId: string;
-}
-
-export function SightingDetail(props: SightingDetailProps): JSX.Element {
+export function SightingDetail(props:{sightingId:number}): JSX.Element {
         const [sighting, setSighting] = useState<WhaleSighting|null>(null); 
 
         useEffect(() => {
-            fetchSighting(props.sightingId)
+            fetchSightingById(props.sightingId)
                 .then(response => setSighting(response));
-        }, [props]);
+        }, [props.sightingId]);
 
         if (!sighting) {
             return <section>No Sightings found for the provided id</section>
@@ -25,7 +20,7 @@ export function SightingDetail(props: SightingDetailProps): JSX.Element {
             <p className="main-header">Sighting Details</p>
             <section className="sighting-detail-section">
                 <article>
-                    <img className="sighting-image" src={sighting.PhotoImageURL} />
+                    <img className="sighting-image" src={sighting.PhotoImageUrl} />
                     <div className="sighting-info">LocationLatitude : {sighting.LocationLatitude} </div>
                     <div className="sighting-info">LocationLongitude : {sighting.LocationLongitude} </div>
                     <div className="sighting-info">DateOfSighting : {sighting.DateOfSighting}</div>

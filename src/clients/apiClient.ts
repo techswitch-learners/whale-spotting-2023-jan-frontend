@@ -56,6 +56,7 @@ export interface WhaleSighting {
   LocationLongitude: number,
   PhotoImageUrl: string,
   NumberOfWhales: number,
+  Description:string;
   ApprovalStatus: ApprovalStatus,
   WhaleSpecies: WhaleSpecies,
   User: User,
