@@ -25,8 +25,8 @@ export function WhaleSightingViewer() {
 			<div className="whale-sighting-sort">Sort to go here</div>
 			{<SightingList pageNum = {page} sightingsList = {sightingsList}/>}
 			<div className="page-buttons">
-				{page > 1 ? <button onClick={() => setPage(page - 1)}>Previous</button> :<></>}
-            	{(sightingsList.length > page * 12) ? <button onClick={() => setPage(page + 1)}>Next</button> : <></>}
+				{page > 1 ? <p className="prevlink" onClick={() => setPage(page - 1)}>Previous</p> :<></>}
+            	{(sightingsList.length > page * 12) ? <p className="nextlink" onClick={() => setPage(page + 1)}>Next</p> : <></>}
 	  		</div>
 		</div>
 	</>

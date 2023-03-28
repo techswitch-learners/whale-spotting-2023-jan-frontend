@@ -8,14 +8,16 @@ export default function SightingList(props: {
     sightingsList: NewSighting[],
 }) { 
 
-
-
     if (!props.sightingsList) return <p>Waiting for data...</p>
 
     const sightingsToShow = Math.min(props.sightingsList.length, ((props.pageNum-1) * 12 + 12));
 
     const sightings : JSX.Element[] = [];
-    
+
+    const handleLike = (event: React.MouseEvent<HTMLButtonElement>, whaleSightingId: number) => {
+        event.preventDefault();
+    }
+
     for (let i = (props.pageNum-1) * 12; i < sightingsToShow; i++) {
         sightings.push(
             <li className="whale-sighting-post">
@@ -27,7 +29,7 @@ export default function SightingList(props: {
                             <p className="username">{props.sightingsList[i].username}</p>
                             <p className="date">{props.sightingsList[i].dateOfSighting.toLocaleDateString('en-GB')}</p>
                         </div>
-                        <button>Like</button>
+                        <button type="button" onClick={(event) => handleLike(event, props.sightingsList[i].Id)}>Like</button>
                     </div>
                 </div>
                 </Link>
