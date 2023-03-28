@@ -61,13 +61,6 @@ export interface WhaleSighting {
   User: User,
 }
 
-export interface Like {
-  Id: number,
-  DateOfLike: string,
-  WhaleSightingId: number,
-  UserId: number,
-}
-
 export interface NewUser {
   username: string;
   password: string;
@@ -83,6 +76,10 @@ export interface NewSighting{
     numberOfWhales: number;
     description: string;
     whaleSpecies: string;
+}
+
+export interface NewLike{
+  whaleSightingId: number;
 }
 
 export const checkBackendConnection = async (): Promise<boolean> => {
@@ -112,7 +109,7 @@ export async function createSighting(newSighting: NewSighting): Promise<Response
 }
 
 export async function createNewUser(newUser: NewUser): Promise<Response> {
-  const response = await fetch(`${backendUrl}/users/create`, {
+  const response = await fetch(`${backendUrl}/likes/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -152,12 +149,28 @@ export async function fetchSightingById(sightingId: number): Promise<WhaleSighti
   }
 }
 
-export async function deleteLike(likeId: number): Promise<Like> {
+export async function deleteLike(likeId: number): Promise<Response> {
   const response = await fetch(`${backendUrl}/likes/delete/${likeId}`);
   if (!response.ok) {
     throw new Error(await response.json());
   }
   else {
-    return await response.json();
+    return response;
+  }
+}
+
+export async function createLike(newLike: NewLike): Promise<Response> {
+  const response = await fetch(`${backendUrl}/likes/create`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newLike),
+  });
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return response;
   }
 }
