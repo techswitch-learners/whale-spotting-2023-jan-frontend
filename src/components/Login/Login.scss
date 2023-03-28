@@ -10,26 +10,16 @@
 .password-input {
   position: relative;
 }
-  
-.password-toggle {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: -2px;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
 
 .password-toggle {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 0px;
   border: none;
   background: none;
   cursor: pointer;
   padding:0 10px 0 0;
+  margin-left: -20px;
 }
 
 .password-toggle:hover,
@@ -37,4 +27,3 @@
 .password-toggle:focus-visible {
   outline: none;
 }
-  

@@ -1,0 +1,65 @@
+@import "../../Constants.scss";
+
+// Temporary border constants for designing. Remove or set to transparent 0px after use
+$border: 2px solid rgb(255, 0, 0);
+
+main.whale-info{
+    background-color: $background;
+}
+
+h1.whale-info-header{
+    color:$light-font-color
+}
+
+section.whale-info-container {
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    justify-items: center;
+    border: $border;
+}
+
+h1.whale-info-header {
+    border: $border;
+    padding:20px;
+    align-items: center;
+    font-size: 2em;
+}
+
+.whale-info-sidebar {
+    border: $border;
+    width:100%;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    align-items: center;
+}
+
+.whale-info-main-info {
+    border: $border;
+    width:100%;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    align-items: center;
+}
+
+@media (max-width: 425px) {
+    section.whale-info-container {
+        height: 90vh;
+        display: grid;
+        grid-template-columns: 100%;
+        justify-items: center;
+        border: $border;
+    }
+
+    .whale-info-sidebar {
+        display: none; 
+    }
+    
+    .whale-info-main-info {
+        border: $border;
+        width:100%;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        align-items: center;
+    }
+}

@@ -1,23 +1,42 @@
 import React from "react";
 import { useState } from "react";
 import { FormEvent } from "react";
+import { createSighting } from "../../clients/apiClient";
+import { NewSighting } from "../../clients/apiClient";
 import './CreateSighting.scss';
 
 export function CreateSighting() {
-    const [date, setDate] = useState<string>("");
+    const [date, setDate] = useState<Date>(new Date());
     const [photoUrl, setPhotoUrl] = useState<string>("");
     const [latitude, setLatitude] = useState<number>(0);
     const [longitude, setLongitutde] = useState<number>(0);
     const [numberOfWhales, setNumberOfWhales] = useState<number>(0);
     const [species, setSpecies] = useState<string>("");
     const [description, setDescription] = useState<string>("");
-
+    const [status, setStatus] = useState<string>("");
+    
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault()
+        event.preventDefault();
+
+        const newSighting: NewSighting = {
+            dateOfSighting: date,
+            locationLatitude: latitude,
+            locationLongitude: longitude,
+            photoImageURL: photoUrl,
+            numberOfWhales: numberOfWhales,
+            description: description,
+            whaleSpecies: species
+        }
+    
+        createSighting(newSighting)
+            .then(() => { setStatus("Great! Your sighting has been submitted successfully.")
+            })
+            .catch((e) => setStatus(e.message))
     }
 
     return <main className="create-sighting">
         <h1 className="sighting-form-title">Post your whale sighting!</h1>
+        <p className="status-msg">{status}</p>
         <form className="create-sighting-form"
             onSubmit={(e) => { handleSubmit(e) }}>
             <div className="sighting-field">
@@ -29,7 +48,7 @@ export function CreateSighting() {
                     name="date"
                     id="date"
                     required
-                    onChange={event => setDate(event.target.value)}
+                    onChange={event => setDate(new Date(event.target.value))}
                 />
             </div>
 
