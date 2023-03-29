@@ -24,7 +24,7 @@ const MapChart = () => {
   
   return (
     <ComposableMap>
-      <ZoomableGroup center={[0, 0]} zoom={2}>
+      <ZoomableGroup center={[0, 0]} zoom={1}>
       <Geographies geography={geoUrl}>
         {({ geographies }) =>
           geographies.map((geo) => (
@@ -50,6 +50,14 @@ const MapChart = () => {
             <circle cx="12" cy="10" r="3" />
             <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
           </g>
+
+           <text
+            textAnchor="middle"
+            y={-30}
+            style={{ fontFamily: "system-ui", fill: "#5D5A6D" }}
+          >
+            {ws.dateOfSighting.slice(0,10)}
+          </text>
         </Marker>
       ))}
       </ZoomableGroup>
