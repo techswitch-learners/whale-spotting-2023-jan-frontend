@@ -1,23 +1,23 @@
 import "./SightingDetail.scss"
 import React, { useEffect, useState } from 'react';
-import { fetchSightingById, WhaleSighting} from "../../clients/apiClient";
+import { fetchSightingById, WhaleSighting } from "../../clients/apiClient";
 import "./SightingDetail.scss";
 
 interface SightingDetailProps {
     sightingId: number;
 }
 export function SightingDetail(props: SightingDetailProps): JSX.Element {
-    const [sighting, setSighting] = useState<any>(null);
+    const [sighting, setSighting] = useState<WhaleSighting>();
 
     useEffect(() => {
-        fetchSightingById(props.sightingId)   
-        .then(response => { setSighting(response); });
+        fetchSightingById(props.sightingId)
+            .then(response => { setSighting(response); });
     }, [props.sightingId]);
 
     if (!sighting) {
         return <section>No Sightings found for the provided id</section>
     }
-   
+
     return (
         <main className="sighting-detail">
             <p className="sighting-header">Sighting Details</p>
