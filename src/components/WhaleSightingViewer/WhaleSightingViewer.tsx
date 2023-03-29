@@ -11,6 +11,7 @@ export function WhaleSightingViewer() {
 
     useEffect(() => {
         getWhaleSightings()
+			.then(data => data.filter(a => a.ApprovalStatus == 1))
             .then(data => setSightings(data));
       }, []);
 
