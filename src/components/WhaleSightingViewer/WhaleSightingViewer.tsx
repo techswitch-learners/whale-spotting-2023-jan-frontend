@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
 import SightingList from "./SightingList";
-import { getWhaleSightings, NewSighting } from "../../clients/apiClient";
+import { getWhaleSightings, WhaleSighting } from "../../clients/apiClient";
 import "./WhaleSightingViewer.scss";
 
 export function WhaleSightingViewer() {
 
 	const [page, setPage] = useState(1);
-
-	const [sightingsList, setSightingsList] = useState<NewSighting[]>();
+	
+	const [sightings, setSightings] = useState<WhaleSighting[]>();
 
     useEffect(() => {
         getWhaleSightings()
-            .then(data => setSightingsList(data));
+            .then(data => setSightings(data));
       }, []);
 
-
-	if (!sightingsList) return <p>Waiting for data...</p>
+	if (!sightings) return <p>Waiting for data...</p>
 
 	return 	<>
 		<h2 className="whale-sighting-heading">Whale Sighting Viewer</h2>
@@ -23,10 +22,10 @@ export function WhaleSightingViewer() {
 			<div className="whale-sighting-map-view-button">Switch to Map View</div>
 			<div className="whale-sighting-filters">Filters to go here</div>
 			<div className="whale-sighting-sort">Sort to go here</div>
-			{<SightingList pageNum = {page} sightingsList = {sightingsList}/>}
+			<SightingList pageNum = {page} sightings = {sightings}/>
 			<div className="page-buttons">
 				{page > 1 ? <p className="prevlink" onClick={() => setPage(page - 1)}>Previous</p> :<></>}
-            	{(sightingsList.length > page * 12) ? <p className="nextlink" onClick={() => setPage(page + 1)}>Next</p> : <></>}
+            	{(sightings.length > page * 12) ? <p className="nextlink" onClick={() => setPage(page + 1)}>Next</p> : <></>}
 	  		</div>
 		</div>
 	</>

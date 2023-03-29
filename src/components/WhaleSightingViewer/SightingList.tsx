@@ -1,35 +1,50 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getWhaleSightings, NewSighting } from "../../clients/apiClient";
+import { getWhaleSightings, WhaleSighting, isLikedByUser } from "../../clients/apiClient";
 import "./SightingList.scss";
 
-export default function SightingList(props: {
+interface sightingListProps {
     pageNum: number,
-    sightingsList: NewSighting[],
-}) { 
+    sightings: WhaleSighting[];
+}
 
-    if (!props.sightingsList) return <p>Waiting for data...</p>
+export default function SightingList({
+    pageNum,
+    sightings
+}: sightingListProps) {
 
-    const sightingsToShow = Math.min(props.sightingsList.length, ((props.pageNum-1) * 12 + 12));
+    const username = "username";
 
-    const sightings : JSX.Element[] = [];
+    if (!sightings) return <p>Waiting for data...</p>
+
+    const maxSightingOnPage = Math.min(sightings.length, ((pageNum-1) * 12 + 12));
+
+    const sightingsList : JSX.Element[] = [];
 
     const handleLike = (event: React.MouseEvent<HTMLButtonElement>, whaleSightingId: number) => {
         event.preventDefault();
     }
 
-    for (let i = (props.pageNum-1) * 12; i < sightingsToShow; i++) {
-        sightings.push(
+    const handleUnlike = (event: React.MouseEvent<HTMLButtonElement>, whaleSightingId: number) => {
+        event.preventDefault();
+    }
+
+    for (let i = (pageNum-1) * 12; i < maxSightingOnPage; i++) {
+        const isLiked = sightings[i].ListOfLikers.includes(username);
+        sightingsList.push(
             <li className="whale-sighting-post">
-                <Link to={`/sightings/${props.sightingsList[i].Id}`}>
+                <Link to={`/sightings/${sightings[i].Id}`}>
                 <div className="post-container">
-                    <img src={props.sightingsList[i].photoImageURL} alt="post image"/>
+                    <img src={sightings[i].PhotoImageUrl} alt="post image"/>
                     <div className="sighting-info">
                         <div>
-                            <p className="username">{props.sightingsList[i].username}</p>
-                            <p className="date">{props.sightingsList[i].dateOfSighting.toLocaleDateString('en-GB')}</p>
+                            <p className="username">{sightings[i].User.Username}</p>
+                            <p className="date">{sightings[i].DateOfSighting}</p>
                         </div>
-                        <button type="button" onClick={(event) => handleLike(event, props.sightingsList[i].Id)}>Like</button>
+                        { (!isLiked) ?
+                            <button type="button" onClick={(event) => handleLike(event, sightings[i].Id)}>Like</button> :
+                            <button type="button" onClick={(event) => handleUnlike(event, sightings[i].Id)}>Unlike</button>
+                        }
                     </div>
                 </div>
                 </Link>
@@ -38,7 +53,7 @@ export default function SightingList(props: {
 
     return <>
         <ul className="whale-sighting-posts">
-				{sightings}
+			{sightingsList}
 		</ul>
     </>
 }

@@ -59,6 +59,7 @@ export interface WhaleSighting {
   ApprovalStatus: ApprovalStatus,
   WhaleSpecies: WhaleSpecies,
   User: User,
+  ListOfLikers: string[]
 }
 
 export interface NewUser {
@@ -69,9 +70,7 @@ export interface NewUser {
 }
 
 export interface NewSighting{
-    Id: number;
     dateOfSighting: Date;
-    username: string;
     locationLatitude: number;
     locationLongitude: number;
     photoImageURL: string;
@@ -122,300 +121,6 @@ export async function createNewUser(newUser: NewUser): Promise<Response> {
   }
 }
 
-// export const getWhaleSightings = async (): Promise<NewSighting[]> => {
-//   let response: Response;
-//   response = await fetch(`https://${backendUrl}/sightings/`);
-//   return response;
-// }
-
-export async function getWhaleSightings(): Promise<NewSighting[]> {
-  return new Promise<NewSighting[]>((resolve, reject) => {
-    const sightings = newSightings;
-    if (sightings) {
-      resolve(sightings);
-    } else {
-      reject("Failed to get sighting data");
-    }
-  });
-}
-
-const newSightings: NewSighting[] = [
-  {
-    Id: 0,
-    dateOfSighting: new Date('2022-01-01T00:00:00Z'),
-    username: 'Paul34',
-    locationLatitude: 51.5074,
-    locationLongitude: -0.1278,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 2,
-    description: 'Sighted two humpback whales near the coast of London.',
-    whaleSpecies: 'Humpback Whale',
-  },
-  {
-    Id: 1,
-    dateOfSighting: new Date('2022-02-15T10:30:00Z'),
-    username: 'Kirsty454',
-    locationLatitude: 37.7749,
-    locationLongitude: -122.4194,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 1,
-    description: 'Sighted a gray whale swimming alone in San Francisco Bay.',
-    whaleSpecies: 'Gray Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 1,
-    dateOfSighting: new Date('2022-02-15T10:30:00Z'),
-    username: 'Kirsty454',
-    locationLatitude: 37.7749,
-    locationLongitude: -122.4194,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 1,
-    description: 'Sighted a gray whale swimming alone in San Francisco Bay.',
-    whaleSpecies: 'Gray Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 1,
-    dateOfSighting: new Date('2022-02-15T10:30:00Z'),
-    username: 'Kirsty454',
-    locationLatitude: 37.7749,
-    locationLongitude: -122.4194,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 1,
-    description: 'Sighted a gray whale swimming alone in San Francisco Bay.',
-    whaleSpecies: 'Gray Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 1,
-    dateOfSighting: new Date('2022-02-15T10:30:00Z'),
-    username: 'Kirsty454',
-    locationLatitude: 37.7749,
-    locationLongitude: -122.4194,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 1,
-    description: 'Sighted a gray whale swimming alone in San Francisco Bay.',
-    whaleSpecies: 'Gray Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-  {
-    Id: 2,
-    dateOfSighting: new Date('2022-03-22T14:00:00Z'),
-    username: 'Daniella312',
-    locationLatitude: -33.8688,
-    locationLongitude: 151.2093,
-    photoImageURL: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
-    numberOfWhales: 5,
-    description: 'Sighted a pod of five killer whales hunting near Sydney.',
-    whaleSpecies: 'Killer Whale',
-  },
-];
 export interface SpeciesSearch {
   tailType: number;
   size: number;
@@ -440,3 +145,111 @@ export async function fetchSightingById(sightingId: number): Promise<WhaleSighti
     return await response.json();
   }
 }
+
+export async function isLikedByUser(sightingId: number): Promise<boolean> {
+  return new Promise<boolean>((resolve, reject) => {
+    if (true) {
+      resolve(true);
+    } else {
+      reject(false);
+    }
+  });
+}
+
+// export const getWhaleSightings = async (): Promise<NewSighting[]> => {
+//   let response: Response;
+//   response = await fetch(`https://${backendUrl}/sightings/`);
+//   return response;
+// }
+
+export async function getWhaleSightings(): Promise<WhaleSighting[]> {
+  return new Promise<WhaleSighting[]>((resolve, reject) => {
+    const sightings = newSightings;
+    if (sightings) {
+      resolve(sightings);
+    } else {
+      reject("Failed to get sighting data");
+    }
+  });
+}
+
+const newSightings: WhaleSighting[] = [
+  {
+    Id: 0,
+    DateOfSighting: "3rd June 2022",
+    User:  {Id: 1,
+    Username: "Paul354",
+    UserBio: "Cool dude",
+    ProfileImageUrl: "hello",
+    UserType: 0},
+    LocationLatitude: 51.5074,
+    LocationLongitude: -0.1278,
+    PhotoImageUrl: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
+    NumberOfWhales: 2,
+    ApprovalStatus: 1,
+    WhaleSpecies: {
+      Id: 1,
+      ImageUrl: "string",
+      Name: "string",
+      TailType: 1,
+      TeethType: 1,
+      WhaleSize: 0,
+      Colour: "blue",
+      Location: "Canada",
+      Diet: "Seals",
+    },
+    ListOfLikers: ["username"]
+  },
+  {
+    Id: 1,
+    DateOfSighting: "3rd June 2022",
+    User:  {Id: 2,
+    Username: "Kate303",
+    UserBio: "Cool Kate",
+    ProfileImageUrl: "hello",
+    UserType: 0},
+    LocationLatitude: 51.5074,
+    LocationLongitude: -0.1278,
+    PhotoImageUrl: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
+    NumberOfWhales: 2,
+    ApprovalStatus: 1,
+    WhaleSpecies: {
+      Id: 1,
+      ImageUrl: "string",
+      Name: "string",
+      TailType: 1,
+      TeethType: 1,
+      WhaleSize: 0,
+      Colour: "blue",
+      Location: "Canada",
+      Diet: "Seals",
+    },
+    ListOfLikers: ["paul", "username"]
+  },
+  {
+    Id: 2,
+    DateOfSighting: "3rd June 2022",
+    User:  {Id: 3,
+    Username: "Ricky424",
+    UserBio: "Cool Kate",
+    ProfileImageUrl: "hello",
+    UserType: 0},
+    LocationLatitude: 51.5074,
+    LocationLongitude: -0.1278,
+    PhotoImageUrl: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
+    NumberOfWhales: 2,
+    ApprovalStatus: 1,
+    WhaleSpecies: {
+      Id: 1,
+      ImageUrl: "string",
+      Name: "string",
+      TailType: 1,
+      TeethType: 1,
+      WhaleSize: 0,
+      Colour: "blue",
+      Location: "Canada",
+      Diet: "Seals",
+    },
+    ListOfLikers: ["paul"]
+  },
+];
