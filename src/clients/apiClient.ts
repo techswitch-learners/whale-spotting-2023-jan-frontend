@@ -136,8 +136,8 @@ export async function fetchSpeciesQuery(speciesSearch: SpeciesSearch): Promise<R
   }
 }
 
-export async function fetchSightingById(sightingId: number): Promise<WhaleSighting> {
-  const response = await fetch(`${backendUrl}/sightings/${sightingId}`);
+export async function fetchSightingById(sightingId: number): Promise<WhaleSighting>{
+ const response = await fetch(`${backendUrl}/sightings/${sightingId}`);
   if (!response.ok) {
     throw new Error(await response.json());
   }
