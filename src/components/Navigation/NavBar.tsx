@@ -30,13 +30,13 @@ export const Navbar: React.FunctionComponent = () => {
     };
 
   return (
-      <nav>
-          <img className="logo" src="/logo.png" />
-          <div className="burger-button" onClick={toggleHamburger}>
+    <div className="navbar">
+        <img className="logo" src="/logo.png" />
+        <nav>
+            <div className="burger-button" onClick={toggleHamburger}>
               <Hamburger isOpen={hamburgerOpen} />
           </div>
           <ul className={hamburgerOpen ? "hamburger-open" : "hamburger-closed"}>
-              <li />
               <li>
                   <Link className="navigation-button" to="/">
                       <AiFillHome />                
@@ -123,5 +123,6 @@ export const Navbar: React.FunctionComponent = () => {
               </li>
           </ul>
       </nav>
+      </div>
   );
 };
