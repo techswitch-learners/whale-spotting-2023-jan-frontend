@@ -104,12 +104,6 @@ export async function createSighting(newSighting: NewSighting): Promise<Response
 	}
 }
 
-// export interface Login {
-//   id: number;
-//   username: string;
-//   isLoggedIn: boolean;
-// }
-
 export async function fetchLogin(encodedUsernamePassword: string): Promise<void> {
 	const response = await fetch(`https://localhost:7127/login`, {
 		headers: {
@@ -161,3 +155,94 @@ export async function fetchSightingById(sightingId: number): Promise<WhaleSighti
     return await response.json();
   }
 }
+
+export async function getWhaleSightings(): Promise<WhaleSighting[]> {
+  return new Promise<WhaleSighting[]>((resolve, reject) => {
+    const sightings = newSightings;
+    if (sightings) {
+      resolve(sightings);
+    } else {
+      reject("Failed to get sighting data");
+    }
+  });
+}
+
+const newSightings: WhaleSighting[] = [
+  {
+    Id: 0,
+    DateOfSighting: "3rd June 2022",
+    User:  {Id: 1,
+    Username: "Paul354",
+    UserBio: "Cool dude",
+    ProfileImageUrl: "hello",
+    UserType: 0},
+    LocationLatitude: 51.5074,
+    LocationLongitude: -0.1278,
+    PhotoImageUrl: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
+    NumberOfWhales: 2,
+    ApprovalStatus: 0,
+    WhaleSpecies: {
+      Id: 1,
+      ImageUrl: "string",
+      Name: "string",
+      TailType: 1,
+      TeethType: 1,
+      WhaleSize: 0,
+      Colour: "blue",
+      Location: "Canada",
+      Diet: "Seals",
+    },
+  },
+  {
+    Id: 1,
+    DateOfSighting: "3rd June 2022",
+    User:  {Id: 2,
+    Username: "Kate303",
+    UserBio: "Cool Kate",
+    ProfileImageUrl: "hello",
+    UserType: 0},
+    LocationLatitude: 51.5074,
+    LocationLongitude: -0.1278,
+    PhotoImageUrl: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
+    NumberOfWhales: 2,
+    ApprovalStatus: 1,
+    WhaleSpecies: {
+      Id: 1,
+      ImageUrl: "string",
+      Name: "string",
+      TailType: 1,
+      TeethType: 1,
+      WhaleSize: 0,
+      Colour: "blue",
+      Location: "Canada",
+      Diet: "Seals",
+    },
+
+  },
+  {
+    Id: 2,
+    DateOfSighting: "3rd June 2022",
+    User:  {Id: 3,
+    Username: "Ricky424",
+    UserBio: "Cool Kate",
+    ProfileImageUrl: "hello",
+    UserType: 0},
+    LocationLatitude: 51.5074,
+    LocationLongitude: -0.1278,
+    PhotoImageUrl: 'https://hips.hearstapps.com/hmg-prod/images/where-to-go-whale-watching-virginia-1522419979.jpg',
+    NumberOfWhales: 2,
+    ApprovalStatus: 1,
+    WhaleSpecies: {
+      Id: 1,
+      ImageUrl: "string",
+      Name: "string",
+      TailType: 1,
+      TeethType: 1,
+      WhaleSize: 0,
+      Colour: "blue",
+      Location: "Canada",
+      Diet: "Seals",
+    },
+  },
+];
+

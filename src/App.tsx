@@ -4,7 +4,6 @@ import { Home } from "./components/Home/Home";
 import { SpeciesIdentification } from "./components/SpeciesIdentification/SpeciesIdentification";
 import React, { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Login } from './components/Login/Login';
 import { Navbar } from './components/Navigation/NavBar';
 import { WhaleSightingViewer } from './components/WhaleSightingViewer/WhaleSightingViewer';
 import { CreateSighting } from "./components/CreateSighting/CreateSighting";
@@ -14,7 +13,7 @@ import { Footer } from './components/Footer';
 import './App.scss';
 import { LoginContext, LoginManager } from "./components/Login/LoginManager";
 import { AdminPage } from "./components/Admin/AdminPage";
-
+import { CreateUser } from "./components/CreateUser/CreateUser";
 function App() {
 
   return (
@@ -24,6 +23,7 @@ function App() {
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/backend-checker" element={<BackendConnectionChecker />} />
+				<Route path="/users/create" element={<CreateUser />} />
 				<Route path="/sightings" element={
 					<LoginContext.Consumer>
 						{value => value.isLoggedIn
@@ -47,7 +47,6 @@ function App() {
 			</Routes>
 			<Footer />
 		</LoginManager>
-	)
-        <Route path="/users/create" element={<CreateUser />}></Route>
+	) 
 }
 export default App
