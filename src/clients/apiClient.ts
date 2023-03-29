@@ -30,35 +30,35 @@ export enum Size {
 }
 
 export interface WhaleSpecies {
-  Id: number,
-  ImageUrl: string,
-  Name: string,
-  TailType: TailType,
-  TeethType: TeethType,
-  WhaleSize: Size,
-  Colour: string,
-  Location: string,
-  Diet: string,
+  id: number,
+  imageUrl: string,
+  name: string,
+  tailType: TailType,
+  teethType: TeethType,
+  whaleSize: Size,
+  colour: string,
+  location: string,
+  diet: string,
 }
 
 export interface User {
-  Id: number,
-  Username: string,
-  UserBio: string,
-  ProfileImageUrl: string,
-  UserType: UserType
+  id: number,
+  username: string,
+  userBio: string,
+  profileImageUrl: string,
+  userType: UserType
 }
 
 export interface WhaleSighting {
-  Id: number,
-  DateOfSighting: string,
-  LocationLatitude: number,
-  LocationLongitude: number,
-  PhotoImageUrl: string,
-  NumberOfWhales: number,
-  ApprovalStatus: ApprovalStatus,
-  WhaleSpecies: WhaleSpecies,
-  User: User,
+  id: number,
+  dateOfSighting: string,
+  locationLatitude: number,
+  locationLongitude: number,
+  photoImageUrl: string,
+  numberOfWhales: number,
+  approvalStatus: ApprovalStatus,
+  whaleSpecies: WhaleSpecies,
+  user: User,
 }
 
 export interface NewUser {
