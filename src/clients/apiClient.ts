@@ -145,7 +145,7 @@ export async function fetchSightingById(sightingId: number): Promise<WhaleSighti
   }
 }
 
-export async function fetchListSightings(): Promise<WhaleSighting[]> {
+export async function fetchAllApprovedSightings(): Promise<WhaleSighting[]> {
   const response = await fetch(`${backendUrl}/sightings`);
   if (!response.ok) {
     throw new Error(await response.json());
