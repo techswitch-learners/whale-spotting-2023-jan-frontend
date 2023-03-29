@@ -42,6 +42,7 @@ export function CreateUser() {
 
     return <main className="create-user">
         <h1 className="createUser-Title">Create User</h1>
+        <p className="create-user-status-msg">{status}</p>
         <form className="create-user-form"
             onSubmit={(e) => { handleSubmit(e) }}>
             <div className="user-input-div">
