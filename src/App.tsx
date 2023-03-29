@@ -10,6 +10,7 @@ import { WhaleSightingViewer } from './components/WhaleSightingViewer/WhaleSight
 import { CreateSighting } from "./components/CreateSighting/CreateSighting";
 import { WhaleInfo } from './components/WhaleInfo/WhaleInfo';
 import { CreateUser } from "./components/CreateUser/CreateUser";
+import { UserLeaderBoard } from "./components/UserLeaderBoard/UserLeaderBoard";
 import { ColourSchemeChecker } from './ColourSchemeChecker';
 import { Footer } from './components/Footer';
 import './App.scss';
@@ -29,6 +30,7 @@ function App() {
         <Route path="/users/create" element={<CreateUser />}></Route>
         <Route path="/whale/species-identification" element={<SpeciesIdentification />} />
         <Route path="/whale/about" element={<WhaleInfo />} />
+        <Route path="/users/leaderboard" element={<UserLeaderBoard />} />
       </Routes>
     </>
   )
