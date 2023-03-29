@@ -68,11 +68,12 @@ export function CreateUser() {
             </div>
             <br /><br />
             <div className="user-input-div">
-                <label className="user-input-label" htmlFor="profileImageUrl">Profile Image Url: </label>
+                <label className="user-input-label" htmlFor="profileImageUrl">Profile Picture: </label>
                 <input className="input-field"
                     type="url"
                     name="profileImageUrl"
                     id="profileImageUrl"
+                    placeholder="Enter image url"
                     required
                     onChange={e => setProfileImageUrl(e.target.value)}
                 />
@@ -95,13 +96,8 @@ export function CreateUser() {
                 <select className="input-field" name="user-type"
                     id="user-type"
                     value={userType}
-                    placeholder="helloworld"
-
-                    // To James: I created this as a separate func on Line 36;
-                    // If it still does not work then fetch Franc;
                     onChange={handleTypeChange}
                 >
-                    {/* <option value =""> Choose the membership type</option> */}
                     {userTypes.map((ut) => (
                         <option key={ut} value={ut}>
                             {ut}
