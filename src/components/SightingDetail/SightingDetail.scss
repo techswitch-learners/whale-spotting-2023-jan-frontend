@@ -1,9 +1,16 @@
 @import "../../Constants.scss";
 
-p{
-    font-size: 1.5em;
+.sighting-detail {
+    padding-top:1px;
+    padding-bottom: 10px;
 }
 
-.sighting-detail-section{
-    
+p.sighting-header {
+    font-size: $subtitleSizeDesktop;
+    margin-bottom:2px;
+}
+
+.sighting-image {
+    height: 15%;
+    width: 20%;
 }
