@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FormEvent } from "react";
 import { NewUser } from "../../clients/apiClient";
 import { createNewUser } from "../../clients/apiClient";
+import { ChangeEvent } from "react";
 import './CreateUser.scss';
 
 export function CreateUser() {
@@ -10,10 +11,10 @@ export function CreateUser() {
     const [password, setPassword] = useState<string>("");
     const [profileImageUrl, setProfileImageUrl] = useState<string>("");
     const [userBio, setUserBio] = useState<string>("");
-    const [userType,setUserType] = useState<string>(""); 
+    const [userType, setUserType] = useState<string>("Member");
     const [status, setStatus] = useState<string>("");
 
-    const userTypes = ["Member","Admin"];
+    const userTypes = ["Member", "Admin"];
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -25,12 +26,19 @@ export function CreateUser() {
             profileImageUrl: profileImageUrl,
             userType: userType,
         }
-    
+
         createNewUser(newUser)
-            .then(() => { setStatus("Great! You have created a new user.")
+            .then(() => {
+                setStatus("Great! You have created a new user.")
             })
             .catch((e) => setStatus(e.message))
     }
+
+    const handleTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
+        setUserType(event.target.value);
+        console.log(username)
+        console.log(userType)
+    };
 
     return <main className="create-user">
         <h1 className="createUser-Title">Create User</h1>
@@ -86,14 +94,18 @@ export function CreateUser() {
                 <select className="input-field" name="user-type"
                     id="user-type"
                     value={userType}
-                    onChange={e => setUserType(e.target.value)}
+                    placeholder="helloworld"
+
+                    // To James: I created this as a separate func on Line 36;
+                    // If it still does not work then fetch Franc;
+                    onChange={handleTypeChange}
                 >
-                    <option value =""> Choose the membership type</option>
-                    {userTypes.map((userType) => (
-                    <option key={userType} value={userType}>
-                        {userType}
-                    </option>
-                ))}
+                    {/* <option value =""> Choose the membership type</option> */}
+                    {userTypes.map((ut) => (
+                        <option key={ut} value={ut}>
+                            {ut}
+                        </option>
+                    ))}
                 </select>
             </div>
             <button className="create-user-submit" type="submit">Submit</button>
