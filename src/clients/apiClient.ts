@@ -109,7 +109,7 @@ export async function createSighting(newSighting: NewSighting): Promise<Response
 }
 
 export async function createNewUser(newUser: NewUser): Promise<Response> {
-  const response = await fetch(`${backendUrl}/likes/create`, {
+  const response = await fetch(`${backendUrl}/users/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
