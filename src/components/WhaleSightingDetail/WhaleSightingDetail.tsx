@@ -9,7 +9,9 @@ export const WhaleSightingDetail: React.FunctionComponent = () => {
         return <h1> No Whale Sighting Found </h1>
     }
     return <main>
-        <section className="header-section"><h1 className="main-header">Whale Sighting Detail Page</h1></section>
+        <section className="header-section">
+            <h1 className="main-header">Whale Sighting Detail Page</h1>
+        </section>
         <section className="float-container">
             <div className="float-child1">
                 <SightingDetail sightingId={parseInt(id)} />

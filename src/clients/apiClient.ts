@@ -30,36 +30,36 @@ export enum Size {
 }
 
 export interface WhaleSpecies {
-  Id: number,
-  ImageUrl: string,
-  Name: string,
-  TailType: TailType,
-  TeethType: TeethType,
-  WhaleSize: Size,
-  Colour: string,
-  Location: string,
-  Diet: string,
+  id: number,
+  imageUrl: string,
+  name: string,
+  tailType: TailType,
+  teethType: TeethType,
+  whaleSize: Size,
+  colour: string,
+  location: string,
+  diet: string,
 }
 
 export interface User {
-  Id: number,
-  Username: string,
-  UserBio: string,
-  ProfileImageUrl: string,
-  UserType: UserType
+  id: number,
+  username: string,
+  userBio: string,
+  profileImageUrl: string,
+  userType: UserType
 }
 
 export interface WhaleSighting {
-  Id: number,
-  DateOfSighting: string,
-  LocationLatitude: number,
-  LocationLongitude: number,
-  PhotoImageUrl: string,
-  NumberOfWhales: number,
-  Description:string;
-  ApprovalStatus: ApprovalStatus,
-  WhaleSpecies: WhaleSpecies,
-  User: User,
+  id: number,
+  dateOfSighting: string,
+  locationLatitude: number,
+  locationLongitude: number,
+  photoImageUrl: string,
+  numberOfWhales: number,
+  description: string;
+  approvalStatus: ApprovalStatus,
+  whaleSpecies: WhaleSpecies,
+  user: User,
 }
 
 export interface NewUser {
@@ -69,40 +69,40 @@ export interface NewUser {
   profileImageUrl: string;
 }
 
-export interface NewSighting{
-    dateOfSighting: Date;
-    locationLatitude: number;
-    locationLongitude: number;
-    photoImageURL: string;
-    numberOfWhales: number;
-    description: string;
-    whaleSpecies: string;
+export interface NewSighting {
+  dateOfSighting: Date;
+  locationLatitude: number;
+  locationLongitude: number;
+  photoImageURL: string;
+  numberOfWhales: number;
+  description: string;
+  whaleSpecies: string;
 }
 
 export const checkBackendConnection = async (): Promise<boolean> => {
-    let response: Response;
-    try {
-      response = await fetch(`${backendUrl}/test`);
-    } catch {
-      return false;
-    }
-    return response.ok;
+  let response: Response;
+  try {
+    response = await fetch(`${backendUrl}/test`);
+  } catch {
+    return false;
+  }
+  return response.ok;
 }
 
 export async function createSighting(newSighting: NewSighting): Promise<Response> {
-    const response = await fetch(`https://${backendUrl}/sightings/submit`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newSighting),
-    });
+  const response = await fetch(`https://${backendUrl}/sightings/submit`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newSighting),
+  });
 
-    if (!response.ok) {
-        throw new Error(await response.json())
-    }else{
-      return response;
-    }
+  if (!response.ok) {
+    throw new Error(await response.json())
+  } else {
+    return response;
+  }
 }
 
 export async function createNewUser(newUser: NewUser): Promise<Response> {
@@ -136,8 +136,8 @@ export async function fetchSpeciesQuery(speciesSearch: SpeciesSearch): Promise<R
   }
 }
 
-export async function fetchSightingById(sightingId: number): Promise<WhaleSighting>{
- const response = await fetch(`${backendUrl}/sightings/${sightingId}`);
+export async function fetchSightingById(sightingId: number): Promise<WhaleSighting> {
+  const response = await fetch(`${backendUrl}/sightings/${sightingId}`);
   if (!response.ok) {
     throw new Error(await response.json());
   }
