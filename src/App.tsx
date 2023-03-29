@@ -4,9 +4,11 @@ import { Home } from "./components/Home/Home";
 import { SpeciesIdentification } from "./components/SpeciesIdentification/SpeciesIdentification";
 import React, { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
+import { Login } from './components/Login/Login';
 import { Navbar } from './components/Navigation/NavBar';
 import { WhaleSightingViewer } from './components/WhaleSightingViewer/WhaleSightingViewer';
 import { CreateSighting } from "./components/CreateSighting/CreateSighting";
+import { ColourSchemeChecker } from './ColourSchemeChecker';
 import { Login } from './components/Login/Login';
 import { Footer } from './components/Footer';
 import './App.scss';
@@ -46,5 +48,6 @@ function App() {
 			<Footer />
 		</LoginManager>
 	)
+        <Route path="/users/create" element={<CreateUser />}></Route>
 }
 export default App
