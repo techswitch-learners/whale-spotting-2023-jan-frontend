@@ -1,62 +1,30 @@
 import React from "react";
 import {useState, useEffect} from "react";
-import {GeoProjection} from "d3-geo";
 import {
   ComposableMap,
   Geographies,
   Geography,
+  ZoomableGroup,
   Marker
 } from "react-simple-maps";
-import { fetchListSighting, WhaleSighting } from "../../clients/apiClient";
+import { fetchListSighting as fetchAllApprovedSightings, WhaleSighting } from "../../clients/apiClient";
 
-const geoUrl =
-  // "https://raw.githubusercontent.com/deldersveld/topojson/master/continents/south-america.json";
-  "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
+const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
 
-  let markers: any[] = [];
-  function getMarkers()
-  {
-  // fetch list of whale sightings
-    const [listWhaleSighting, setListWhaleSighting] = useState<WhaleSighting[]>([]);
+const MapChart = () => {
+   const [listWhaleSighting, setListWhaleSighting] = useState<WhaleSighting[]>([]);
     useEffect(() => {
-        fetchListSighting()
+        fetchAllApprovedSightings()
             .then(response => setListWhaleSighting(response));
     }, []);
-    markers = listWhaleSighting.map(ws => {coordinates: [ws.LocationLatitude, ws.LocationLongitude] })
-    return markers;
-    }
-  // loop through list and add markers with each iteration
-  
-// const markers = [
-//   {
-//     markerOffset: -30,
-//     name: "Buenos Aires",
-//     coordinates: [-58.3816, -34.6037]
-//   },
-//   { markerOffset: 15, name: "La Paz", coordinates: [-68.1193, -16.4897] },
-//   { markerOffset: 15, name: "Brasilia", coordinates: [-47.8825, -15.7942] },
-//   { markerOffset: 15, name: "Santiago", coordinates: [-70.6693, -33.4489] },
-//   { markerOffset: 15, name: "Bogota", coordinates: [-74.0721, 4.711] },
-//   { markerOffset: 15, name: "Quito", coordinates: [-78.4678, -0.1807] },
-//   { markerOffset: -30, name: "Georgetown", coordinates: [-58.1551, 6.8013] },
-//   { markerOffset: -30, name: "Asuncion", coordinates: [-57.5759, -25.2637] },
-//   { markerOffset: 15, name: "Paramaribo", coordinates: [-55.2038, 5.852] },
-//   { markerOffset: 15, name: "Montevideo", coordinates: [-56.1645, -34.9011] },
-//   { markerOffset: 15, name: "Caracas", coordinates: [-66.9036, 10.4806] },
-//   { markerOffset: 15, name: "Lima", coordinates: [-77.0428, -12.0464] }
-// ];
 
-// var projection = d3.geoEquirectangular();
-getMarkers();
-const MapChart = () => {
+    if (listWhaleSighting.length === 0) {
+      return <div> Loading... </div>;
+    } 
+  
   return (
-    <ComposableMap
-      projection="geoEqualEarth"
-      projectionConfig={{
-        rotate: [58, 20, 0],
-        scale: 200
-      }}
-    >
+    <ComposableMap>
+      <ZoomableGroup center={[0, 0]} zoom={2}>
       <Geographies geography={geoUrl}>
         {({ geographies }) =>
           geographies.map((geo) => (
@@ -69,11 +37,11 @@ const MapChart = () => {
           ))
         }
       </Geographies>
-      {markers.map(({ coordinates }) => (
-        <Marker coordinates={coordinates}>
+      {listWhaleSighting.map((ws) => (
+        <Marker key={ws.id} coordinates={[ws.locationLongitude,ws.locationLatitude]}>
           <g
             fill="none"
-            stroke="#FF5533"
+            stroke="#043949"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -82,18 +50,11 @@ const MapChart = () => {
             <circle cx="12" cy="10" r="3" />
             <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
           </g>
-          <text
-            textAnchor="middle"
-            // y={markerOffset}
-            style={{ fontFamily: "system-ui", fill: "#5D5A6D" }}
-          >
-            {/* {name} */}
-          </text>
         </Marker>
       ))}
+      </ZoomableGroup>
     </ComposableMap>
   );
 };
 
 export default MapChart;
-
