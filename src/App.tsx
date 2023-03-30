@@ -23,7 +23,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/backend-checker" element={<BackendConnectionChecker />} />
         <Route path="/whale/about" element={<WhaleInfo />} />
-        <Route path="/sighting" element={<WhaleSightingViewer />} />
+        <Route path="/sightings" element={<WhaleSightingViewer />} />
         <Route path="/sightings/submit" element={<CreateSighting />} />
         <Route path="/sightings/:id" element={<WhaleSightingDetail />}></Route>
         <Route path="/users/create" element={<CreateUser />}></Route>

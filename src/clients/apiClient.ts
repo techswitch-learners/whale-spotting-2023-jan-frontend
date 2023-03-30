@@ -167,7 +167,7 @@ export async function fetchAllApprovedSightings(): Promise<WhaleSighting[]> {
     throw new Error(await response.json());
   }
   else {
-    return response;
+    return await response.json();
   }
 }
 
