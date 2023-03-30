@@ -78,6 +78,10 @@ export interface NewSighting{
     whaleSpecies: string;
 }
 
+export interface NewLike{
+  whaleSightingId: number;
+}
+
 export const checkBackendConnection = async (): Promise<boolean> => {
     let response: Response;
     try {
@@ -145,12 +149,33 @@ export async function fetchSightingById(sightingId: number): Promise<WhaleSighti
   }
 }
 
+export async function deleteLike(likeId: number): Promise<Response> {
+  const response = await fetch(`${backendUrl}/likes/delete/${likeId}`);
+
 export async function fetchAllApprovedSightings(): Promise<WhaleSighting[]> {
   const response = await fetch(`${backendUrl}/sightings`);
+  
   if (!response.ok) {
     throw new Error(await response.json());
   }
   else {
+    return response;
+  }
+}
+
+export async function createLike(newLike: NewLike): Promise<Response> {
+  const response = await fetch(`${backendUrl}/likes/create`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newLike),
+  });
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return response;
     return await response.json();
   }
 }
