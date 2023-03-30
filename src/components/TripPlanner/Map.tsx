@@ -7,7 +7,7 @@ import {
   ZoomableGroup,
   Marker
 } from "react-simple-maps";
-import { fetchListSighting as fetchAllApprovedSightings, WhaleSighting } from "../../clients/apiClient";
+import {fetchAllApprovedSightings, WhaleSighting } from "../../clients/apiClient";
 
 export const MapChart: React.FC = () => {
    const [listWhaleSighting, setListWhaleSighting] = useState<WhaleSighting[]>([]);
