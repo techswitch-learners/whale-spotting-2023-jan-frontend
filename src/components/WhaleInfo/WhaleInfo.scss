@@ -1,29 +1,27 @@
 @import "../../Constants.scss";
 
-// Temporary border constants for designing. Remove or set to transparent 0px after use
-$border: 2px solid rgb(255, 0, 0);
+$border: 2px solid $darker-background;
 
 main.whale-info{
     background-color: $background;
-}
-
-h1.whale-info-header{
-    color:$light-font-color
+    margin-top: 24px;
+    margin-bottom: 24px;
 }
 
 section.whale-info-container {
-    height: 90vh;
+    height: 100%;
     display: grid;
     grid-template-columns: 30% 70%;
     justify-items: center;
     border: $border;
+    background-color: $darker-background;
 }
 
 h1.whale-info-header {
-    border: $border;
-    padding:20px;
+    padding-top:20px;
     align-items: center;
     font-size: 2em;
+    color:$light-font-color
 }
 
 .whale-info-sidebar {
@@ -32,6 +30,7 @@ h1.whale-info-header {
     grid-column-start: 1;
     grid-column-end: 1;
     align-items: center;
+    position: relative;
 }
 
 .whale-info-main-info {
@@ -42,9 +41,17 @@ h1.whale-info-header {
     align-items: center;
 }
 
+section.whale-facts,h2.whale-facts-header{
+    color:$light-font-color;
+}
+
+section.whale-facts{
+    padding: $cardPaddingDesktop;
+}
+
 @media (max-width: 425px) {
     section.whale-info-container {
-        height: 90vh;
+        height: 100%;
         display: grid;
         grid-template-columns: 100%;
         justify-items: center;
