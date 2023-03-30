@@ -4,3 +4,9 @@
     background-color: $background;
     color: $light-font-color;
 }
+
+.leaderboard-table {
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 2.5em 0;
+}
