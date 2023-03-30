@@ -1,15 +1,24 @@
 @import "../../Constants.scss";
 
+main.create-user {
+    background-color: $background;
+}
+
 h1.createUser-Title {
-    font-size: $titleSizeDesktop;
-    padding-top: 25px;
+    color: $light-font-color;
+    font-family: $fontType;
+    padding-top: $cardPaddingDesktop;
 }
 
 .create-user-form {
-    position: relative;
     display: flex;
     flex-direction: column;
+    position: relative;
     align-items: center;
+    height: 380px;
+    background: $darker-background;
+    padding: $cardPaddingDesktop;
+    gap: 1rem;
 }
 
 .user-input-div {
@@ -21,6 +30,7 @@ h1.createUser-Title {
     width: 130px;
     text-align: left;
     margin-right: 5px;
+    color: $light-font-color;
     margin-top:5px;
 }
 
@@ -29,19 +39,26 @@ h1.createUser-Title {
     height: 35px;
     padding: 10px 15px;
     box-sizing: border-box;
+    background-color: $light-background;
 }
 
-.create-user-submit {
-    color: $light-font-color;
-    border: none;
-    width: 120px;
-    padding: 10px 20px;
+.input-field:hover {
+    border: solid 2px $light-font-color;
     cursor: pointer;
     margin-top: 24px;
 }
 
+.create-user-submit {
+    background: $button-color;
+    border-radius: $buttonRadius;
+    position: absolute;
+    bottom: 5%;
+    left: 45%;
+}
+
 .create-user-submit:hover {
-    background-color: $default-foreground;
+    cursor: pointer;
+    background-color: $button-color;
 }
 
 @media screen and (max-width: 430px) {

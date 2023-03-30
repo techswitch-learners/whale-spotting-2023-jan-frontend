@@ -10,12 +10,12 @@ h1.sighting-form-title {
     padding-top: 25px;
 }
 
-p.status-msg{
+p.status-msg {
     color: $light-font-color;
     font-family: $fontType;
 }
 
-form.create-sighting-form{
+form.create-sighting-form {
     background: $darker-background;
     position: relative;
     padding: 20px;
@@ -41,20 +41,20 @@ label.create-sighting-label {
 input.create-sighting-input {
     width: 300px;
     height: 20px;
-    background-color: #9AE5F8;
+    background-color: $input-field-color;
     border-radius: 5px;
 }
 
 textarea.create-sighting-input {
     width: 300px;
     height: 50px;
-    background-color: #9AE5F8;
+    background-color: $input-field-color;
     border-radius: 5px;
 }
 
 button.create-sighting-submit:hover {
     cursor: pointer;
-    background-color: #c19811;
+    background-color: $button-hover-color;
 }
 
 input.create-sighting-input:hover {
@@ -85,14 +85,14 @@ button.create-sighting-submit {
     input.create-sighting-input {
         width: 150px;
         height: 20px;
-        background-color: #9AE5F8;
+        background-color: $input-field-color;
         border-radius: 5px;
     }
 
     textarea.create-sighting-input {
         width: 150px;
         height: 50px;
-        background-color: #9AE5F8;
+        background-color: $input-field-color;
         border-radius: 5px;
     }
 }

@@ -41,7 +41,7 @@ export function CreateUser() {
     };
 
     return <main className="create-user">
-        <h1 className="createUser-Title">Create User</h1>
+        <h1 className="createUser-Title">Create a New User</h1>
         <p className="create-user-status-msg">{status}</p>
         <form className="create-user-form"
             onSubmit={(e) => { handleSubmit(e) }}>
@@ -55,7 +55,6 @@ export function CreateUser() {
                     onChange={e => setUsername(e.target.value)}
                 />
             </div>
-            <br /><br />
             <div className="user-input-div">
                 <label className="user-input-label">Password: </label>
                 <input className="input-field"
@@ -66,7 +65,6 @@ export function CreateUser() {
                     onChange={e => setPassword(e.target.value)}
                 />
             </div>
-            <br /><br />
             <div className="user-input-div">
                 <label className="user-input-label" htmlFor="profileImageUrl">Profile Picture: </label>
                 <input className="input-field"
@@ -77,9 +75,7 @@ export function CreateUser() {
                     required
                     onChange={e => setProfileImageUrl(e.target.value)}
                 />
-
             </div>
-            <br /><br />
             <div className="user-input-div">
                 <label className="user-input-label" htmlFor="userBio">User Bio: </label>
                 <input className="input-field"
