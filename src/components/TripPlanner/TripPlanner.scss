@@ -1,39 +1,41 @@
-// Temporary border constants for designing. Remove or set to transparent 0px after use
-$border: 2px solid rgb(255, 0, 0);
+@import "../../Constants.scss";
+
 
 .tripplanner-container {
+    background-color: $default-foreground;
+    color: $light-font-color;
+    font-family: $fontType;
     height: 90vh;
     width: 1440px;
     display: grid;
     grid-template-rows: 10% 10% 40% 40%;
     justify-items: center;
-    border: $border;
+    // border: 2px solid rgb(255, 0, 0);
 }
 
 .tripplanner-header {
-    border: $border;
+    font-size: $titleSizeDesktop;
     margin: 0.5%;
     grid-row-start: 1;
     grid-row-end: 2;
     display: grid;
     align-items: center;
-    font-size: 2em;
 }
 
 .tripplanner-search {
-    border: $border;
-    width: 10%;
-    margin: 0.5%;
     grid-row-start: 2;
     grid-row-end: 3;
     display: grid;
     align-items: center;
 }
 
+rsm-svg {
+    width: 50px;
+    height: 40px;
+}
+
 .tripplanner-map {
-    border: $border;
     width: 50%;
-    margin: 2%;
     grid-row-start: 3;
     grid-row-end: 4;
     display: grid;
@@ -41,7 +43,6 @@ $border: 2px solid rgb(255, 0, 0);
 }
 
 .tripplanner-table {
-    border: $border;
     margin: 2%;
     width: 80%;
     grid-row-start: 4;
@@ -57,12 +58,12 @@ $border: 2px solid rgb(255, 0, 0);
         display: grid;
         grid-template-rows: 10% 10% 80%;
         justify-items: center;
-        border: $border;
+        // border: 2px solid rgb(255, 0, 0);
         margin: 1%;
     }
 
     .tripplanner-header {
-        border: $border;
+        // border: 2px solid rgb(255, 0, 0);
         margin: 1%;
         grid-row-start: 1;
         grid-row-end: 2;
@@ -72,7 +73,7 @@ $border: 2px solid rgb(255, 0, 0);
     }
 
     .tripplanner-search {
-        border: $border;
+        // border:2px solid rgb(255, 0, 0);
         width: 40%;
         margin: 1%;
         grid-row-start: 2;
@@ -87,7 +88,7 @@ $border: 2px solid rgb(255, 0, 0);
     }
 
     .tripplanner-table {
-        border: $border;
+        // border: 2px solid rgb(255, 0, 0);
         margin: 1%;
         width: 80%;
         grid-row-start: 3;

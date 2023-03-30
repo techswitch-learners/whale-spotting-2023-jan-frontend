@@ -79,8 +79,13 @@ export interface NewSighting {
   whaleSpecies: string;
 }
 
-export interface NewLike{
+export interface NewLike {
   whaleSightingId: number;
+}
+
+export interface LatLonLocation {
+  latitude: number;
+  longitude: number;
 }
 
 export const checkBackendConnection = async (): Promise<boolean> => {
@@ -162,12 +167,12 @@ export async function deleteLike(likeId: number): Promise<Response> {
 
 export async function fetchAllApprovedSightings(): Promise<WhaleSighting[]> {
   const response = await fetch(`${backendUrl}/sightings`);
-  
+
   if (!response.ok) {
     throw new Error(await response.json());
   }
   else {
-    return response;
+    return await response.json();
   }
 }
 
@@ -186,3 +191,16 @@ export async function createLike(newLike: NewLike): Promise<Response> {
     return await response.json();
   }
 }
+
+export async function getLatLonFromLocation(location: string): Promise<LatLonLocation> {
+  const response = await fetch(`http://api.positionstack.com/v1/forward?access_key=2fc71fe9ad9868ee2163d073ea5b31f7&query=${location}`);
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    const responseJson = await response.json();
+    let latlon: LatLonLocation = { latitude: responseJson.data[0].latitude, longitude: responseJson.data[0].longitude };
+    return (latlon);
+  }
+}
+
