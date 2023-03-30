@@ -19,12 +19,14 @@ export function CreateUser() {
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
+        const userTypeInt: number = userType == "Admin" ? 1 : 0; 
+
         const newUser: NewUser = {
             username: username,
             password: password,
             userBio: userBio,
             profileImageUrl: profileImageUrl,
-            userType: userType,
+            userType: userTypeInt,
         }
 
         createNewUser(newUser)
