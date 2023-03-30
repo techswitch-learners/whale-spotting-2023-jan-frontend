@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getWhaleSightings, WhaleSighting } from "../../clients/apiClient";
+import { fetchAllApprovedSightings, WhaleSighting } from "../../clients/apiClient";
 import "./AdminPage.scss"
 import AdminSightingList from "./AdminSightingList";
 
@@ -8,8 +8,8 @@ export function AdminPage() {
 	const [adminSightings, setAdminSightings] = useState<WhaleSighting[]>();
 
     useEffect(() => {
-        getWhaleSightings()
-			.then(data => data.filter(a => a.ApprovalStatus == 0))
+        fetchAllApprovedSightings()
+			.then(data => data.filter(a => a.approvalStatus == 0))
             .then(data => setAdminSightings(data));
       }, []);
 

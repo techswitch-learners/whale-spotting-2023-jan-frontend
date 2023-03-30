@@ -20,15 +20,15 @@ export default function AdminSightingList({
     for (let i = 0; i < sightings.length; i++) {
         sightingsList.push(
             <li className="whale-sighting-post">
-                <Link to={`/sightings/${sightings[i].Id}`}>
+                <Link to={`/sightings/${sightings[i].id}`}>
                 <div className="post-container">
-                    <img src={sightings[i].PhotoImageUrl} alt="post image"/>
+                    <img src={sightings[i].photoImageURL} alt="post image"/>
                     <div className="sighting-info">
                         <div>
-                            <p className="username">{sightings[i].User.Username}</p>
-                            <p className="date">{sightings[i].DateOfSighting}</p>
+                            <p className="username">{sightings[i].user.username}</p>
+                            <p className="date">{sightings[i].dateOfSighting}</p>
                         </div>
-                            <button type="button" onClick={(event) => handleApprove(event, sightings[i].Id)}>Approve</button>
+                            <button type="button" onClick={(event) => handleApprove(event, sightings[i].id)}>Approve</button>
                     </div>
                 </div>
                 </Link>
