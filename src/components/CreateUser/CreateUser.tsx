@@ -34,10 +34,6 @@ export function CreateUser() {
             .catch((e) => setStatus(e.message))
     }
 
-    const handleTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        setUserType(event.target.value);
-    };
-
     return <main className="create-user">
         <h1 className="createUser-Title">Create a New User</h1>
         <p className="create-user-status-msg">{status}</p>
@@ -84,13 +80,12 @@ export function CreateUser() {
                     onChange={e => setUserBio(e.target.value)}
                 />
             </div>
-            <br /><br />
             <div className="user-input-div">
                 <label className="user-input-label" htmlFor="user-type">User Type: </label>
                 <select className="input-field" name="user-type"
                     id="user-type"
                     value={userType}
-                    onChange={handleTypeChange}
+                    onChange={e => setUserType(e.target.value)}
                 >
                     {userTypes.map((ut) => (
                         <option key={ut} value={ut}>

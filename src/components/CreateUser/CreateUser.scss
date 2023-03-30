@@ -2,12 +2,14 @@
 
 main.create-user {
     background-color: $background;
+    margin-top: $cardPaddingDesktop;
+
 }
 
 h1.createUser-Title {
     color: $light-font-color;
     font-family: $fontType;
-    padding-top: $cardPaddingDesktop;
+    padding-top: 28px;
 }
 
 .create-user-form {
@@ -15,7 +17,6 @@ h1.createUser-Title {
     flex-direction: column;
     position: relative;
     align-items: center;
-    height: 380px;
     background: $darker-background;
     padding: $cardPaddingDesktop;
     gap: 1rem;
@@ -24,6 +25,7 @@ h1.createUser-Title {
 .user-input-div {
     display: flex;
     justify-content: left;
+    padding: 8px 0px;
 }
 
 .user-input-label {
@@ -40,20 +42,18 @@ h1.createUser-Title {
     padding: 10px 15px;
     box-sizing: border-box;
     background-color: $light-background;
+    border-radius: $buttonRadius;
 }
 
 .input-field:hover {
     border: solid 2px $light-font-color;
     cursor: pointer;
-    margin-top: 24px;
 }
 
 .create-user-submit {
     background: $button-color;
     border-radius: $buttonRadius;
-    position: absolute;
-    bottom: 5%;
-    left: 45%;
+    margin-top: 8px;
 }
 
 .create-user-submit:hover {
@@ -62,8 +62,9 @@ h1.createUser-Title {
 }
 
 @media screen and (max-width: 430px) {
-    createUser-Title {
+    .createUser-Title {
         font-size: $titleSizeMobile;
+        padding-bottom: 12px;
     }
 
     .user-input-div {
