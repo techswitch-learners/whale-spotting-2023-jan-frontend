@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SightingList from "./SightingList";
-import { getWhaleSightings, WhaleSighting } from "../../clients/apiClient";
+import { fetchAllApprovedSightings, WhaleSighting } from "../../clients/apiClient";
 import "./WhaleSightingViewer.scss";
 
 export function WhaleSightingViewer() {
@@ -10,8 +10,8 @@ export function WhaleSightingViewer() {
 	const [sightings, setSightings] = useState<WhaleSighting[]>();
 
     useEffect(() => {
-        getWhaleSightings()
-			.then(data => data.filter(a => a.ApprovalStatus == 1))
+        fetchAllApprovedSightings()
+			.then(data => data.filter(a => a.approvalStatus == 1))
             .then(data => setSightings(data));
       }, []);
 
