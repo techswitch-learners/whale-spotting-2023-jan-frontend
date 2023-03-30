@@ -3,20 +3,15 @@ import { getLatLonFromLocation, LatLonLocation } from "../../clients/apiClient";
 import { FormEvent } from "react";
 import './SearchByLocation.scss';
 
- export function SearchByLocation(props: {
-    latLon:LatLonLocation ;
-    setLatLon: React.Dispatch<React.SetStateAction<LatLonLocation>>
-}) {
-    const [searchLoc, setSearchLoc] = useState<string>("");
-    // const [LatLon, setLatLon] = useState<LatLonLocation>();
+export let LatLon: LatLonLocation;
 
+export function SearchByLocation() {
+    const [searchLoc, setSearchLoc] = useState<string>("");
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         getLatLonFromLocation(searchLoc)
-            .then(response => props.setLatLon(response));
+            .then(response => LatLon = response);
     }
-    // const LatLonresponse = await getLatLonFromLocation(searchLoc);
-
 
     return (
         <form className="location-form" onSubmit={(e) => { handleSubmit(e) }} >

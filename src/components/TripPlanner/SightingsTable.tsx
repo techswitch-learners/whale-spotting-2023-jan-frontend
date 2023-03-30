@@ -1,11 +1,13 @@
 import React from "react";
+import { LatLon } from "./SearchByLocation";
 import { fetchAllApprovedSightings } from "../../clients/apiClient";
 
 export function SightingsTable() {
 
+// make an api call to sightings table 
     
     fetchAllApprovedSightings();
-    
+
     return (
         <main>
             <div className="table">
@@ -14,7 +16,7 @@ export function SightingsTable() {
             <div className="data">
                 results1
             </div>
-            
+
         </main>
     )
 
