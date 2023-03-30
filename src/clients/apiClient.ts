@@ -151,6 +151,13 @@ export async function fetchSightingById(sightingId: number): Promise<WhaleSighti
 
 export async function deleteLike(likeId: number): Promise<Response> {
   const response = await fetch(`${backendUrl}/likes/delete/${likeId}`);
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return response;
+  }
+}
 
 export async function fetchAllApprovedSightings(): Promise<WhaleSighting[]> {
   const response = await fetch(`${backendUrl}/sightings`);
@@ -175,7 +182,6 @@ export async function createLike(newLike: NewLike): Promise<Response> {
     throw new Error(await response.json());
   }
   else {
-    return response;
     return await response.json();
   }
 }
