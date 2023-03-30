@@ -9,14 +9,14 @@ import {
 } from "react-simple-maps";
 import { fetchListSighting as fetchAllApprovedSightings, WhaleSighting } from "../../clients/apiClient";
 
-const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
-
-const MapChart = () => {
+export const MapChart: React.FC = () => {
    const [listWhaleSighting, setListWhaleSighting] = useState<WhaleSighting[]>([]);
     useEffect(() => {
         fetchAllApprovedSightings()
             .then(response => setListWhaleSighting(response));
     }, []);
+
+    const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
 
     if (listWhaleSighting.length === 0) {
       return <div> Loading... </div>;
@@ -64,5 +64,3 @@ const MapChart = () => {
     </ComposableMap>
   );
 };
-
-export default MapChart;

@@ -13,7 +13,6 @@ import { Login } from './components/Login/Login';
 import { Footer } from './components/Footer';
 import './App.scss';
 import { WhaleInfo } from './components/WhaleInfo/WhaleInfo';
-import MapChart from "./components/TripPlanner/Map";
 
 function App() {
   return (
@@ -31,7 +30,6 @@ function App() {
         <Route path="/users/create" element={<CreateUser />}></Route>
         <Route path="/whale/species-identification" element={<SpeciesIdentification />} />
         <Route path="/whale/about" element={<WhaleInfo />} />
-        <Route path="/test" element={<MapChart />} />
       </Routes>
     </>
   )
