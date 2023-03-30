@@ -36,8 +36,6 @@ export function CreateUser() {
 
     const handleTypeChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setUserType(event.target.value);
-        console.log(username)
-        console.log(userType)
     };
 
     return <main className="create-user">
