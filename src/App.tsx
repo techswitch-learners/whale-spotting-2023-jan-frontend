@@ -13,35 +13,30 @@ import './App.scss';
 import { LoginContext, LoginManager } from "./components/Login/LoginManager";
 
 function App() {
-	const loginContext = useContext(LoginContext);
+  const loginContext = useContext(LoginContext);
 
-	// useEffect(() => { console.log(`${loginContext.isLoggedIn}`) }, [loginContext]);
-
-	return (
-		<LoginManager>
-			<Navbar />
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/login" element={<Login />} />
-				<Route path="/backend-checker" element={<BackendConnectionChecker />} />
-        
-				<Route path="/sightings" element={
-					<LoginContext.Consumer>
-						{value => value.isLoggedIn
-							? <WhaleSightingViewer loggedIn = {true}/>
-							: <WhaleSightingViewer loggedIn = {false}/>}
-					</LoginContext.Consumer>} />
-				<Route path="/sightings/submit" element={
-					<LoginContext.Consumer>
-						{value => value.isLoggedIn
-							? <CreateSighting />
-							: <Login />}
-					</LoginContext.Consumer>} />
-				<Route path="/sightings/:id" element={<WhaleSightingDetail />} />
-				<Route path="/whale/species-identification" element={<SpeciesIdentification />} />
-			</Routes>
-			<Footer />
-		</LoginManager>
-	)
+  return (
+    <LoginManager>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/backend-checker" element={<BackendConnectionChecker />} />
+        <Route path="/sightings" element={
+          <LoginContext.Consumer>
+            {value => <WhaleSightingViewer loggedIn={value.isLoggedIn} />}
+          </LoginContext.Consumer>} />
+        <Route path="/sightings/submit" element={
+          <LoginContext.Consumer>
+            {value => value.isLoggedIn
+              ? <CreateSighting />
+              : <Login />}
+          </LoginContext.Consumer>} />
+        <Route path="/sightings/:id" element={<WhaleSightingDetail />} />
+        <Route path="/whale/species-identification" element={<SpeciesIdentification />} />
+      </Routes>
+      <Footer />
+    </LoginManager>
+  )
 }
 export default App

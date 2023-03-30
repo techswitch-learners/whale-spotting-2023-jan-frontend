@@ -13,8 +13,6 @@ export function Login() {
 
 	const [showPassword, setShowPassword] = useState(false);
 
-	console.log(loginContext);
-
 	async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 

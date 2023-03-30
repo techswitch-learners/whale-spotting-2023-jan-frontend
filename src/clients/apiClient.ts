@@ -43,14 +43,8 @@ export async function createSighting(newSighting: NewSighting): Promise<Response
 	}
 }
 
-// export interface Login {
-//   id: number;
-//   username: string;
-//   isLoggedIn: boolean;
-// }
-
 export async function fetchLogin(encodedUsernamePassword: string): Promise<void> {
-	const response = await fetch(`https://localhost:7127/login`, {
+	const response = await fetch(`${backendUrl}/login`, {
 		headers: {
 			'Authorization': `Basic ${encodedUsernamePassword}`
 		}
