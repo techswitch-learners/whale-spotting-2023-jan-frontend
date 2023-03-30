@@ -52,15 +52,23 @@
     align-items: flex-start;
     justify-content: center;
     margin-left: 1rem;
-  }
+}
   
-  .sighting-info p {
+.sighting-info p {
     margin: 0;
     text-align: left;
-  }
-  
-  .sighting-info button {
+}
+
+.sighting-info button {
     margin-left: auto;
     margin-top: 1%;
-  }
-  
+}
+
+.button-like, .button-unlike {
+    background-color: white;
+    font-size: 40px;
+    color: red;
+    border: 0px;
+    padding: 0px;
+    padding-right: 10px;
+}

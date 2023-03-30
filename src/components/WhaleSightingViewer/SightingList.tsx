@@ -42,8 +42,8 @@ export default function SightingList({
                             <p className="date">{(new Date(sightings[i].dateOfSighting)).toLocaleDateString('en-GB')}</p>
                         </div>
                         { (!isLiked) ?
-                            <button type="button" onClick={(event) => handleLike(event, sightings[i].id)}>Like</button> :
-                            <button type="button" onClick={(event) => handleUnlike(event, sightings[i].id)}>Unlike</button>
+                            <button type="button" className = "button-like" onClick={(event) => handleLike(event, sightings[i].id)}>{"\u2661"}</button> :
+                            <button type="button" className = "button-unlike" onClick={(event) => handleUnlike(event, sightings[i].id)}>{"\u2665"}</button>
                         }
                     </div>
                 </div>
