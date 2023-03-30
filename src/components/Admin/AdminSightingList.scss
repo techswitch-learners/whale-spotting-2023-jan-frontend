@@ -64,3 +64,13 @@
     margin-top: 1%;
   }
   
+  .button-approve {
+    background-color: $button-color;
+    color: $dark-font-color;
+  }
+
+  .button-delete {
+    background-color: darkred;
+    color: $dark-font-color;
+  }
+  

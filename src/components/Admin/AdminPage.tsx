@@ -7,9 +7,10 @@ export function AdminPage() {
 
 	const [adminSightings, setAdminSightings] = useState<WhaleSighting[]>();
 
+
+	// TODO - update to fetch pending sightings api when ready
     useEffect(() => {
         fetchAllApprovedSightings()
-			.then(data => data.filter(a => a.approvalStatus == 0))
             .then(data => setAdminSightings(data));
       }, []);
 

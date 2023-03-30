@@ -17,6 +17,10 @@ export default function AdminSightingList({
         event.preventDefault();
     }
 
+    const handleDelete = (event: React.MouseEvent<HTMLButtonElement>, whaleSightingId: number) => {
+        event.preventDefault();
+    }
+
     for (let i = 0; i < sightings.length; i++) {
         sightingsList.push(
             <li className="whale-sighting-post">
@@ -26,9 +30,10 @@ export default function AdminSightingList({
                     <div className="sighting-info">
                         <div>
                             <p className="username">{sightings[i].user.username}</p>
-                            <p className="date">{sightings[i].dateOfSighting}</p>
+                            <p className="date">{(new Date(sightings[i].dateOfSighting)).toLocaleDateString('en-GB')}</p>
                         </div>
-                            <button type="button" onClick={(event) => handleApprove(event, sightings[i].id)}>Approve</button>
+                            <button type="button" className="button-approve" onClick={(event) => handleApprove(event, sightings[i].id)}>Approve</button>
+                            <button type="button" className="button-delete" onClick={(event) => handleDelete(event, sightings[i].id)}>Delete</button>
                     </div>
                 </div>
                 </Link>
