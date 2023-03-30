@@ -79,8 +79,14 @@ export interface NewSighting {
   whaleSpecies: string;
 }
 
-export interface NewLike{
+export interface NewLike {
   whaleSightingId: number;
+}
+
+export interface SpeciesSearch {
+  tailType: number | null;
+  size: number | null;
+  colour: string | null;
 }
 
 export const checkBackendConnection = async (): Promise<boolean> => {
@@ -125,14 +131,13 @@ export async function createNewUser(newUser: NewUser): Promise<Response> {
   }
 }
 
-export interface SpeciesSearch {
-  tailType: number;
-  size: number;
-  colour: string;
-}
-
-export async function fetchSpeciesQuery(speciesSearch: SpeciesSearch): Promise<Response> {
-  const response = await fetch(`${backendUrl}/species?TailType=${speciesSearch.tailType}&Size=${speciesSearch.size}&Colour=${speciesSearch.colour}`);
+export async function fetchSpeciesQuery(speciesSearch: SpeciesSearch): Promise<WhaleSpecies[]> {
+  let response;
+  if (speciesSearch.tailType == null && speciesSearch.colour == null && speciesSearch.colour == null) {
+    response = await fetch(`${backendUrl}/species?TailType=&Size=&Colour=`);
+  } else {
+    response = await fetch(`${backendUrl}/species?TailType=${speciesSearch.tailType}&Size=${speciesSearch.size}&Colour=${speciesSearch.colour}`);
+  }
   if (!response.ok) {
     throw new Error(await response.json());
   } else {
@@ -162,7 +167,7 @@ export async function deleteLike(likeId: number): Promise<Response> {
 
 export async function fetchAllApprovedSightings(): Promise<WhaleSighting[]> {
   const response = await fetch(`${backendUrl}/sightings`);
-  
+
   if (!response.ok) {
     throw new Error(await response.json());
   }
