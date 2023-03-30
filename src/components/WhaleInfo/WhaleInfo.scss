@@ -4,6 +4,8 @@ $border: 2px solid $darker-background;
 
 main.whale-info{
     background-color: $background;
+    margin-top: 24px;
+    margin-bottom: 24px;
 }
 
 section.whale-info-container {
@@ -12,6 +14,7 @@ section.whale-info-container {
     grid-template-columns: 30% 70%;
     justify-items: center;
     border: $border;
+    background-color: $darker-background;
 }
 
 h1.whale-info-header {
