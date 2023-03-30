@@ -1,8 +1,5 @@
 @import "../../Constants.scss";
 
-select {
-}
-
 h1.createUser-Title {
     font-size: $titleSizeDesktop;
     padding-top: 25px;
@@ -24,11 +21,12 @@ h1.createUser-Title {
     width: 130px;
     text-align: left;
     margin-right: 5px;
+    margin-top:5px;
 }
 
 .input-field {
-    width: 180px;
-    height: 20px;
+    width: 200px;
+    height: 35px;
     padding: 10px 15px;
     box-sizing: border-box;
 }
