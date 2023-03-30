@@ -54,7 +54,7 @@ export interface WhaleSighting {
   dateOfSighting: string,
   locationLatitude: number,
   locationLongitude: number,
-  photoImageUrl: string,
+  photoImageURL: string,
   numberOfWhales: number,
   description: string;
   approvalStatus: ApprovalStatus,

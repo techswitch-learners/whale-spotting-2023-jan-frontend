@@ -7,7 +7,7 @@ interface SightingDetailProps {
     sightingId: number;
 }
 export function SightingDetail({ sightingId }: SightingDetailProps): JSX.Element {
-    const [sighting, setSighting] = useState<any>();
+    const [sighting, setSighting] = useState<WhaleSighting>();
 
     useEffect(() => {
         fetchSightingById(sightingId)
