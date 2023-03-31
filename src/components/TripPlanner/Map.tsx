@@ -7,21 +7,15 @@ import {
   ZoomableGroup,
   Marker
 } from "react-simple-maps";
-import {fetchAllApprovedSightings, WhaleSighting } from "../../clients/apiClient";
+import { WhaleSighting } from "../../clients/apiClient";
 
-export const MapChart: React.FC = () => {
-   const [listWhaleSighting, setListWhaleSighting] = useState<WhaleSighting[]>([]);
-    useEffect(() => {
-        fetchAllApprovedSightings()
-            .then(response => setListWhaleSighting(response));
-    }, []);
+interface MapProps {
+  whaleSightings: WhaleSighting[];
+}
 
-    const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
+export function MapChart({ whaleSightings } : MapProps) {
+  const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
 
-    if (listWhaleSighting.length === 0) {
-      return <div> Loading... </div>;
-    } 
-  
   return (
     <ComposableMap>
       <ZoomableGroup center={[0, 0]} zoom={1}>
@@ -37,7 +31,7 @@ export const MapChart: React.FC = () => {
           ))
         }
       </Geographies>
-      {listWhaleSighting.map((ws) => (
+      {whaleSightings.map((ws) => (
         <Marker key={ws.id} coordinates={[ws.locationLongitude,ws.locationLatitude]}>
           <g
             fill="none"

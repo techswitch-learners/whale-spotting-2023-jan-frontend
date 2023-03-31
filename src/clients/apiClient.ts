@@ -164,16 +164,6 @@ export async function fetchSpeciesQuery(speciesSearch: SpeciesSearch): Promise<W
   }
 }
 
-export async function fetchSightingById(sightingId: number): Promise<WhaleSighting> {
-  const response = await fetch(`${backendUrl}/sightings/${sightingId}`);
-  if (!response.ok) {
-    throw new Error(await response.json());
-  }
-  else {
-    return await response.json();
-  }
-}
-
 export async function deleteLike(likeId: number): Promise<Response> {
   const response = await fetch(`${backendUrl}/likes/delete/${likeId}`);
   if (!response.ok) {
