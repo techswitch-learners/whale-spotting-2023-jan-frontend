@@ -145,6 +145,17 @@ export async function fetchLogin(encodedUsernamePassword: string): Promise<void>
 	}
 }
 
+export async function fetchIsAdmin(encodedUsernamePassword: string): Promise<void> {
+	const response = await fetch(`${backendUrl}/login/admin`, {
+		headers: {
+			'Authorization': `Basic ${encodedUsernamePassword}`
+		}
+	});
+	if (!response.ok) {
+		throw new Error(JSON.stringify(await response.json()));
+	}
+}
+
 export async function createNewUser(newUser: NewUser): Promise<Response> {
 	const response = await fetch(`${backendUrl}/users/create`, {
 		method: "POST",
