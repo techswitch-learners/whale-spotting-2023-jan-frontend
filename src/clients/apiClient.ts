@@ -49,6 +49,15 @@ export interface User {
   userType: UserType
 }
 
+export interface Like {
+  id: number,
+  date: Date,
+  whaleSightingId: number,
+  whaleSighting: WhaleSighting,
+  userId: number,
+  user: User
+}
+
 export interface WhaleSighting {
   id: number,
   dateOfSighting: string,
@@ -60,7 +69,7 @@ export interface WhaleSighting {
   approvalStatus: ApprovalStatus,
   whaleSpecies: WhaleSpecies,
   user: User,
-  listOfLikers: string[],
+  likedBy: Like[],
 }
 
 export interface NewUser {
@@ -80,7 +89,7 @@ export interface NewSighting {
   whaleSpecies: string;
 }
 
-export interface NewLike{
+export interface NewLike {
   whaleSightingId: number;
 }
 
@@ -163,7 +172,7 @@ export async function deleteLike(likeId: number): Promise<Response> {
 
 export async function fetchAllApprovedSightings(): Promise<WhaleSighting[]> {
   const response = await fetch(`${backendUrl}/sightings`);
-  
+
   if (!response.ok) {
     throw new Error(await response.json());
   }
@@ -186,14 +195,4 @@ export async function createLike(newLike: NewLike): Promise<Response> {
   else {
     return await response.json();
   }
-}
-
-export async function isLikedByUser(sightingId: number): Promise<boolean> {
-  return new Promise<boolean>((resolve, reject) => {
-    if (true) {
-      resolve(true);
-    } else {
-      reject(false);
-    }
-  });
 }
