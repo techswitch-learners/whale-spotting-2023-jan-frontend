@@ -8,14 +8,13 @@ import { Navbar } from './components/Navigation/NavBar';
 import { WhaleSightingViewer } from './components/WhaleSightingViewer/WhaleSightingViewer';
 import { CreateSighting } from "./components/CreateSighting/CreateSighting";
 import { WhaleInfo } from './components/WhaleInfo/WhaleInfo';
-import { CreateUser } from "./components/CreateUser/CreateUser";
 import { UserLeaderBoard } from "./components/UserLeaderBoard/UserLeaderBoard";
 import { ColourSchemeChecker } from './ColourSchemeChecker';
 import { Login } from './components/Login/Login';
 import { Footer } from './components/Footer';
 import './App.scss';
 import { LoginContext, LoginManager } from "./components/Login/LoginManager";
-import { AdminPage } from "./components/Admin/AdminPage";
+import { AdminSightingViewer } from "./components/Admin/AdminSightingViewer";
 import { CreateUser } from "./components/CreateUser/CreateUser";
 function App() {
   const loginContext = useContext(LoginContext);
@@ -37,6 +36,12 @@ function App() {
               ? <CreateSighting />
               : <Login />}
           </LoginContext.Consumer>} />
+          <Route path="/sightings/admin" element={
+					<LoginContext.Consumer>
+						{value => value.isAdmin
+							? <AdminSightingViewer />
+							: <Login />}
+					</LoginContext.Consumer>} />
         <Route path="/sightings/:id" element={<WhaleSightingDetail />} />
         <Route path="/whale/about" element={<WhaleInfo />} />
         <Route path="/users/create" element={<CreateUser />}/>
@@ -46,11 +51,5 @@ function App() {
       <Footer />
     </LoginManager>
   )
-        <Route path="/sightings/admin" element={
-					<LoginContext.Consumer>
-						{value => value.isAdmin
-							? <AdminPage />
-							: <Login />}
-					</LoginContext.Consumer>} />
 }
 export default App

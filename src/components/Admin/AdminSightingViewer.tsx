@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
-import { fetchAllApprovedSightings, WhaleSighting } from "../../clients/apiClient";
+import { getPendingSightings, WhaleSighting } from "../../clients/apiClient";
 import "./AdminPage.scss"
 import AdminSightingList from "./AdminSightingList";
 
-export function AdminPage() {
+export function AdminSightingViewer() {
 
 	const [adminSightings, setAdminSightings] = useState<WhaleSighting[]>();
 
-
-	// TODO - update to fetch pending sightings api when ready
     useEffect(() => {
-        fetchAllApprovedSightings()
+        getPendingSightings()
             .then(data => setAdminSightings(data));
       }, []);
 
