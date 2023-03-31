@@ -162,12 +162,11 @@ export async function deleteLike(likeId: number): Promise<Response> {
 
 export async function fetchAllApprovedSightings(): Promise<WhaleSighting[]> {
   const response = await fetch(`${backendUrl}/sightings`);
-  
   if (!response.ok) {
     throw new Error(await response.json());
   }
   else {
-    return response;
+    return await response.json();
   }
 }
 
@@ -179,6 +178,16 @@ export async function createLike(newLike: NewLike): Promise<Response> {
     },
     body: JSON.stringify(newLike),
   });
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return await response.json();
+  }
+}
+
+export async function fetchAllWhaleSpecies(): Promise<string[]> {
+  const response = await fetch(`${backendUrl}/species/species-list`);
   if (!response.ok) {
     throw new Error(await response.json());
   }
