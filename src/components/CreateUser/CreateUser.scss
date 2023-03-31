@@ -1,0 +1,75 @@
+@import "../../Constants.scss";
+
+main.create-user {
+    background-color: $background;
+}
+
+h1.createUser-Title {
+    color: $light-font-color;
+    font-family: $fontType;
+    padding-top: $cardPaddingDesktop;
+}
+
+.create-user-form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    height: 380px;
+    background: $darker-background;
+    padding: $cardPaddingDesktop;
+    gap: 1rem;
+}
+
+.user-input-div {
+    display: flex;
+    justify-content: left;
+}
+
+.user-input-label {
+    width: 250px;
+    text-align: left;
+    margin-right: 5px;
+    color: $light-font-color;
+}
+
+.input-field {
+    display: flex;
+    justify-content: left;
+    background-color: $light-background;
+    border-radius: 5px;
+}
+
+.input-field:hover {
+    border: solid 2px $light-font-color;
+    cursor: pointer;
+}
+
+.create-user-submit {
+    background: $button-color;
+    border-radius: $buttonRadius;
+    position: absolute;
+    bottom: 5%;
+    left: 45%;
+}
+
+.create-user-submit:hover {
+    cursor: pointer;
+    background-color: $button-color;
+}
+
+@media screen and (max-width: 430px) {
+    createUser-Title {
+        font-size: $titleSizeMobile;
+    }
+
+    .user-input-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .create-user-submit {
+        width: 100px;
+    }
+}

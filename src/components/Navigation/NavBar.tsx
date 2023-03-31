@@ -30,18 +30,18 @@ export const Navbar: React.FunctionComponent = () => {
         setDropDownOpen3(!dropDownOpen3);
     };
 
-    return (
+  return (
+    <div className="navbar">
+        <img className="logo" src="/logo.png" />
         <nav>
-            <img className="logo" src="/logo.png" />
             <div className="burger-button" onClick={toggleHamburger}>
-                <Hamburger isOpen={hamburgerOpen} />
+              <Hamburger isOpen={hamburgerOpen} />
             </div>
             <ul className={hamburgerOpen ? "hamburger-open" : "hamburger-closed"}>
-                <li />
                 <li>
                     <Link className="navigation-button" to="/">
-                        <AiFillHome />
-                        <br />
+                        <AiFillHome />                
+                        <br/>
                         Home
                     </Link>
                 </li>
@@ -52,19 +52,19 @@ export const Navbar: React.FunctionComponent = () => {
                             <br />
                             Whale Information
                         </button>
-                        <div id="myDropdown1" className={dropDownOpen1 ? "dropdown-content show" : "dropdown-content"}>
-                            <a href="/whale/about">
-                                <GiWhaleTail />
-                                <br />
-                                About
-                            </a>
-                            <a href="/whale/species">
-                                <GiArchiveResearch />
-                                <br />
-                                Species
-                            </a>
-                        </div>
-                    </div>
+                            <div id="myDropdown1" className={dropDownOpen1 ? "dropdown-content show" : "dropdown-content"}>
+                                <a href="/whale/about">
+                                    <GiWhaleTail />
+                                    <br />
+                                    About
+                                </a>
+                                <a href="/whale/species">
+                                    <GiArchiveResearch />
+                                    <br />
+                                    Species
+                                </a>
+                            </div>
+                    </div>  
                 </li>
                 <li>
                     <div className="dropdown">
@@ -73,19 +73,19 @@ export const Navbar: React.FunctionComponent = () => {
                             <br />
                             Whale Sightings
                         </button>
-                        <div id="myDropdown2" className={dropDownOpen2 ? "dropdown-content show" : "dropdown-content"}>
-                            <a href="/sightings">
-                                <GiBinoculars />
-                                <br />
-                                Sightings
-                            </a>
-                            <a href="/sightings/submit">
-                                <AiOutlineForm />
-                                <br />
-                                Submit
-                            </a>
-                        </div>
-                    </div>
+                            <div id="myDropdown2" className={dropDownOpen2 ? "dropdown-content show" : "dropdown-content"}>
+                                <a href="/sightings">
+                                    <GiBinoculars />
+                                    <br />
+                                    Sightings
+                                </a>
+                                <a href="/sightings/submit">
+                                    <AiOutlineForm />
+                                    <br />
+                                    Submit
+                                </a>
+                            </div>
+                    </div>  
                 </li>
                 <li>
                     <Link className="navigation-button" to="/plan-trip">
@@ -101,21 +101,29 @@ export const Navbar: React.FunctionComponent = () => {
                             <br />
                             User
                         </button>
-                        <div id="myDropdown3" className={dropDownOpen3 ? "dropdown-content show" : "dropdown-content"}>
-                            <a href="/users/create">
-                                <AiOutlinePlusCircle />
-                                <br />
-                                Create
-                            </a>
-                            <a href="/users/leaderboard">
-                                <ImTrophy />
-                                <br />
-                                Leaderboard
-                            </a>
-                        </div>
+                            <div id="myDropdown3" className={dropDownOpen3 ? "dropdown-content show" : "dropdown-content"}>
+                                <a href="/users/create">
+                                    <AiOutlinePlusCircle />
+                                    <br />
+                                    Create
+                                </a>
+                                <a href="/users/leaderboard">
+                                    <ImTrophy />
+                                    <br />
+                                    Leaderboard
+                                </a>
+                            </div>
                     </div>
+                </li>
+                <li>
+                    <Link className="navigation-button" to="/login">
+                        <FiLogIn />
+                        <br />
+                        Login
+                    </Link>
                 </li>
             </ul>
         </nav>
-    );
+    </div>
+  );
 };

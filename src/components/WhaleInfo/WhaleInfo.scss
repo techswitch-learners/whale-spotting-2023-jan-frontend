@@ -1,0 +1,72 @@
+@import "../../Constants.scss";
+
+$border: 2px solid $darker-background;
+
+main.whale-info{
+    background-color: $background;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+section.whale-info-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    justify-items: center;
+    border: $border;
+    background-color: $darker-background;
+}
+
+h1.whale-info-header {
+    padding-top:20px;
+    align-items: center;
+    font-size: 2em;
+    color:$light-font-color
+}
+
+.whale-info-sidebar {
+    border: $border;
+    width:100%;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    align-items: center;
+    position: relative;
+}
+
+.whale-info-main-info {
+    border: $border;
+    width:100%;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    align-items: center;
+}
+
+section.whale-facts,h2.whale-facts-header{
+    color:$light-font-color;
+}
+
+section.whale-facts{
+    padding: $cardPaddingDesktop;
+}
+
+@media (max-width: 425px) {
+    section.whale-info-container {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 100%;
+        justify-items: center;
+        border: $border;
+    }
+
+    .whale-info-sidebar {
+        display: none; 
+    }
+    
+    .whale-info-main-info {
+        border: $border;
+        width:100%;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        align-items: center;
+    }
+}
