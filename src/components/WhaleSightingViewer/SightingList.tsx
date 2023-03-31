@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { WhaleSighting, isLikedByUser } from "../../clients/apiClient";
+import { WhaleSighting } from "../../clients/apiClient";
 import "./SightingList.scss";
 
 interface sightingListProps {
@@ -30,7 +30,7 @@ export default function SightingList({
     }
 
     for (let i = (pageNum-1) * 12; i < maxSightingOnPage; i++) {
-        const isLiked = sightings[i].listOfLikers.includes(username);
+        const isLiked = sightings[i].likedBy.includes(username);
         sightingsList.push(
             <li className="whale-sighting-post">
                 <Link to={`/sightings/${sightings[i].id}`}>
