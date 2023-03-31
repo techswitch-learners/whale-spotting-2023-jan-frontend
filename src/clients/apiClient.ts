@@ -60,6 +60,7 @@ export interface WhaleSighting {
   whaleSpecies: WhaleSpecies,
   user: User,
 }
+
 export interface NewUser {
   username: string;
   password: string;
