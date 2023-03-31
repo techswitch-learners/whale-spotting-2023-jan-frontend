@@ -1,22 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { getLatLonFromLocation, TripPlannerRequest } from "../../clients/apiClient";
+import { useState } from "react";
+import { getLatLonFromLocation, getSightingsListByLocation, TripPlannerRequest } from "../../clients/apiClient";
 import { FormEvent } from "react";
 import './SearchByLocation.scss';
 
-//export let LatLon: TripPlannerRequest;
 
-// export interface SearchLocationProps {
-//     latLon: TripPlannerRequest;
-//     setLatLon: React.Dispatch<React.SetStateAction<TripPlannerRequest>>;
-// }//{ latLon, setLatLon }: SearchLocationProps
+interface SearchByLocationProps {
+    onSearch: (latLon: TripPlannerRequest) => void;
+}
 
-export function SearchByLocation() {
-    // const [searchLoc, setSearchLoc] = useState<string>("");
+export function SearchByLocation(props: SearchByLocationProps): JSX.Element {
+
+    const [location, setLocation] = useState("");
+    const [latLon, setLatLon] = useState<TripPlannerRequest>();
+
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        getLatLonFromLocation("rm112hn")
-            .then(response => { console.log(response); });
-        //setLatLon(response);
+        getLatLonFromLocation(location)
+            .then(response => { console.log(response); setLatLon(response); })
+            .then(() => {
+                if (latLon) {
+                    props.onSearch(latLon);
+                }
+            });
     }
 
     return (
@@ -26,7 +31,7 @@ export function SearchByLocation() {
                 name="location"
                 id="location"
                 required
-                onChange={e => (e.target.value)}//setSearchLoc
+                onChange={e => setLocation(e.target.value)}
             />
             <button className="btn-location-submit" type="submit">Search</button>
         </form>)

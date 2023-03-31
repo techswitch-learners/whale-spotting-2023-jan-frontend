@@ -204,8 +204,9 @@ export async function createLike(newLike: NewLike): Promise<Response> {
   }
 }
 
-export async function getLatLonFromLocation(location: string): Promise<TripPlannerRequest> {//${location}
-  const response = await fetch(`http://api.positionstack.com/v1/forward?access_key=2fc71fe9ad9868ee2163d073ea5b31f7&query=rm112hn`);
+export async function getLatLonFromLocation(location: string): Promise<TripPlannerRequest> {
+  console.log(`location is ${location}`);
+  const response = await fetch(`http://api.positionstack.com/v1/forward?access_key=2fc71fe9ad9868ee2163d073ea5b31f7&query=${location}`);
   if (!response.ok) {
     throw new Error(await response.json());
   }
@@ -217,7 +218,7 @@ export async function getLatLonFromLocation(location: string): Promise<TripPlann
 }
 
 export async function getSightingsListByLocation(latlon: TripPlannerRequest): Promise<TripPlannerResponse[]> {
-  const response = await fetch(`${backendUrl}/plan-trip?lat=${latlon.latitude} lon=${latlon.longitude}`)
+  const response = await fetch(`${backendUrl}/plan-trip?lat=${latlon.latitude}&lon=${latlon.longitude}`)
   if (!response.ok) {
     throw new Error(await response.json());
   }

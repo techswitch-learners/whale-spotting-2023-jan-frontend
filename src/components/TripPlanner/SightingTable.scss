@@ -1,0 +1,23 @@
+@import "../../Constants.scss";
+
+.table {
+    margin: 0 auto;
+}
+
+.table,
+.table-row {
+    align-items: center;
+}
+
+.table-data-image img {
+    height: 50px;
+    width: 100px;
+}
+
+th,
+td {
+    text-align: center;
+    padding: 10px;
+    text-align: center;
+
+}

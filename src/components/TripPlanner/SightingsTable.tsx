@@ -1,43 +1,29 @@
 import { useEffect, useState } from "react";
-import React from "react";
-import { fetchAllApprovedSightings, TripPlannerResponse } from "../../clients/apiClient";
-import { getLatLonFromLocation, TripPlannerRequest } from "../../clients/apiClient";
+import { TripPlannerRequest, TripPlannerResponse } from "../../clients/apiClient";
 import { getSightingsListByLocation } from "../../clients/apiClient";
+import './SightingTable.scss';
 
-export interface SearchLocationProps {
-    latLon: TripPlannerRequest;
-    setLatLon: React.Dispatch<React.SetStateAction<TripPlannerRequest>>;
+interface SightingTableProps {
+    latLon?: TripPlannerRequest;
 }
 
-export function SightingsTable({ latLon, setLatLon }: SearchLocationProps) {
+export function SightingsTable({ latLon }: SightingTableProps) {
+
     const [listSightings, setListSightings] = useState<TripPlannerResponse[]>([]);
-
+    console.log(latLon?.latitude, latLon?.longitude);
+   
     useEffect(() => {
-        getSightingsListByLocation(latLon)
-            .then(response => { if (response) setListSightings(response) })
+        if (latLon) {
+            getSightingsListByLocation(latLon)
+                .then(response => { if (response) { setListSightings(response); console.log(response); } })
+        }
     }, [latLon]);
-
-    // if (!listSightings) {
-    //     return <section> No Sightings Found Nearby.</section>
-    // }
-    // else {
-
-    //     listSightings.map(ls =>
-    //         <tr>
-    //             <td>ls.latitude</td>
-    //             <td>ls.longitude</td>
-    //             <td>ls.distance</td>
-    //             <td>ls.dateSighted</td>
-    //             <td>ls.species</td>
-    //             <td>ls.image</td>
-
-    //         </tr>)
 
     return (
         <main>
             <table className="table">
                 <tbody>
-                    <tr>
+                    <tr className="table-row">
                         <th>Sighting Latitude</th>
                         <th>Sighting Longitude</th>
                         <th>Distance</th>
@@ -47,21 +33,17 @@ export function SightingsTable({ latLon, setLatLon }: SearchLocationProps) {
                     </tr>
                     {
                         listSightings.map(ls =>
-                            <tr>
-                                <td>ls.latitude</td>
-                                <td>ls.longitude</td>
-                                <td>ls.distance</td>
-                                <td>ls.dateSighted</td>
-                                <td>ls.species</td>
-                                <td>ls.image</td>
-
+                            <tr className="table-row">
+                                <td className="table-data">{ls.locationLatitude}</td>
+                                <td className="table-data">{ls.locationLongitude}</td>
+                                <td className="table-data">{ls.distance}</td>
+                                <td className="table-data">{new Date(ls.dateOfSighting).toLocaleDateString()}</td>
+                                <td className="table-data">{ls.whaleSpecies.name}</td>
+                                <td className="table-data-image"><img src={ls.photoImageURL} /></td>
                             </tr>)
                     }
                 </tbody>
             </table>
-
         </main>
     )
-
 }
-

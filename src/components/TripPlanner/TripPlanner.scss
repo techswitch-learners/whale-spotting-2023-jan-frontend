@@ -1,16 +1,17 @@
 @import "../../Constants.scss";
 
+body {
+    background-color: $default-foreground;
+}
 
 .tripplanner-container {
-    background-color: $default-foreground;
     color: $light-font-color;
     font-family: $fontType;
-    height: 90vh;
+    height: auto;
     width: 1440px;
     display: grid;
-    grid-template-rows: 10% 10% 40% 40%;
+    grid-template-rows: 10% auto auto;
     justify-items: center;
-    // border: 2px solid rgb(255, 0, 0);
 }
 
 .tripplanner-header {
@@ -23,21 +24,13 @@
 }
 
 .tripplanner-search {
-    grid-row-start: 2;
-    grid-row-end: 3;
+    margin: 2%;
     display: grid;
     align-items: center;
 }
 
-rsm-svg {
-    width: 50px;
-    height: 40px;
-}
-
 .tripplanner-map {
     width: 50%;
-    grid-row-start: 3;
-    grid-row-end: 4;
     display: grid;
     align-items: center;
 }
@@ -45,25 +38,20 @@ rsm-svg {
 .tripplanner-table {
     margin: 2%;
     width: 80%;
-    grid-row-start: 4;
-    grid-row-end: 5;
     display: grid;
     align-items: center;
 }
 
 @media (max-width: 425px) {
-
     .tripplanner-container {
         width: 350px;
         display: grid;
-        grid-template-rows: 10% 10% 80%;
+        grid-template-rows: 10% auto;
         justify-items: center;
-        // border: 2px solid rgb(255, 0, 0);
         margin: 1%;
     }
 
     .tripplanner-header {
-        // border: 2px solid rgb(255, 0, 0);
         margin: 1%;
         grid-row-start: 1;
         grid-row-end: 2;
@@ -73,26 +61,21 @@ rsm-svg {
     }
 
     .tripplanner-search {
-        // border:2px solid rgb(255, 0, 0);
-        width: 40%;
+        width: 80%;
         margin: 1%;
-        grid-row-start: 2;
-        grid-row-end: 3;
         display: grid;
         align-items: center;
     }
 
     .tripplanner-map {
-        display: none;
-
+        width: 100%;
+        display: grid;
+        align-items: center;
     }
 
     .tripplanner-table {
-        // border: 2px solid rgb(255, 0, 0);
         margin: 1%;
         width: 80%;
-        grid-row-start: 3;
-        grid-row-end: 4;
         display: grid;
         align-items: center;
     }
