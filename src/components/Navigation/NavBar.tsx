@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { GiWhaleTail, GiBinoculars, GiArchiveResearch, GiFishingBoat } from "react-icons/gi";
 import { AiFillHome, AiOutlineForm, AiOutlinePlusCircle } from "react-icons/ai"
@@ -6,10 +6,8 @@ import { FiLogIn } from "react-icons/fi"
 import { ImTrophy } from "react-icons/im";
 import "./NavBar.scss";
 import Hamburger from "./Hamburger";
-import { LoginContext } from "../Login/LoginManager";
 
 export const Navbar: React.FunctionComponent = () => {
-    const loginContext = useContext(LoginContext);
 
     const [hamburgerOpen, setHamburgerOpen] = useState(false);
     const [dropDownOpen1, setDropDownOpen1] = useState(false);
@@ -93,7 +91,7 @@ export const Navbar: React.FunctionComponent = () => {
                     <Link className="navigation-button" to="/plan-trip">
                         <GiFishingBoat />
                         <br />
-                        Plan a trip!
+                        Plan a trip
                     </Link>
                 </li>
                 <li>
