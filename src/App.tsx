@@ -4,7 +4,6 @@ import { Home } from "./components/Home/Home";
 import { SpeciesIdentification } from "./components/SpeciesIdentification/SpeciesIdentification";
 import React, { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Login } from './components/Login/Login';
 import { Navbar } from './components/Navigation/NavBar';
 import { WhaleSightingViewer } from './components/WhaleSightingViewer/WhaleSightingViewer';
 import { CreateSighting } from "./components/CreateSighting/CreateSighting";
@@ -39,12 +38,8 @@ function App() {
           </LoginContext.Consumer>} />
         <Route path="/sightings/:id" element={<WhaleSightingDetail />} />
         <Route path="/whale/about" element={<WhaleInfo />} />
-        <Route path="/sighting" element={<WhaleSightingViewer />} />
-        <Route path="/sightings/submit" element={<CreateSighting />} />
-        <Route path="/sightings/:id" element={<WhaleSightingDetail />}></Route>
-        <Route path="/users/create" element={<CreateUser />}></Route>
+        <Route path="/users/create" element={<CreateUser />}/>
         <Route path="/whale/species-identification" element={<SpeciesIdentification />} />
-        <Route path="/whale/about" element={<WhaleInfo />} />
         <Route path="/users/leaderboard" element={<UserLeaderBoard />} />
       </Routes>
       <Footer />
