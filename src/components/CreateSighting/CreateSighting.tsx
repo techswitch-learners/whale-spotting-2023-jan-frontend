@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { FormEvent } from "react";
+import { LoginContext } from "../Login/LoginManager";
 import { createSighting } from "../../clients/apiClient";
 import { NewSighting } from "../../clients/apiClient";
 import './CreateSighting.scss';
 
 export function CreateSighting() {
+    const loginContext = useContext(LoginContext);
     const [date, setDate] = useState<Date>(new Date());
     const [photoUrl, setPhotoUrl] = useState<string>("");
     const [latitude, setLatitude] = useState<number>(0);
@@ -18,6 +20,9 @@ export function CreateSighting() {
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
+    function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        console.log(loginContext.authHeader);
         const newSighting: NewSighting = {
             dateOfSighting: date,
             locationLatitude: latitude,
