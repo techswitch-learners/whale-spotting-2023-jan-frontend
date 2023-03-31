@@ -2,7 +2,7 @@ import { BackendConnectionChecker } from "./components/BackendConnectionChecker"
 import { WhaleSightingDetail } from "./components/WhaleSightingDetail/WhaleSightingDetail"
 import { Home } from "./components/Home/Home";
 import { SpeciesIdentification } from "./components/SpeciesIdentification/SpeciesIdentification";
-import React, { useContext } from "react";
+import React, { useContext, useState} from "react";
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from './components/Navigation/NavBar';
 import { WhaleSightingViewer } from './components/WhaleSightingViewer/WhaleSightingViewer';
@@ -18,6 +18,7 @@ import { LoginContext, LoginManager } from "./components/Login/LoginManager";
 
 function App() {
   const loginContext = useContext(LoginContext);
+  const [selectedWhaleSpecies, setSelectedWhaleSpecies] = useState("");
 
   return (
     <LoginManager>
@@ -33,7 +34,7 @@ function App() {
         <Route path="/sightings/submit" element={
           <LoginContext.Consumer>
             {value => value.isLoggedIn
-              ? <CreateSighting />
+              ? <CreateSighting selectedWhaleSpecies={selectedWhaleSpecies} setSelectedWhaleSpecies={setSelectedWhaleSpecies} />
               : <Login />}
           </LoginContext.Consumer>} />
         <Route path="/sightings/:id" element={<WhaleSightingDetail />} />
