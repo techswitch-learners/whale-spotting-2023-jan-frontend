@@ -188,6 +188,16 @@ export async function fetchAllApprovedSightings(): Promise<WhaleSighting[]> {
   }
 }
 
+export async function getPendingSightings(): Promise<WhaleSighting[]> {
+  const response = await fetch(`${backendUrl}/sightings/pending`);
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return await response.json();
+  }
+}
+
 export async function createLike(newLike: NewLike): Promise<Response> {
   const response = await fetch(`${backendUrl}/likes/create`, {
     method: "POST",
