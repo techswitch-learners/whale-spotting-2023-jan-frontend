@@ -1,4 +1,3 @@
-
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export enum ApprovalStatus {
@@ -63,10 +62,11 @@ export interface WhaleSighting {
 }
 
 export interface NewUser {
-	username: string;
-	password: string;
-	userBio: string;
-	profileImageUrl: string;
+  username: string;
+  password: string;
+  userBio: string;
+  profileImageUrl: string;
+  userType: number;
 }
 
 export interface NewSighting {
@@ -91,6 +91,31 @@ export const checkBackendConnection = async (): Promise<boolean> => {
     return false;
   }
   return response.ok;
+}
+
+export interface SpeciesSearch {
+  tailType: number;
+  size: number;
+  colour: string;
+}
+
+export async function fetchSpeciesQuery(speciesSearch: SpeciesSearch): Promise<Response> {
+  const response = await fetch(`${backendUrl}/species?TailType=${speciesSearch.tailType}&Size=${speciesSearch.size}&Colour=${speciesSearch.colour}`);
+  if (!response.ok) {
+    throw new Error(await response.json());
+  } else {
+    return await response.json();
+  }
+}
+
+export async function fetchSightingById(sightingId: number): Promise<WhaleSighting> {
+  const response = await fetch(`${backendUrl}/sightings/${sightingId}`);
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return await response.json();
+  }
 }
 
 export async function createSighting(newSighting: NewSighting): Promise<Response> {
@@ -142,24 +167,6 @@ export interface SpeciesSearch {
   colour: string;
 }
 
-export async function fetchSpeciesQuery(speciesSearch: SpeciesSearch): Promise<Response> {
-  const response = await fetch(`${backendUrl}/species?TailType=${speciesSearch.tailType}&Size=${speciesSearch.size}&Colour=${speciesSearch.colour}`);
-  if (!response.ok) {
-    throw new Error(await response.json());
-  } else {
-    return await response.json();
-  }
-}
-
-export async function fetchSightingById(sightingId: number): Promise<WhaleSighting> {
-  const response = await fetch(`${backendUrl}/sightings/${sightingId}`);
-  if (!response.ok) {
-    throw new Error(await response.json());
-  }
-  else {
-    return await response.json();
-  }
-}
 
 export async function deleteLike(likeId: number): Promise<Response> {
   const response = await fetch(`${backendUrl}/likes/delete/${likeId}`);
