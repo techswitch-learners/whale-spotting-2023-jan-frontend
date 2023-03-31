@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getLatLonFromLocation, getSightingsListByLocation, TripPlannerRequest } from "../../clients/apiClient";
+import { getLatLonFromLocation, TripPlannerRequest } from "../../clients/apiClient";
 import { FormEvent } from "react";
 import './SearchByLocation.scss';
 

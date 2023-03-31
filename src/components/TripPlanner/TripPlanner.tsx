@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { MapChart } from "./Map";
 import { SearchByLocation } from "./SearchByLocation";
 import { SightingsTable } from "./SightingsTable";
-import { getLatLonFromLocation, TripPlannerRequest } from "../../clients/apiClient";
+import { TripPlannerRequest } from "../../clients/apiClient";
 import './TripPlanner.scss'
 
 export function TripPlanner() {
