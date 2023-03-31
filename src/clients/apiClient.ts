@@ -133,20 +133,31 @@ export async function createSighting(newSighting: NewSighting): Promise<Response
   }
 }
 
+export async function fetchLogin(encodedUsernamePassword: string): Promise<void> {
+	const response = await fetch(`${backendUrl}/login`, {
+		headers: {
+			'Authorization': `Basic ${encodedUsernamePassword}`
+		}
+	});
+	if (!response.ok) {
+		throw new Error(JSON.stringify(await response.json()));
+	}
+}
+
 export async function createNewUser(newUser: NewUser): Promise<Response> {
-  const response = await fetch(`${backendUrl}/users/create`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(newUser),
-  });
-  if (!response.ok) {
-    throw new Error(await response.json());
-  }
-  else {
-    return response;
-  }
+	const response = await fetch(`${backendUrl}/users/create`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(newUser),
+	});
+	if (!response.ok) {
+		throw new Error(await response.json());
+	}
+	else {
+		return response;
+	}
 }
 
 export interface SpeciesSearch {
@@ -168,12 +179,11 @@ export async function deleteLike(likeId: number): Promise<Response> {
 
 export async function fetchAllApprovedSightings(): Promise<WhaleSighting[]> {
   const response = await fetch(`${backendUrl}/sightings`);
-  
   if (!response.ok) {
     throw new Error(await response.json());
   }
   else {
-    return response;
+    return await response.json();
   }
 }
 
@@ -185,6 +195,16 @@ export async function createLike(newLike: NewLike): Promise<Response> {
     },
     body: JSON.stringify(newLike),
   });
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return await response.json();
+  }
+}
+
+export async function fetchAllWhaleSpecies(): Promise<string[]> {
+  const response = await fetch(`${backendUrl}/species/species-list`);
   if (!response.ok) {
     throw new Error(await response.json());
   }
