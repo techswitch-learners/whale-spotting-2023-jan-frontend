@@ -91,7 +91,7 @@ export const Navbar: React.FunctionComponent = () => {
                     <Link className="navigation-button" to="/plan-trip">
                         <GiFishingBoat />
                         <br />
-                        Plan a trip!
+                        Plan a trip
                     </Link>
                 </li>
                 <li>
