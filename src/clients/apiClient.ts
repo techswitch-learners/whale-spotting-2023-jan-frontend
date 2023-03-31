@@ -132,12 +132,10 @@ export async function createNewUser(newUser: NewUser): Promise<Response> {
 }
 
 export async function fetchSpeciesQuery(speciesSearch: SpeciesSearch): Promise<WhaleSpecies[]> {
-  let response;
-  if (speciesSearch.tailType == null && speciesSearch.colour == null && speciesSearch.colour == null) {
-    response = await fetch(`${backendUrl}/species?TailType=&Size=&Colour=`);
-  } else {
-    response = await fetch(`${backendUrl}/species?TailType=${speciesSearch.tailType}&Size=${speciesSearch.size}&Colour=${speciesSearch.colour}`);
-  }
+  const tailType = speciesSearch.tailType == null ? "" : "speciesSearch.tailType";
+  const colour = speciesSearch.colour == null ? "" : "speciesSearch.colour";
+  const size = speciesSearch.size == null ? "" : "speciesSearch.size";
+  const response = await fetch(`${backendUrl}/species?TailType=${tailType}&Size=${size}&Colour=${colour}`);
   if (!response.ok) {
     throw new Error(await response.json());
   } else {

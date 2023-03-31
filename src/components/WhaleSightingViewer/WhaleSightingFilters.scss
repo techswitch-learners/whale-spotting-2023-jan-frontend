@@ -4,6 +4,10 @@
     background-color: $background;
 }
 
+.sighting-labels {
+    color: $light-font-color;
+}
+
 .btn-search-btn {
     background-color: $button-color;
     color: $dark-font-color;
@@ -19,7 +23,7 @@
     width: 45%;
 }
 
-input {
+.location-input {
     background-color: $input-field-color;
     border: none;
     color: $dark-font-color;

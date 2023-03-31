@@ -35,7 +35,6 @@ export function WhaleSightingFilters(
         handleSearch
     }: WhaleSightingDropdownProps) {
 
-
     const [listWhaleSpecies, setListWhaleSpecies] = useState<WhaleSpecies[]>([]);
     let search: SpeciesSearch =
     {
@@ -49,32 +48,16 @@ export function WhaleSightingFilters(
             .then(response => setListWhaleSpecies(response));
     }, []);
 
-    const handleChangeSpecies = (event: ChangeEvent<HTMLSelectElement>) => {
-        setSelectedWhaleSpecies(event.target.value);
-    };
-
-    const handleChangeColour = (event: ChangeEvent<HTMLSelectElement>) => {
-        setSelectedColour(event.target.value);
-    };
-
-    const handleChangeTailType = (event: ChangeEvent<HTMLSelectElement>) => {
-        setSelectedTailType(event.target.value);
-    };
-
-    const handleChangeSize = (event: ChangeEvent<HTMLSelectElement>) => {
-        setSelectedSize(event.target.value);
-    };
-
-    let colourList = [...new Set(listWhaleSpecies.map(ws => ws.colour))];
+    const colourList = [...new Set(listWhaleSpecies.map(ws => ws.colour))];
 
     return (
         <div className="filterCard">
-            <form className="whalesightingfilterform" onSubmit={(event) => handleSearch(event)}>
+            <form className="whalesightingfilterform" onSubmit={event => handleSearch(event)}>
                 <div className="filter-grid">
-                    <label htmlFor="whalespecies">
+                    <label className="sighting-labels" htmlFor="whalespecies">
                         Whale Species
                         <br></br>
-                        <select className="selectOption" value={selectedWhaleSpecies} onChange={handleChangeSpecies}>
+                        <select className="selectOption" value={selectedWhaleSpecies} onChange={event => setSelectedWhaleSpecies(event.target.value)}>
                             <option value="">----</option>
                             {listWhaleSpecies.map(ws => (
                                 <option key={ws.id} value={ws.name}>
@@ -83,10 +66,10 @@ export function WhaleSightingFilters(
                             ))}
                         </select>
                     </label>
-                    <label>
+                    <label className="sighting-labels" htmlFor="colour">
                         Colour
                         <br></br>
-                        <select className="selectOption" value={selectedColour} onChange={handleChangeColour}>
+                        <select className="selectOption" value={selectedColour} onChange={event => setSelectedColour(event.target.value)}>
                             <option value="">----</option>
                             {colourList.map(ws => (
                                 <option key={ws} value={ws}>
@@ -95,19 +78,19 @@ export function WhaleSightingFilters(
                             ))}
                         </select>
                     </label>
-                    <label htmlFor="tail-type">
+                    <label className="sighting-labels" htmlFor="tail-type">
                         Tail Type
                         <br></br>
-                        <select className="selectOption" value={selectedTailType} onChange={handleChangeTailType}>
+                        <select className="selectOption" value={selectedTailType} onChange={event => setSelectedTailType(event.target.value)}>
                             <option value="">----</option>
                             <option key={0} value={0}>Bifurcated</option>
                             <option key={1} value={1}>NonBifurcated</option>
                         </select>
                     </label>
-                    <label htmlFor="size">
+                    <label className="sighting-labels" htmlFor="size">
                         Size
                         <br></br>
-                        <select className="selectOption" value={selectedSize} onChange={handleChangeSize}>
+                        <select className="selectOption" value={selectedSize} onChange={event => setSelectedSize(event.target.value)}>
                             <option value="">----</option>
                             <option key={0} value={0}>Small0To5m</option>
                             <option key={1} value={1}>Medium5To10m</option>
@@ -115,10 +98,11 @@ export function WhaleSightingFilters(
                             <option key={3} value={3}>VeryLargeOver20m</option>
                         </select>
                     </label>
-                    <label htmlFor="min-lat">
+                    <label className="sighting-labels" htmlFor="min-lat">
                         Min Latitude
                         <br></br>
                         <input
+                            className="location-input"
                             type="text"
                             name="min-lat"
                             id="min-lat"
@@ -127,10 +111,11 @@ export function WhaleSightingFilters(
                         >
                         </input>
                     </label>
-                    <label htmlFor="max-lat">
+                    <label className="sighting-labels" htmlFor="max-lat">
                         Max Latitude
                         <br></br>
                         <input
+                            className="location-input"
                             type="text"
                             name="max-lat"
                             id="max-lat"
@@ -139,10 +124,11 @@ export function WhaleSightingFilters(
                         >
                         </input>
                     </label>
-                    <label htmlFor="min-log">
+                    <label className="sighting-labels" htmlFor="min-log">
                         Min Longitude
                         <br></br>
                         <input
+                            className="location-input"
                             type="text"
                             name="min-log"
                             id="min-log"
@@ -151,10 +137,11 @@ export function WhaleSightingFilters(
                         >
                         </input>
                     </label>
-                    <label htmlFor="max-log">
+                    <label className="sighting-labels" htmlFor="max-log">
                         Max Longitude
                         <br></br>
                         <input
+                            className="location-input"
                             type="text"
                             name="max-log"
                             id="max-log"
