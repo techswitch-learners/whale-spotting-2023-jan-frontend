@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { FormEvent } from "react";
+import { LoginContext } from "../Login/LoginManager";
 import { createSighting } from "../../clients/apiClient";
 import { NewSighting } from "../../clients/apiClient";
 import './CreateSighting.scss';
 
-export function CreateSighting() {
+export const CreateSighting: React.FC = () =>{
+    const loginContext = useContext(LoginContext);
     const [date, setDate] = useState<Date>(new Date());
     const [photoUrl, setPhotoUrl] = useState<string>("");
     const [latitude, setLatitude] = useState<number>(0);
@@ -17,7 +19,7 @@ export function CreateSighting() {
     
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-
+        console.log(loginContext.authHeader);
         const newSighting: NewSighting = {
             dateOfSighting: date,
             locationLatitude: latitude,
@@ -34,7 +36,8 @@ export function CreateSighting() {
             .catch((e) => setStatus(e.message))
     }
 
-    return <main className="create-sighting">
+    return (
+    <main className="create-sighting">
         <h1 className="sighting-form-title">Post your whale sighting!</h1>
         <p className="status-msg">{status}</p>
         <form className="create-sighting-form"
@@ -127,4 +130,5 @@ export function CreateSighting() {
             <button id="create-sighting-submit" className="create-sighting-submit" type="submit">Submit</button>
         </form>
     </main>
+    )
 }

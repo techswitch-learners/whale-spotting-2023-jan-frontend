@@ -8,6 +8,7 @@ import "./NavBar.scss";
 import Hamburger from "./Hamburger";
 
 export const Navbar: React.FunctionComponent = () => {
+
     const [hamburgerOpen, setHamburgerOpen] = useState(false);
     const [dropDownOpen1, setDropDownOpen1] = useState(false);
     const [dropDownOpen2, setDropDownOpen2] = useState(false);
@@ -90,7 +91,7 @@ export const Navbar: React.FunctionComponent = () => {
                     <Link className="navigation-button" to="/plan-trip">
                         <GiFishingBoat />
                         <br />
-                        Plan a trip!
+                        Plan a trip
                     </Link>
                 </li>
                 <li>

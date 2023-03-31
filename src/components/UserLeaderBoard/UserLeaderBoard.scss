@@ -1,0 +1,55 @@
+@import "../../Constants.scss";
+
+.leaderboard-header {
+    background-color: $background;
+    color: $light-font-color;
+    padding: 24px;
+}
+
+.leaderboard-header-row {
+    background-color: $background;
+}
+
+.leaderboard-table-header {
+    padding: 12px 10px;
+    font-size: $subtitleSizeDesktop;
+}
+
+.leaderboard-table {
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: $darker-background;
+    color: $light-font-color;
+    width: 100%;
+}
+
+.user-leaderboard {
+    width: 100%;
+}
+
+.leaderboard-data {
+    padding: 8px;
+}
+
+@media (max-width: 1000px) {
+    .leaderboard-table-header {
+        font-size: 18px;
+        padding: 4px 2px;
+    }
+
+    .leaderboard-row {
+        font-size: $secondarySizeTablet;
+    }
+}
+
+@media (max-width: 376px) {
+    .leaderboard-table-header {
+        font-size: 12px;
+        padding: 8px 4px;
+    }
+
+    .leaderboard-row {
+        font-size: $secondarySizeMobile;
+    }
+}
