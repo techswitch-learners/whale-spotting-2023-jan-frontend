@@ -145,15 +145,13 @@ export async function fetchLogin(encodedUsernamePassword: string): Promise<void>
 	}
 }
 
-export async function fetchIsAdmin(encodedUsernamePassword: string): Promise<void> {
+export async function fetchIsAdmin(encodedUsernamePassword: string): Promise<boolean> {
 	const response = await fetch(`${backendUrl}/login/admin`, {
 		headers: {
 			'Authorization': `Basic ${encodedUsernamePassword}`
 		}
 	});
-	if (!response.ok) {
-		throw new Error(JSON.stringify(await response.json()));
-	}
+	return response.ok ? true : false;
 }
 
 export async function createNewUser(newUser: NewUser): Promise<Response> {

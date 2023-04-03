@@ -25,19 +25,7 @@ export function Login() {
 			return;
 		}
 
-		loginContext.logIn(authHeader);
-		setError(undefined);
-
-		try {
-			await fetchIsAdmin(authHeader);
-		}
-		catch {
-			console.log("You're logged in as a member");
-			return;
-		}
-
-		loginContext.setUserAdmin(true);
-		console.log("You're an admin");
+		loginContext.logIn(authHeader, await fetchIsAdmin(authHeader));
 	}
 
 	return <div>
