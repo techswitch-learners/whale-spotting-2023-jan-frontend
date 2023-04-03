@@ -24,7 +24,7 @@ export function Login() {
 			return;
 		}
 		// const isAdministrator = await isAdmin(username);
-		loginContext.logIn(authHeader);
+		loginContext.logIn(authHeader, username);
 		// alert to notify user they've successfully logged in
 		console.log("You're logged in");
 		setError(undefined);
