@@ -25,6 +25,9 @@
         .whale-sighting-post{
             width: 90%;
         }
+        .button-like, .button-unlike,.button-approve,.button-delete{
+            padding: 0.2em 0.4em;
+        }
     }
 
     @media screen and (min-width: 431px){
@@ -72,3 +75,14 @@
     padding: 0px;
     padding-right: 10px;
 }
+
+  
+.button-approve {
+    background-color: $button-color;
+    color: $dark-font-color;
+  }
+
+  .button-delete {
+    background-color: rgb(225, 52, 52);
+    color: $dark-font-color;
+  }

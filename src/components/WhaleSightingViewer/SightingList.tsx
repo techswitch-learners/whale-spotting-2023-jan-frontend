@@ -5,12 +5,16 @@ import "./SightingList.scss";
 
 interface sightingListProps {
     pageNum: number,
-    sightings: WhaleSighting[];
+    loggedIn: boolean,
+    sightings: WhaleSighting[],
+    isAdmin: boolean;
 }
 
 export default function SightingList({
     pageNum,
-    sightings
+    loggedIn,
+    sightings,
+    isAdmin
 }: sightingListProps) {
 
     const username = "username"; //to check against, will eventually be taken from the authheader
@@ -20,14 +24,6 @@ export default function SightingList({
     const maxSightingOnPage = Math.min(sightings.length, ((pageNum-1) * 12 + 12));
 
     const sightingsList : JSX.Element[] = [];
-
-    const handleLike = (event: React.MouseEvent<HTMLButtonElement>, whaleSightingId: number) => {
-        event.preventDefault();
-    }
-
-    const handleUnlike = (event: React.MouseEvent<HTMLButtonElement>, whaleSightingId: number) => {
-        event.preventDefault();
-    }
 
     for (let i = (pageNum-1) * 12; i < maxSightingOnPage; i++) {
         const isLiked = sightings[i].likedBy.includes(username);
@@ -41,10 +37,7 @@ export default function SightingList({
                             <p className="username">{sightings[i].user.username}</p>
                             <p className="date">{(new Date(sightings[i].dateOfSighting)).toLocaleDateString('en-GB')}</p>
                         </div>
-                        { (!isLiked) ?
-                            <button type="button" className = "button-like" onClick={(event) => handleLike(event, sightings[i].id)}>{"\u2661"}</button> :
-                            <button type="button" className = "button-unlike" onClick={(event) => handleUnlike(event, sightings[i].id)}>{"\u2665"}</button>
-                        }
+                            {getButtons(loggedIn, sightings[i], isLiked, isAdmin)}
                     </div>
                 </div>
                 </Link>
@@ -56,4 +49,37 @@ export default function SightingList({
 			{sightingsList}
 		</ul>
     </>
+}
+
+function getButtons(isLoggedIn: boolean, sighting: WhaleSighting, isLiked: boolean, isAdmin: boolean) {
+    const handleLike = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+    }
+
+    const handleUnlike = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+    }
+
+    const handleApprove = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+    }
+
+    const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+    }
+    if (isAdmin) {
+        return <>
+            <button type="button" className="button-approve" onClick={(event) => handleApprove(event)}>Approve</button>
+            <button type="button" className="button-delete" onClick={(event) => handleDelete(event)}>Delete</button>
+        </>
+    }
+    else if (isLoggedIn && !isLiked) {
+        return <button type="button" className = "button-like" onClick={(event) => handleLike(event)}>{"\u2661"}</button>;
+    }
+    else if(isLoggedIn && isLiked){
+        <button type="button" className = "button-unlike" onClick={(event) => handleUnlike(event)}>{"\u2665"}</button>
+    }
+    else {
+        <></>
+    }
 }
