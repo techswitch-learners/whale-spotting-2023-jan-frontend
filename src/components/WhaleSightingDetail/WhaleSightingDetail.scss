@@ -22,6 +22,7 @@ h1.main-header {
 }
 
 .float-child1 {
+    font-size: $bodySizeDesktop;
     background-color: $darker-background;
     color: $light-font-color;
     flex: 1;
@@ -40,7 +41,7 @@ h1.main-header {
     text-align: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
     h1.main-header {
         font-size: $subtitleSizeTablet;
         white-space: nowrap;
@@ -51,7 +52,7 @@ h1.main-header {
     }
 
     .float-child1 {
-        font-size: $subtitleSizeTablet;
+        font-size: $bodySizeTablet;
         flex: 1;
     }
 
@@ -62,21 +63,7 @@ h1.main-header {
     }
 }
 
-@media (max-width: 600px) {
-    .header-section {
-        font-size: $titleSizeTablet;
-        white-space: nowrap;
-        text-align: center;
-    }
-
-    h1.main-header {
-        align-self: center;
-        margin-top: 15px;
-        margin-left: 25%;
-    }
-}
-
-@media(max-width: 375px) {
+@media(max-width: 430px) {
     .header-section {
         font-size: $titleSizeMobile;
         white-space: nowrap;
@@ -92,7 +79,7 @@ h1.main-header {
     }
 
     .float-child1 {
-        font-size: $subtitleSizeMobile;
+        font-size: $bodySizeMobile;
         flex: 1;
     }
 
@@ -100,5 +87,10 @@ h1.main-header {
         font-size: $subtitleSizeMobile;
         flex: 2;
         margin-top: 10px;
+    }
+
+    .rsm-svg {
+        width: 100%;
+        height: 100%;
     }
 }
