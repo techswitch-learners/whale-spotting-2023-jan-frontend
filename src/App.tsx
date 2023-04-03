@@ -18,7 +18,6 @@ import { LoginContext, LoginManager } from "./components/Login/LoginManager";
 
 function App() {
   const loginContext = useContext(LoginContext);
-  const [selectedWhaleSpecies, setSelectedWhaleSpecies] = useState("");
 
   return (
     <LoginManager>
@@ -34,7 +33,7 @@ function App() {
         <Route path="/sightings/submit" element={
           <LoginContext.Consumer>
             {value => value.isLoggedIn
-              ? <CreateSighting selectedWhaleSpecies={selectedWhaleSpecies} setSelectedWhaleSpecies={setSelectedWhaleSpecies} />
+              ? <CreateSighting />
               : <Login />}
           </LoginContext.Consumer>} />
         <Route path="/sightings/:id" element={<WhaleSightingDetail />} />

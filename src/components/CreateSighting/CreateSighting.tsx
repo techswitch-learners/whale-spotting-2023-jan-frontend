@@ -6,23 +6,19 @@ import { createSighting, fetchSpeciesQuery, SpeciesSearch, WhaleSpecies } from "
 import { NewSighting } from "../../clients/apiClient";
 import './CreateSighting.scss';
 
-interface WhaleSpeciesDropdownProps {
-    selectedWhaleSpecies: string;
-    setSelectedWhaleSpecies: React.Dispatch<React.SetStateAction<string>>;
-}
-
-export function CreateSighting({selectedWhaleSpecies, setSelectedWhaleSpecies}:WhaleSpeciesDropdownProps){
+export function CreateSighting(){
     const loginContext = useContext(LoginContext);
     const [date, setDate] = useState<Date>(new Date());
     const [photoUrl, setPhotoUrl] = useState<string>("");
     const [latitude, setLatitude] = useState<number>(0);
     const [longitude, setLongitutde] = useState<number>(0);
+    const [selectedWhaleSpecies, setSelectedWhaleSpecies] = useState("");
     const [numberOfWhales, setNumberOfWhales] = useState<number>(0);
     const [description, setDescription] = useState<string>("");
     const [status, setStatus] = useState<string>("");
     const [listWhaleSpecies, setListWhaleSpecies] = useState<WhaleSpecies[]>([]);
 
-    let search: SpeciesSearch =
+    const search: SpeciesSearch =
         {
             tailType: null,
             size: null,
