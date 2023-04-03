@@ -126,7 +126,7 @@ export function CreateSighting(){
                 </label>
                 <select className="create-sighting-input" value={selectedWhaleSpecies} 
                         onChange={event => setSelectedWhaleSpecies(event.target.value)}>
-                            {/* <option value="">----</option> */}
+                            <option value="">----</option>
                             {listWhaleSpecies.map(ws => (
                                 <option key={ws.id} value={ws.name}>
                                     {ws.name}

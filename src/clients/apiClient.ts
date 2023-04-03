@@ -120,7 +120,6 @@ export async function createSighting(newSighting: NewSighting, encodedUsernamePa
   });
 
   if (!response.ok) {
-    console.log("Erorr occurred here");
     throw new Error(await response.json())
   } else {
     return response;
