@@ -25,13 +25,6 @@
     align-content: center;
 }
 
-.info-img {
-    width: 200px;
-    height: 200px;
-    align-self: flex-end;
-    border: none;
-}
-
 .info-table-header {
     display: block;
 }
@@ -44,6 +37,16 @@
 .whale-species-table {
     margin: 0 auto; 
     width: 90%;
+}
+
+.whale-species-table,tr,th,td{
+    border: 1.5px solid black;
+    border-collapse: collapse;
+}
+
+.species-image-container,.species-image{
+    max-height: 200px;
+    max-width: 250px;
 }
 
 @media(max-width: 430px) {

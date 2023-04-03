@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchSpeciesQuery, SpeciesSearch, WhaleSpecies } from "../../clients/apiClient";
+import { fetchSpeciesQuery, SpeciesSearch, TeethType, TailType, Size, WhaleSpecies } from "../../clients/apiClient";
 
 import "./SpeciesIdentification.scss"
 
@@ -16,12 +16,10 @@ export const SpeciesIdentification: React.FunctionComponent = () => {
     useEffect(() => {
         fetchSpeciesQuery(search)
             .then(response => setListWhaleSpecies(response));
+            
     }, []);
 
     return <main>
-        <div>
-            {listWhaleSpecies?.map(i => i.teethType)}
-        </div>
         <h1 className="main-header">Species Identification Page</h1>
         <h2 className="sub-header">Use the filters to get species Information</h2>
         <section className="filter-container">
@@ -29,7 +27,7 @@ export const SpeciesIdentification: React.FunctionComponent = () => {
             <div className="filter-item">Size</div>
             <div className="filter-item">Colour</div>
         </section>
-        <div className="info-table-header">Species Information </div>
+        <h2 className="info-table-header">Species Information </h2>
         <table className="whale-species-table">
             <thead>
                 <tr>
@@ -46,13 +44,13 @@ export const SpeciesIdentification: React.FunctionComponent = () => {
                 {listWhaleSpecies?.map(species => (
                     <tr key={species.name}>
                         <td>{species.name}</td>
-                        <td>{species.tailType}</td>
-                        <td>{species.teethType}</td>
-                        <td>{species.size}</td>
+                        <td>{TailType[species.tailType]}</td>
+                        <td>{TeethType[species.teethType]}</td>
+                        <td>{Size[species.size]}</td>
                         <td>{species.location}</td>
                         <td>{species.diet}</td>
-                        <td>
-                            <img className="info-image" src={species.imageUrl} alt="A lovely whale" />
+                        <td className="species-image-container">
+                            <img className="species-image" src={species.imageUrl} alt="A lovely whale" />
                         </td>
                     </tr>))}
             </tbody>
