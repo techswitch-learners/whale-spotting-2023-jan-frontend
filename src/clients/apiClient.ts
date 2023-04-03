@@ -205,15 +205,12 @@ export async function createLike(newLike: NewLike): Promise<Response> {
 }
 
 export async function getLatLonFromLocation(location: string): Promise<TripPlannerRequest> {
-  console.log(`location is ${location}`);
-  // const response = await fetch(`http://api.positionstack.com/v1/forward?access_key=2fc71fe9ad9868ee2163d073ea5b31f7&query=${location}`);
   const response = await fetch(`https://geocode.maps.co/search?q=${location}`);
   if (!response.ok) {
     throw new Error(await response.json());
   }
   else {
     const responseJson = await response.json();
-    // let latlon: TripPlannerRequest = { latitude: responseJson.data[0].latitude, longitude: responseJson.data[0].longitude };
     let latlon: TripPlannerRequest = { latitude: responseJson[0].lat, longitude: responseJson[0].lon };
     return (latlon);
   }

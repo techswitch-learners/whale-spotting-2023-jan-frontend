@@ -11,14 +11,13 @@ export function SightingsTable({ latLon }: SightingTableProps) {
 
     const [listSightings, setListSightings] = useState<TripPlannerResponse[]>([]);
     console.log(latLon?.latitude, latLon?.longitude);
-   
+
     useEffect(() => {
         if (latLon) {
             getSightingsListByLocation(latLon)
                 .then(response => { if (response) { setListSightings(response); console.log(response); } })
         }
     }, [latLon]);
-
 
     return (
         <main>
