@@ -48,7 +48,11 @@ export function MapChart({ whaleSightings } : MapProps) {
            <text
             textAnchor="middle"
             y={-30}
-            style={{ fontFamily: "system-ui", fill: "#5D5A6D" }}
+            style={{ 
+              fontFamily: "system-ui", 
+              fill: "#5D5A6D",
+              fontSize: "10px",
+            }}
           >
             {ws.dateOfSighting.slice(0,10)}
           </text>

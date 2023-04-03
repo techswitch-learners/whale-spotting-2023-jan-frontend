@@ -13,7 +13,7 @@ export function SightingDetail({ whaleSighting }: SightingDetailProps): JSX.Elem
                 <img className="sighting-image" src={whaleSighting.photoImageURL} />
                 <div className="sighting-info">Location Latitude : {whaleSighting.locationLatitude} </div>
                 <div className="sighting-info">Location Longitude : {whaleSighting.locationLongitude} </div>
-                <div className="sighting-info">Date Of Sighting : {whaleSighting.dateOfSighting}</div>
+                <div className="sighting-info">Date Of Sighting : {new Date(whaleSighting.dateOfSighting).toLocaleDateString('en-GB')}</div>
                 <div className="sighting-info">Number Of Whales : {whaleSighting.numberOfWhales}</div>
                 <div className="sighting-info">Description : {whaleSighting.description}</div>
                 <div className="sighting-info">Whale Species : {whaleSighting.whaleSpecies.name}</div>
