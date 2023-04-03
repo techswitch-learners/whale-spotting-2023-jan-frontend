@@ -19,6 +19,7 @@ export function SightingsTable({ latLon }: SightingTableProps) {
         }
     }, [latLon]);
 
+
     return (
         <main>
             <table className="table">
