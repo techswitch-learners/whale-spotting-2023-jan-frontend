@@ -21,29 +21,21 @@ export function SightingsTable({ latLon }: SightingTableProps) {
 
     return (
         <main>
-            <table className="table">
-                <tbody>
-                    <tr className="table-row">
-                        <th>Sighting Latitude</th>
-                        <th>Sighting Longitude</th>
-                        <th>Distance</th>
-                        <th>DateSighted</th>
-                        <th>Species</th>
-                        <th>Image</th>
-                    </tr>
-                    {
-                        listSightings.map(ls =>
-                            <tr className="table-row">
-                                <td className="table-data">{ls.locationLatitude}</td>
-                                <td className="table-data">{ls.locationLongitude}</td>
-                                <td className="table-data">{ls.distance}</td>
-                                <td className="table-data">{new Date(ls.dateOfSighting).toLocaleDateString()}</td>
-                                <td className="table-data">{ls.whaleSpecies.name}</td>
-                                <td className="table-data-image"><img src={ls.photoImageURL} /></td>
-                            </tr>)
-                    }
-                </tbody>
-            </table>
+            <div className="container">
+                {
+                    listSightings.map(ls =>
+                        <div className="card">
+                            <p className="sightings-image"><img src={ls.photoImageURL} /></p>
+                            <div>
+                                <p>Lat: {ls.locationLatitude} </p>
+                                <p>Long: {ls.locationLongitude}</p>
+                                <p>Distance: {ls.distance}</p>
+                                <p>{new Date(ls.dateOfSighting).toLocaleDateString()}</p>
+                                <p>{ls.whaleSpecies.name}</p>
+                            </div>
+                        </div>)
+                }
+            </div>
         </main>
     )
 }

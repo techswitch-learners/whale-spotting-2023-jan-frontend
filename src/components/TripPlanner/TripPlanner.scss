@@ -10,21 +10,12 @@ body {
     height: auto;
     width: 1440px;
     display: grid;
-    grid-template-rows: 10% auto auto;
+    grid-template-rows: auto auto auto;
     justify-items: center;
 }
 
-.tripplanner-header {
-    font-size: $titleSizeDesktop;
-    margin: 0.5%;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    display: grid;
-    align-items: center;
-}
-
 .tripplanner-search {
-    margin: 2%;
+
     display: grid;
     align-items: center;
 }
@@ -36,47 +27,22 @@ body {
 }
 
 .tripplanner-table {
-    margin: 2%;
+
     width: 80%;
     display: grid;
     align-items: center;
 }
 
 @media (max-width: 425px) {
-    .tripplanner-container {
-        width: 350px;
-        display: grid;
-        grid-template-rows: 10% auto;
-        justify-items: center;
-        margin: 1%;
-    }
-
-    .tripplanner-header {
-        margin: 1%;
-        grid-row-start: 1;
-        grid-row-end: 2;
-        display: grid;
-        align-items: center;
-        font-size: 0.75em;
-    }
-
-    .tripplanner-search {
-        width: 80%;
-        margin: 1%;
-        display: grid;
-        align-items: center;
-    }
 
     .tripplanner-map {
-        width: 100%;
-        display: grid;
-        align-items: center;
+        display: none;
     }
 
-    .tripplanner-table {
-        margin: 1%;
-        width: 80%;
-        display: grid;
+    .tripplanner-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
         align-items: center;
     }
 }

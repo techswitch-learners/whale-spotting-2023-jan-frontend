@@ -9,14 +9,7 @@ export function TripPlanner() {
 
     const [latLon, setLatLon] = useState<TripPlannerRequest>({ latitude: 0, longitude: 0 });
 
-    function handleSearch(latLon: TripPlannerRequest) {
-        setLatLon(latLon);
-    }
-
     return <section className="tripplanner-container">
-        <div className="tripplanner-header">
-            Please enter your location for whale spotting!
-        </div>
         <div className="tripplanner-search">
             <SearchByLocation latLon={latLon} setLatLon={setLatLon} />
         </div>
@@ -28,4 +21,3 @@ export function TripPlanner() {
         </div>
     </section>
 }
-
