@@ -1,0 +1,51 @@
+@import "../../Constants.scss";
+
+.filterCard {
+    background-color: $background;
+}
+
+.sighting-labels {
+    color: $light-font-color;
+}
+
+.btn-search-btn {
+    background-color: $button-color;
+    color: $dark-font-color;
+    margin: 1%;
+}
+
+.selectOption {
+    background-color: $input-field-color;
+    border: none;
+    margin: 0.5%;
+    border-radius: 5px;
+    overflow: auto;
+    width: 45%;
+}
+
+.location-input {
+    background-color: $input-field-color;
+    border: none;
+    color: $dark-font-color;
+    margin: 0.5%;
+    border-radius: 5px;
+    width: 45%;
+}
+
+.filter-grid {
+    display: grid;
+    grid-template-rows: 33% 33% 33%;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+@media only screen and (max-width: 430px) {
+
+    .filter-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn-search-btn {
+        margin: 2%;
+    }
+}

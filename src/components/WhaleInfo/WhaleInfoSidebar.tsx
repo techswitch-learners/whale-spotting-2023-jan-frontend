@@ -10,6 +10,8 @@ export const  WhaleInfoSidebar: React.FC = () => {
           </li>
           <li className="info-side-bar-item">
             <HashLink to="/whale/about#whale-facts">Amazing Whale Facts</HashLink>
+            <br/>
+            <HashLink to="/whale/about#famous-whales">Famous Whales</HashLink>
           </li>
         </ol>
     </div>
