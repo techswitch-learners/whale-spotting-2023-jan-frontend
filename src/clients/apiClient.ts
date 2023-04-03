@@ -49,15 +49,6 @@ export interface User {
   userType: UserType
 }
 
-export interface Like {
-  id: number,
-  date: Date,
-  whaleSightingId: number,
-  whaleSighting: WhaleSighting,
-  userId: number,
-  user: User
-}
-
 export interface WhaleSighting {
   id: number,
   dateOfSighting: string,
@@ -69,7 +60,7 @@ export interface WhaleSighting {
   approvalStatus: ApprovalStatus,
   whaleSpecies: WhaleSpecies,
   user: User,
-  likedBy: Like[],
+  likedBy: string[],
 }
 
 export interface NewUser {

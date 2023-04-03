@@ -14,8 +14,6 @@ export function WhaleSightingViewer() {
 			.then(data => setSightings(data));
 	}, []);
 
-	console.log(sightings);
-
 	if (!sightings) return <p>Waiting for data...</p>
 
 	return <>
