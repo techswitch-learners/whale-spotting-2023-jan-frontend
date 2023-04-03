@@ -151,7 +151,7 @@ export async function fetchIsAdmin(encodedUsernamePassword: string): Promise<boo
 			'Authorization': `Basic ${encodedUsernamePassword}`
 		}
 	});
-	return response.ok ? true : false;
+	return response.ok;
 }
 
 export async function createNewUser(newUser: NewUser): Promise<Response> {
