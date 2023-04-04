@@ -4,8 +4,6 @@ $border: 2px solid $darker-background;
 
 main.whale-info{
     background-color: $background;
-    margin-top: 24px;
-    margin-bottom: 24px;
 }
 
 section.whale-info-container {
@@ -21,7 +19,8 @@ h1.whale-info-header {
     padding-top:20px;
     align-items: center;
     font-size: 2em;
-    color:$light-font-color
+    color:$light-font-color;
+    margin-top: 0px;
 }
 
 .whale-info-sidebar {

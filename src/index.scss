@@ -15,8 +15,9 @@
 
 a {
   font-weight: $fontBold;
-  color: $light-font-color;
+  color:$darker-background;
   text-decoration: inherit;
+  text-decoration: underline;
 }
 
 a:hover {
@@ -46,7 +47,7 @@ button:hover {
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  //outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {

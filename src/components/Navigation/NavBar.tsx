@@ -15,6 +15,11 @@ export const Navbar: React.FunctionComponent = () => {
     const [dropDownOpen3, setDropDownOpen3] = useState(false);
 
     const toggleHamburger = () => {
+        if (hamburgerOpen) {
+            setDropDownOpen1(false);
+            setDropDownOpen2(false);
+            setDropDownOpen3(false);
+        }
         setHamburgerOpen(!hamburgerOpen);
     };
 
@@ -30,100 +35,107 @@ export const Navbar: React.FunctionComponent = () => {
         setDropDownOpen3(!dropDownOpen3);
     };
 
-  return (
-    <div className="navbar">
-        <img className="logo" src="/logo.png" />
-        <nav>
-            <div className="burger-button" onClick={toggleHamburger}>
-              <Hamburger isOpen={hamburgerOpen} />
-            </div>
-            <ul className={hamburgerOpen ? "hamburger-open" : "hamburger-closed"}>
-                <li>
-                    <Link className="navigation-button" to="/">
-                        <AiFillHome />                
-                        <br/>
-                        Home
-                    </Link>
-                </li>
-                <li>
-                    <div className="dropdown">
-                        <button onClick={toggleDropdown1} className="dropbtn">
-                            <GiWhaleTail />
+    const closeHamburger = () => {
+        setHamburgerOpen(false);
+        setDropDownOpen1(false);
+        setDropDownOpen2(false);
+        setDropDownOpen3(false);
+    };
+
+    return (
+        <div className="navbar">
+            <img className="logo" src="/logo.png" />
+            <nav>
+                <div className="burger-button" onClick={toggleHamburger}>
+                    <Hamburger isOpen={hamburgerOpen} />
+                </div>
+                <ul className={hamburgerOpen ? "hamburger-open" : "hamburger-closed"}>
+                    <li>
+                        <Link className="navigation-button" to="/" onClick={closeHamburger}>
+                            <AiFillHome />
                             <br />
-                            Whale Information
-                        </button>
+                            Home
+                        </Link>
+                    </li>
+                    <li>
+                        <div className="dropdown">
+                            <button onClick={(event) => { toggleDropdown1(); }} className="dropbtn">
+                                <GiWhaleTail />
+                                <br />
+                                Whale Information
+                            </button>
                             <div id="myDropdown1" className={dropDownOpen1 ? "dropdown-content show" : "dropdown-content"}>
-                                <a href="/whale/about">
+                                <Link to="/whale/about" onClick={(event) => { closeHamburger(); }} >
                                     <GiWhaleTail />
                                     <br />
                                     About
-                                </a>
-                                <a href="/whale/species">
+                                </Link>
+                                <Link to="/whale/species" onClick={(event) => { closeHamburger(); }}>
                                     <GiArchiveResearch />
                                     <br />
                                     Species
-                                </a>
+                                </Link>
                             </div>
-                    </div>  
-                </li>
-                <li>
-                    <div className="dropdown">
-                        <button onClick={toggleDropdown2} className="dropbtn">
-                            <GiBinoculars />
-                            <br />
-                            Whale Sightings
-                        </button>
+                        </div>
+                    </li>
+                    <li>
+                        <div className="dropdown">
+                            <button onClick={toggleDropdown2} className="dropbtn">
+                                <GiBinoculars />
+                                <br />
+                                Whale Sightings
+                            </button>
                             <div id="myDropdown2" className={dropDownOpen2 ? "dropdown-content show" : "dropdown-content"}>
-                                <a href="/sightings">
+                                <Link to="/sightings" onClick={closeHamburger}>
                                     <GiBinoculars />
                                     <br />
                                     Sightings
-                                </a>
-                                <a href="/sightings/submit">
+                                </Link>
+                                <Link to="/sightings/submit" onClick={closeHamburger}>
                                     <AiOutlineForm />
                                     <br />
                                     Submit
-                                </a>
+                                </Link>
                             </div>
-                    </div>  
-                </li>
-                <li>
-                    <Link className="navigation-button" to="/plan-trip">
-                        <GiFishingBoat />
-                        <br />
-                        Plan a trip
-                    </Link>
-                </li>
-                <li>
-                    <div className="dropdown">
-                        <button onClick={toggleDropdown3} className="dropbtn">
-                            <AiOutlinePlusCircle />
+                        </div>
+                    </li>
+                    <li>
+                        <Link className="navigation-button" to="/plan-trip" onClick={closeHamburger}>
+                            <GiFishingBoat />
                             <br />
-                            User
-                        </button>
+                            Plan a trip
+                        </Link>
+                    </li>
+                    <li>
+                        <div className="dropdown">
+                            <button onClick={toggleDropdown3} className="dropbtn">
+                                <AiOutlinePlusCircle />
+                                <br />
+                                User
+                            </button>
                             <div id="myDropdown3" className={dropDownOpen3 ? "dropdown-content show" : "dropdown-content"}>
-                                <a href="/users/create">
+                                <Link to="/users/create" onClick={closeHamburger}>
                                     <AiOutlinePlusCircle />
                                     <br />
                                     Create
-                                </a>
-                                <a href="/users/leaderboard">
+                                </Link>
+                                <Link to="/users/leaderboard" onClick={closeHamburger}>
                                     <ImTrophy />
                                     <br />
                                     Leaderboard
-                                </a>
+                                </Link>
                             </div>
-                    </div>
-                </li>
-                <li>
-                    <Link className="navigation-button" to="/login">
-                        <FiLogIn />
-                        <br />
-                        Login
-                    </Link>
-                </li>
-            </ul>
-        </nav>
-    </div>
-  );
+                        </div>
+                    </li>
+                    <li>
+                        <Link className="navigation-button" to="/login" onClick={closeHamburger}>
+                            <FiLogIn />
+                            <br />
+                            Login
+                        </Link>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    );
 };
