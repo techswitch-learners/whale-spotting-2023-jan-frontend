@@ -5,7 +5,7 @@ export function WhaleFacts() {
     return <>
         {contents.map(fact => {
             return (
-                <section className="whale-facts">
+                <section className="whale-info-content">
                     <h4>{fact.header}</h4>
                     <p>{fact.detail}</p>
                 </section>

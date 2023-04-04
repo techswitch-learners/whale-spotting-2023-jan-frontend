@@ -1,21 +1,37 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import { FormEvent } from "react";
 import { LoginContext } from "../Login/LoginManager";
-import { createSighting } from "../../clients/apiClient";
+import { createSighting, fetchSpeciesQuery, SpeciesSearch, WhaleSpecies } from "../../clients/apiClient";
 import { NewSighting } from "../../clients/apiClient";
 import './CreateSighting.scss';
 
-export const CreateSighting: React.FC = () =>{
+export function CreateSighting(){
     const loginContext = useContext(LoginContext);
     const [date, setDate] = useState<Date>(new Date());
     const [photoUrl, setPhotoUrl] = useState<string>("");
     const [latitude, setLatitude] = useState<number>(0);
     const [longitude, setLongitutde] = useState<number>(0);
+    const [selectedWhaleSpecies, setSelectedWhaleSpecies] = useState("");
     const [numberOfWhales, setNumberOfWhales] = useState<number>(0);
-    const [species, setSpecies] = useState<string>("");
     const [description, setDescription] = useState<string>("");
     const [status, setStatus] = useState<string>("");
+    const [listWhaleSpecies, setListWhaleSpecies] = useState<WhaleSpecies[]>([]);
+
+    const search: SpeciesSearch =
+        {
+            tailType: null,
+            size: null,
+            colour: null
+        };
+
+    useEffect(() => {
+        fetchSpeciesQuery(search)
+            .then(response => {
+                setListWhaleSpecies(response);
+                setSelectedWhaleSpecies(response[0].name);
+            });
+    }, []);
     
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -27,10 +43,10 @@ export const CreateSighting: React.FC = () =>{
             photoImageURL: photoUrl,
             numberOfWhales: numberOfWhales,
             description: description,
-            whaleSpecies: species
+            whaleSpecies: selectedWhaleSpecies
         }
     
-        createSighting(newSighting)
+        createSighting(newSighting, loginContext.authHeader)
             .then(() => { setStatus("Great! Your sighting has been submitted successfully.")
             })
             .catch((e) => setStatus(e.message))
@@ -108,12 +124,15 @@ export const CreateSighting: React.FC = () =>{
                 <label htmlFor="species" className="create-sighting-label">
                     Species:
                 </label>
-                <input className="create-sighting-input"
-                    type="string"
-                    id="species"
-                    name="species"
-                    onChange={event => setSpecies(event.target.value)}
-                />
+                <select className="create-sighting-input" value={selectedWhaleSpecies} 
+                        onChange={event => setSelectedWhaleSpecies(event.target.value)}>
+                            <option value="">----</option>
+                            {listWhaleSpecies.map(ws => (
+                                <option key={ws.id} value={ws.name}>
+                                    {ws.name}
+                                </option>
+                            ))}
+                </select>
             </div>
 
             <div className="sighting-field">
