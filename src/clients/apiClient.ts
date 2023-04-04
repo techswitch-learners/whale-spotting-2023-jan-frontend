@@ -34,7 +34,7 @@ export interface WhaleSpecies {
   name: string,
   tailType: TailType,
   teethType: TeethType,
-  whaleSize: Size,
+  size: Size,
   colour: string,
   location: string,
   diet: string,
@@ -106,15 +106,6 @@ export const checkBackendConnection = async (): Promise<boolean> => {
   return response.ok;
 }
 
-export async function fetchSightingById(sightingId: number): Promise<WhaleSighting> {
-  const response = await fetch(`${backendUrl}/sightings/${sightingId}`);
-  if (!response.ok) {
-    throw new Error(await response.json());
-  }
-  else {
-    return await response.json();
-  }
-}
 
 export async function createSighting(newSighting: NewSighting, encodedUsernamePassword: string): Promise<Response> {
   const response = await fetch(`${backendUrl}/sightings/submit`, {
