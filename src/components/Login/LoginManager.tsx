@@ -5,7 +5,7 @@ export const LoginContext = createContext({
     username: "",
     isLoggedIn: false,
     isAdmin: false,
-    logIn: (value: string, otherValue: string) => {},
+    logIn: (authHeader: string, username: string) => {},
     logOut: () => {},
 });
 
