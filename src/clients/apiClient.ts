@@ -143,30 +143,30 @@ export async function createSighting(newSighting: NewSighting): Promise<Response
 }
 
 export async function fetchLogin(encodedUsernamePassword: string): Promise<void> {
-	const response = await fetch(`${backendUrl}/login`, {
-		headers: {
-			'Authorization': `Basic ${encodedUsernamePassword}`
-		}
-	});
-	if (!response.ok) {
-		throw new Error(JSON.stringify(await response.json()));
-	}
+  const response = await fetch(`${backendUrl}/login`, {
+    headers: {
+      'Authorization': `Basic ${encodedUsernamePassword}`
+    }
+  });
+  if (!response.ok) {
+    throw new Error(JSON.stringify(await response.json()));
+  }
 }
 
 export async function createNewUser(newUser: NewUser): Promise<Response> {
-	const response = await fetch(`${backendUrl}/users/create`, {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json"
-		},
-		body: JSON.stringify(newUser),
-	});
-	if (!response.ok) {
-		throw new Error(await response.json());
-	}
-	else {
-		return response;
-	}
+  const response = await fetch(`${backendUrl}/users/create`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newUser),
+  });
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return response;
+  }
 }
 
 export async function fetchSpeciesQuery(speciesSearch: SpeciesSearch): Promise<WhaleSpecies[]> {
@@ -245,7 +245,6 @@ export async function getTopFiveSightingsByLocation(latlon: TripPlannerRequest):
     throw new Error(await response.json());
   }
   else {
-    console.log(response);
     return await response.json();
   }
 }

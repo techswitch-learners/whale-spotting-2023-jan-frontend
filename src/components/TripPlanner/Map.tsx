@@ -61,6 +61,5 @@ export function MapChart({ whaleSightings } : MapProps) {
       ))}
       </ZoomableGroup>
     </ComposableMap>
-  </div>
   );
 };

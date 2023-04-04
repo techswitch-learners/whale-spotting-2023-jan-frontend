@@ -15,11 +15,16 @@ export function TripPlanner() {
     useEffect(() => {
         if (latLon) {
             getTopFiveSightingsByLocation(latLon)
-                .then(response => { if (response) setListSightings(response); ConvertResponseToWhaleSightings(listSightings); })
+                .then(response => {
+                    if (response) {
+                        setListSightings(response);
+                        convertResponseToWhaleSightings(listSightings);
+                    }
+                })
         }
     }, [latLon]);
 
-    function ConvertResponseToWhaleSightings(listSightings: TripPlannerResponse[]) {
+    function convertResponseToWhaleSightings(listSightings: TripPlannerResponse[]) {
         for (let i = 0; i < listSightings.length; i++) {
             const item = {} as WhaleSighting;
             item.id = listSightings[i].id;

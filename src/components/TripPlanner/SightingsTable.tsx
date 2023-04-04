@@ -5,13 +5,13 @@ interface SightingTableProps {
     listSightings: TripPlannerResponse[];
 }
 
-export function SightingsTable(props: SightingTableProps) {
+export function SightingsTable({ listSightings }: SightingTableProps) {
 
     return (
         <main>
             <div className="container">
                 {
-                    props.listSightings.map(ls =>
+                    listSightings.map(ls =>
                         <div className="card">
                             <p className="sightings-image">
                                 <img src={ls.photoImageURL} />
