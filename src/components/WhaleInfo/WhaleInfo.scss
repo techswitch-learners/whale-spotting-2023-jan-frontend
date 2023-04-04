@@ -2,7 +2,7 @@
 
 $border: 2px solid $darker-background;
 
-main.whale-info{
+main.whale-info {
     background-color: $background;
     margin-top: 24px;
     margin-bottom: 24px;
@@ -18,15 +18,15 @@ section.whale-info-container {
 }
 
 h1.whale-info-header {
-    padding-top:20px;
+    padding-top: 20px;
     align-items: center;
     font-size: 2em;
-    color:$light-font-color
+    color: $light-font-color
 }
 
 .whale-info-sidebar {
     border: $border;
-    width:100%;
+    width: 100%;
     grid-column-start: 1;
     grid-column-end: 1;
     align-items: center;
@@ -34,7 +34,7 @@ h1.whale-info-header {
 
 .whale-info-main-info {
     border: $border;
-    width:100%;
+    width: 100%;
     grid-column-start: 2;
     grid-column-end: 3;
     align-items: center;
@@ -50,11 +50,13 @@ h1.whale-info-header {
     left: 50%;
 }
 
-section.whale-info-content,h2.whale-info-section-header{
-    color:$light-font-color;
+section.whale-info-content,
+h2.whale-info-section-header,
+p {
+    color: $light-font-color;
 }
 
-section.whale-info-content{
+section.whale-info-content {
     padding: $cardPaddingDesktop;
 }
 
@@ -68,12 +70,12 @@ section.whale-info-content{
     }
 
     .whale-info-sidebar {
-        display: none; 
+        display: none;
     }
-    
+
     .whale-info-main-info {
         border: $border;
-        width:100%;
+        width: 100%;
         grid-column-start: 1;
         grid-column-end: 1;
         align-items: center;
