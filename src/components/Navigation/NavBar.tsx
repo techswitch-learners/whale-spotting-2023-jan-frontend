@@ -59,18 +59,18 @@ export const Navbar: React.FunctionComponent = () => {
                     </li>
                     <li>
                         <div className="dropdown">
-                            <button onClick={(event) => { toggleDropdown1(); }} className="dropbtn">
+                            <button onClick={toggleDropdown1} className="dropbtn">
                                 <GiWhaleTail />
                                 <br />
                                 Whale Information
                             </button>
                             <div id="myDropdown1" className={dropDownOpen1 ? "dropdown-content show" : "dropdown-content"}>
-                                <Link to="/whale/about" onClick={(event) => { closeHamburger(); }} >
+                                <Link to="/whale/about" onClick={closeHamburger} >
                                     <GiWhaleTail />
                                     <br />
                                     About
                                 </Link>
-                                <Link to="/whale/species" onClick={(event) => { closeHamburger(); }}>
+                                <Link to="/whale/species" onClick={closeHamburger}>
                                     <GiArchiveResearch />
                                     <br />
                                     Species
