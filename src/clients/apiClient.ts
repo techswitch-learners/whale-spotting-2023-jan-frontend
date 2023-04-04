@@ -59,6 +59,7 @@ export interface WhaleSighting {
   approvalStatus: ApprovalStatus,
   whaleSpecies: WhaleSpecies,
   user: User,
+  likedBy: string[],
 }
 
 export interface NewUser {
@@ -109,10 +110,11 @@ export async function fetchSightingById(sightingId: number): Promise<WhaleSighti
   }
 }
 
-export async function createSighting(newSighting: NewSighting): Promise<Response> {
-  const response = await fetch(`https://${backendUrl}/sightings/submit`, {
+export async function createSighting(newSighting: NewSighting, encodedUsernamePassword: string): Promise<Response> {
+  const response = await fetch(`${backendUrl}/sightings/submit`, {
     method: "POST",
     headers: {
+      "Authorization": `Basic ${encodedUsernamePassword}`,
       "Content-Type": "application/json"
     },
     body: JSON.stringify(newSighting),
@@ -134,6 +136,15 @@ export async function fetchLogin(encodedUsernamePassword: string): Promise<void>
 	if (!response.ok) {
 		throw new Error(JSON.stringify(await response.json()));
 	}
+}
+
+export async function fetchIsAdmin(encodedUsernamePassword: string): Promise<boolean> {
+	const response = await fetch(`${backendUrl}/login/admin`, {
+		headers: {
+			'Authorization': `Basic ${encodedUsernamePassword}`
+		}
+	});
+	return response.ok;
 }
 
 export async function createNewUser(newUser: NewUser): Promise<Response> {

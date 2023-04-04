@@ -1,41 +1,29 @@
-import React from "react";
-import {
-    ChangeEvent,
+import React, {
     useState,
-    useEffect,
-    FormEvent
+    useEffect
 } from "react";
-import { fetchSpeciesQuery, TailType, Size, SpeciesSearch, WhaleSpecies } from "../../clients/apiClient";
+import { fetchSpeciesQuery, SpeciesSearch, WhaleSighting, WhaleSpecies } from "../../clients/apiClient";
 import "./WhaleSightingFilters.scss";
 
-interface WhaleSightingDropdownProps {
-    selectedWhaleSpecies: string;
-    setSelectedWhaleSpecies: React.Dispatch<React.SetStateAction<string>>;
-    selectedColour: string;
-    setSelectedColour: React.Dispatch<React.SetStateAction<string>>;
-    selectedTailType: string;
-    setSelectedTailType: React.Dispatch<React.SetStateAction<string>>;
-    selectedSize: string;
-    setSelectedSize: React.Dispatch<React.SetStateAction<string>>;
-    setMinLat: React.Dispatch<React.SetStateAction<string>>,
-    setMaxLat: React.Dispatch<React.SetStateAction<string>>,
-    setMinLog: React.Dispatch<React.SetStateAction<string>>,
-    setMaxLog: React.Dispatch<React.SetStateAction<string>>,
-    handleSearch: (event: FormEvent<HTMLFormElement>) => void,
+interface WhaleSightingFiltersProps {
+    setSightings: React.SetStateAction<React.Dispatch<WhaleSighting[]>>;
 }
 
-export function WhaleSightingFilters(
-    {
-        selectedWhaleSpecies, setSelectedWhaleSpecies,
-        selectedColour, setSelectedColour,
-        selectedTailType, setSelectedTailType,
-        selectedSize, setSelectedSize,
-        setMinLat, setMaxLat,
-        setMinLog, setMaxLog,
-        handleSearch
-    }: WhaleSightingDropdownProps) {
-
+export function WhaleSightingFilters({setSightings}: WhaleSightingFiltersProps) {
     const [listWhaleSpecies, setListWhaleSpecies] = useState<WhaleSpecies[]>([]);
+    const [selectedWhaleSpecies, setSelectedWhaleSpecies] = useState("");
+	const [selectedColour, setSelectedColour] = useState("");
+	const [selectedTailType, setSelectedTailType] = useState("");
+	const [selectedSize, setSelectedSize] = useState("");
+	const [minLat, setMinLat] = useState("");
+	const [maxLat, setMaxLat] = useState("");
+	const [minLog, setMinLog] = useState("");
+	const [maxLog, setMaxLog] = useState("");
+	
+	function handleSearch(event: any) {
+		event.preventDefault();
+	}
+
     let search: SpeciesSearch =
     {
         tailType: null,
