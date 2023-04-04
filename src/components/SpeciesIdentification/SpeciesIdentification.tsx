@@ -16,39 +16,31 @@ export const SpeciesIdentification: React.FunctionComponent = () => {
     useEffect(() => {
         fetchSpeciesQuery(search)
             .then(response => setListWhaleSpecies(response));
-            
     }, []);
 
-    return <main>
-        <h1 className="main-header">Species Identification Page</h1>
-        <h2 className="sub-header">Use the filters to get species Information</h2>
-        <section className="filter-container">
-            <div className="filter-item">Tail Type</div>
-            <div className="filter-item">Size</div>
-            <div className="filter-item">Colour</div>
-        </section>
-        <h2 className="info-table-header">Species Information </h2>
+    return <main className="whale-species-table-section">
+        <h1 className="info-table-header">Which species did you see?</h1>
+        <h3 className="info-table-subheader">Use this table to help identify the whale you saw</h3>
         <table className="whale-species-table">
             <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Tail Type</th>
-                    <th>Teeth Type</th>
-                    <th>Size</th>
-                    <th>Location</th>
-                    <th>Diet</th>
-                    <th>Image</th>
+                <tr className="table-header-row">
+                    <th className="table-header-item">Name</th>
+                    <th className="table-header-item">Location</th>
+                    <th className="table-header-item">Details</th>
+                    <th className="table-header-item">Image</th>
                 </tr>
             </thead>
             <tbody>
                 {listWhaleSpecies?.map(species => (
-                    <tr key={species.name}>
-                        <td>{species.name}</td>
-                        <td>{TailType[species.tailType]}</td>
-                        <td>{TeethType[species.teethType]}</td>
-                        <td>{Size[species.size]}</td>
-                        <td>{species.location}</td>
-                        <td>{species.diet}</td>
+                    <tr className="table-data-row" key={species.name}>
+                        <td className="table-data species-name">{species.name}</td>
+                        <td className="table-data">{species.location}</td>
+                        <td className="table-data details"><p>Teeth: {TeethType[species.teethType]}</p>
+                            <p>Tail: {TailType[species.tailType]}</p>
+                            <p>Teeth: {TailType[species.tailType]}</p>
+                            <p>Size: {Size[species.size]}</p>
+                            <p>Diet: {species.diet}</p>
+                        </td>
                         <td className="species-image-container">
                             <img className="species-image" src={species.imageUrl} alt="A lovely whale" />
                         </td>
