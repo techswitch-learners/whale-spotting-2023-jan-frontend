@@ -1,6 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { FormEvent } from "react";
+import { NewUser } from "../../clients/apiClient";
+import { createNewUser } from "../../clients/apiClient";
+import { ChangeEvent } from "react";
 import './CreateUser.scss';
 
 export function CreateUser() {
@@ -8,17 +11,38 @@ export function CreateUser() {
     const [password, setPassword] = useState<string>("");
     const [profileImageUrl, setProfileImageUrl] = useState<string>("");
     const [userBio, setUserBio] = useState<string>("");
+    const [userType, setUserType] = useState<string>("Member");
+    const [status, setStatus] = useState<string>("");
+
+    const userTypes = ["Member", "Admin"];
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault()
+        event.preventDefault();
+
+        const userTypeInt: number = userType == "Admin" ? 1 : 0; 
+
+        const newUser: NewUser = {
+            username: username,
+            password: password,
+            userBio: userBio,
+            profileImageUrl: profileImageUrl,
+            userType: userTypeInt,
+        }
+
+        createNewUser(newUser)
+            .then(() => {
+                setStatus("Great! You have created a new user.")
+            })
+            .catch((e) => setStatus(e.message))
     }
 
     return <main className="create-user">
         <h1 className="createUser-Title">Create a New User</h1>
+        <p className="create-user-status-msg">{status}</p>
         <form className="create-user-form"
             onSubmit={(e) => { handleSubmit(e) }}>
             <div className="user-input-div">
-                <label className="user-input-label">Username</label>
+                <label className="user-input-label">Username: </label>
                 <input className="input-field"
                     type="text"
                     name="username"
@@ -28,7 +52,7 @@ export function CreateUser() {
                 />
             </div>
             <div className="user-input-div">
-                <label className="user-input-label">Password</label>
+                <label className="user-input-label">Password: </label>
                 <input className="input-field"
                     type="password"
                     name="password"
@@ -38,17 +62,18 @@ export function CreateUser() {
                 />
             </div>
             <div className="user-input-div">
-                <label className="user-input-label" htmlFor="profileImageUrl">Profile Image Url</label>
+                <label className="user-input-label" htmlFor="profileImageUrl">Profile Picture: </label>
                 <input className="input-field"
                     type="url"
                     name="profileImageUrl"
                     id="profileImageUrl"
+                    placeholder="Enter image url"
                     required
                     onChange={e => setProfileImageUrl(e.target.value)}
                 />
             </div>
             <div className="user-input-div">
-                <label className="user-input-label" htmlFor="userBio">User Bio</label>
+                <label className="user-input-label" htmlFor="userBio">User Bio: </label>
                 <input className="input-field"
                     type="text"
                     name="userBio"
@@ -56,6 +81,20 @@ export function CreateUser() {
                     required
                     onChange={e => setUserBio(e.target.value)}
                 />
+            </div>
+            <div className="user-input-div">
+                <label className="user-input-label" htmlFor="user-type">User Type: </label>
+                <select className="input-field" name="user-type"
+                    id="user-type"
+                    value={userType}
+                    onChange={e => setUserType(e.target.value)}
+                >
+                    {userTypes.map((ut) => (
+                        <option key={ut} value={ut}>
+                            {ut}
+                        </option>
+                    ))}
+                </select>
             </div>
             <button className="create-user-submit" type="submit">Submit</button>
         </form>

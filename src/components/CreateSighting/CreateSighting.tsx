@@ -1,23 +1,38 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import { FormEvent } from "react";
-import { createSighting } from "../../clients/apiClient";
+import { LoginContext } from "../Login/LoginManager";
+import { createSighting, fetchSpeciesQuery, SpeciesSearch, WhaleSpecies } from "../../clients/apiClient";
 import { NewSighting } from "../../clients/apiClient";
 import './CreateSighting.scss';
 
-export function CreateSighting() {
+export function CreateSighting(){
+    const loginContext = useContext(LoginContext);
     const [date, setDate] = useState<Date>(new Date());
     const [photoUrl, setPhotoUrl] = useState<string>("");
     const [latitude, setLatitude] = useState<number>(0);
     const [longitude, setLongitutde] = useState<number>(0);
+    const [selectedWhaleSpecies, setSelectedWhaleSpecies] = useState("");
     const [numberOfWhales, setNumberOfWhales] = useState<number>(0);
-    const [species, setSpecies] = useState<string>("");
     const [description, setDescription] = useState<string>("");
     const [status, setStatus] = useState<string>("");
+    const [listWhaleSpecies, setListWhaleSpecies] = useState<WhaleSpecies[]>([]);
+
+    const search: SpeciesSearch =
+        {
+            tailType: null,
+            size: null,
+            colour: null
+        };
+
+    useEffect(() => {
+        fetchSpeciesQuery(search)
+            .then(response => setListWhaleSpecies(response));
+    }, []);
     
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-
+        console.log(loginContext.authHeader);
         const newSighting: NewSighting = {
             dateOfSighting: date,
             locationLatitude: latitude,
@@ -25,7 +40,7 @@ export function CreateSighting() {
             photoImageURL: photoUrl,
             numberOfWhales: numberOfWhales,
             description: description,
-            whaleSpecies: species
+            whaleSpecies: selectedWhaleSpecies
         }
     
         createSighting(newSighting)
@@ -34,7 +49,8 @@ export function CreateSighting() {
             .catch((e) => setStatus(e.message))
     }
 
-    return <main className="create-sighting">
+    return (
+    <main className="create-sighting">
         <h1 className="sighting-form-title">Post your whale sighting!</h1>
         <p className="status-msg">{status}</p>
         <form className="create-sighting-form"
@@ -105,12 +121,15 @@ export function CreateSighting() {
                 <label htmlFor="species" className="create-sighting-label">
                     Species:
                 </label>
-                <input className="create-sighting-input"
-                    type="string"
-                    id="species"
-                    name="species"
-                    onChange={event => setSpecies(event.target.value)}
-                />
+                <select className="create-sighting-input" value={selectedWhaleSpecies} 
+                        onChange={event => setSelectedWhaleSpecies(event.target.value)}>
+                            <option value="">----</option>
+                            {listWhaleSpecies.map(ws => (
+                                <option key={ws.id} value={ws.name}>
+                                    {ws.name}
+                                </option>
+                            ))}
+                </select>
             </div>
 
             <div className="sighting-field">
@@ -127,4 +146,5 @@ export function CreateSighting() {
             <button id="create-sighting-submit" className="create-sighting-submit" type="submit">Submit</button>
         </form>
     </main>
+    )
 }
