@@ -34,7 +34,7 @@ export interface WhaleSpecies {
   name: string,
   tailType: TailType,
   teethType: TeethType,
-  whaleSize: Size,
+  size: Size,
   colour: string,
   location: string,
   diet: string,
@@ -88,6 +88,12 @@ export interface SpeciesSearch {
   tailType: number | null;
   size: number | null;
   colour: string | null;
+}
+
+export interface UserLeaderboardResponse{
+  userName: string;
+  numberOfWhaleSightings: number;
+  likesReceived: number;
 }
 
 export const checkBackendConnection = async (): Promise<boolean> => {
@@ -223,6 +229,16 @@ export async function createLike(newLike: NewLike): Promise<Response> {
 
 export async function fetchAllWhaleSpecies(): Promise<string[]> {
   const response = await fetch(`${backendUrl}/species/species-list`);
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return await response.json();
+  }
+}
+
+export async function fetchLeaderboard(): Promise<UserLeaderboardResponse[]> {
+  const response = await fetch(`${backendUrl}/users/leaderboard`);
   if (!response.ok) {
     throw new Error(await response.json());
   }

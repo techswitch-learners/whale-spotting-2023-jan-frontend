@@ -115,13 +115,6 @@ export const Navbar: React.FunctionComponent = () => {
                             </div>
                     </div>
                 </li>
-                <li>
-                    <Link className="navigation-button" to="/login">
-                        <FiLogIn />
-                        <br />
-                        Login
-                    </Link>
-                </li>
             </ul>
         </nav>
     </div>

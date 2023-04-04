@@ -8,14 +8,13 @@ import { Navbar } from './components/Navigation/NavBar';
 import { WhaleSightingViewer } from './components/WhaleSightingViewer/WhaleSightingViewer';
 import { CreateSighting } from "./components/CreateSighting/CreateSighting";
 import { WhaleInfo } from './components/WhaleInfo/WhaleInfo';
-import { CreateUser } from "./components/CreateUser/CreateUser";
 import { UserLeaderBoard } from "./components/UserLeaderBoard/UserLeaderBoard";
 import { ColourSchemeChecker } from './ColourSchemeChecker';
 import { Login } from './components/Login/Login';
 import { Footer } from './components/Footer';
 import './App.scss';
 import { LoginContext, LoginManager } from "./components/Login/LoginManager";
-
+import { CreateUser } from "./components/CreateUser/CreateUser";
 function App() {
   const loginContext = useContext(LoginContext);
 
@@ -28,7 +27,7 @@ function App() {
         <Route path="/backend-checker" element={<BackendConnectionChecker />} />
         <Route path="/sightings" element={
           <LoginContext.Consumer>
-            {value => <WhaleSightingViewer loggedIn={value.isLoggedIn} />}
+            {value => <WhaleSightingViewer loggedIn={value.isLoggedIn} isAdminPage = {false} />}
           </LoginContext.Consumer>} />
         <Route path="/sightings/submit" element={
           <LoginContext.Consumer>
@@ -36,10 +35,16 @@ function App() {
               ? <CreateSighting />
               : <Login />}
           </LoginContext.Consumer>} />
+          <Route path="/sightings/admin" element={
+					<LoginContext.Consumer>
+						{value => value.isAdmin
+							? <WhaleSightingViewer loggedIn={value.isLoggedIn} isAdminPage = {true}/>
+							: <Login />}
+					</LoginContext.Consumer>} />
         <Route path="/sightings/:id" element={<WhaleSightingDetail />} />
         <Route path="/whale/about" element={<WhaleInfo />} />
         <Route path="/users/create" element={<CreateUser />}/>
-        <Route path="/whale/species-identification" element={<SpeciesIdentification />} />
+        <Route path="/whale/species" element={<SpeciesIdentification />} />
         <Route path="/users/leaderboard" element={<UserLeaderBoard />} />
       </Routes>
       <Footer />

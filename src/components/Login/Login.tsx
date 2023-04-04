@@ -26,7 +26,7 @@ export function Login() {
 			return;
 		}
 
-		loginContext.logIn(authHeader, isAdmin);
+		loginContext.logIn(authHeader, isAdmin, username);
 	}
 
 	return <div>
