@@ -1,3 +1,5 @@
+@import "../../Constants.scss";
+
 .whale-sighting-page {
     display: grid;
     text-align: left;
@@ -10,6 +12,20 @@
     grid-row-end: 2;
     grid-column-start: 1;
     grid-column-end: 2;
+    
+    background-color: $background;
+
+    @media screen and (max-width: 430px){
+        font-size: $titleSizeMobile;
+    }
+    
+    @media screen and (min-width: 431px){
+        font-size: $titleSizeTablet;
+    }
+
+    @media screen and (min-width: 1100px){
+        font-size: $titleSizeDesktop;
+    }
 }
 
 .whale-sighting-map-view-button{
@@ -53,7 +69,8 @@
 }
 
 .nextlink, .prevlink {
-    color: #0000EE;
+    font-size: 35px;
+    color: $dark-font-color;
     text-align: center;
 
     @media screen and (max-width: 430px){
@@ -62,7 +79,8 @@
 }
 
 .nextlink:hover, .prevlink:hover {
-    color: hotpink;
+    color: $light-background;
     text-decoration: underline;
     cursor: pointer;
+
 }
