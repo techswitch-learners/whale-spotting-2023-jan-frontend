@@ -16,26 +16,31 @@
 }
 
 .tripplanner-search {
-
     display: grid;
     align-items: center;
 }
 
 .tripplanner-map {
-    width: 50%;
+    background-color: $light-background;
+    width: 30%;
     display: grid;
     align-items: center;
+    box-shadow: 0 4px 4px 0 $light-font-color;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.tripplanner-map:hover {
+    box-shadow: 0 8px 16px 0 $light-font-color;
 }
 
 .tripplanner-table {
-
     width: 80%;
     display: grid;
     align-items: center;
 }
 
-@media (max-width: 425px) {
-
+@media (max-width: 430px) {
     .tripplanner-map {
         display: none;
     }
