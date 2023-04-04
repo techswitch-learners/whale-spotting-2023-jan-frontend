@@ -110,10 +110,11 @@ export async function fetchSightingById(sightingId: number): Promise<WhaleSighti
   }
 }
 
-export async function createSighting(newSighting: NewSighting): Promise<Response> {
-  const response = await fetch(`https://${backendUrl}/sightings/submit`, {
+export async function createSighting(newSighting: NewSighting, encodedUsernamePassword: string): Promise<Response> {
+  const response = await fetch(`${backendUrl}/sightings/submit`, {
     method: "POST",
     headers: {
+      "Authorization": `Basic ${encodedUsernamePassword}`,
       "Content-Type": "application/json"
     },
     body: JSON.stringify(newSighting),
