@@ -1,47 +1,85 @@
-import { useEffect, useState } from "react";
-import SightingList from "./SightingList";
-import { fetchAllApprovedSightings, WhaleSighting } from "../../clients/apiClient";
+import { Login } from "../Login/Login";
 import "./WhaleSightingViewer.scss";
 import { WhaleSightingFilters } from "./WhaleSightingFilters";
+import { useState,useEffect } from "react";
+import { MapChart } from "../TripPlanner/Map";
+import { fetchAllApprovedSightings, WhaleSighting } from "../../clients/apiClient";
+
 
 interface WhaleSightingViewerProps {
 	loggedIn: boolean;
 }
 
 export function WhaleSightingViewer({ loggedIn }: WhaleSightingViewerProps) {
-	const [page, setPage] = useState(1);
-	const [sightings, setSightings] = useState<WhaleSighting[]>();
+	const [selectedWhaleSpecies, setSelectedWhaleSpecies] = useState("");
+	const [selectedColour, setSelectedColour] = useState("");
+	const [selectedTailType, setSelectedTailType] = useState("");
+	const [selectedSize, setSelectedSize] = useState("");
+	const [minLat, setMinLat] = useState("");
+	const [maxLat, setMaxLat] = useState("");
+	const [minLog, setMinLog] = useState("");
+	const [maxLog, setMaxLog] = useState("");
+	const [mapView, setMapView] = useState(false);
+	const [sightingsList,setSightingsList] = useState<WhaleSighting[]>([]); 
+
+	//set State that togggles between list view and map view. 
+	// When a view is set, the alternative return statement should not run OR can be changed to display: none
+
+	function handleSearch(event: any) {
+		event.preventDefault();
+	}
 
 	useEffect(() => {
-		fetchAllApprovedSightings()
-			.then(data => setSightings(data));
-	}, []);
+        fetchAllApprovedSightings()
+            .then(response => setSightingsList(response));
+    }, []);
 
-	if (!sightings) return <p>Waiting for data...</p>
-
-	return <>
-		<h2 className="whale-sighting-heading">Whale Sighting Viewer</h2>
-		<div className="whale-sighting-page">
-			<div className="whale-sighting-map-view-button">Switch to Map View</div>
-			<div className="whale-sighting-filter">
-				<WhaleSightingFilters setSightings={setSightings}/>
-			</div>
-			<div className="whale-sighting-sort">Sort to go here</div>
-			<SightingList pageNum={page} sightings={sightings} />
-			<div className="page-buttons">
-				{page > 1
-					?
-					<p className="prevlink" onClick={() => setPage(page - 1)}>
-						Previous
-					</p>
+	if (mapView) {
+		return <>
+			<button onClick={() => setMapView(false)}>Switch to Posts View</button>
+			<MapChart whaleSightings={sightingsList} />
+		</>
+	} else {
+		return <>
+			<h2 className="whale-sighting-heading">Whale Sighting Viewer</h2>
+			<div className="whale-sighting-page">
+				<div className="whale-sighting-map-view-button">
+					<button onClick={() => setMapView(true)}>Switch to Map View</button>
+				</div>
+				<div className="whale-sighting-filter">
+					<WhaleSightingFilters
+						selectedWhaleSpecies={selectedWhaleSpecies} setSelectedWhaleSpecies={setSelectedWhaleSpecies}
+						selectedColour={selectedColour} setSelectedColour={setSelectedColour}
+						selectedTailType={selectedTailType} setSelectedTailType={setSelectedTailType}
+						selectedSize={selectedSize} setSelectedSize={setSelectedSize}
+						setMinLat={setMinLat} setMaxLat={setMaxLat} setMinLog={setMinLog} setMaxLog={setMaxLog}
+						handleSearch={handleSearch} />
+				</div>
+				<div className="whale-sighting-sort">Sort to go here</div>
+				<ul className="whale-sighting-posts">
+					<li className="whale-sighting-post">
+						Post1 goes here
+						{loggedIn ? <button>Like</button> : <></>}
+					</li>
+					<li className="whale-sighting-post">
+						Post2 goes here
+						{loggedIn ? <button>Like</button> : <></>}
+					</li>
+					<li className="whale-sighting-post">
+						Post3 goes here
+						{loggedIn ? <button>Like</button> : <></>}
+					</li>
+					<li className="whale-sighting-post">
+						Post4 goes here
+						{loggedIn ? <button>Like</button> : <></>}
+					</li>
+				</ul>
+				{!loggedIn
+					? <><h3>Log in below to like posts:</h3>
+						<Login /></>
 					: <></>}
-				{(sightings.length > page * 12)
-					?
-					<p className="nextlink" onClick={() => setPage(page + 1)}>
-						Next
-					</p>
-					: <></>}
 			</div>
-		</div>
-	</>
+		</>
+	}
 }
+

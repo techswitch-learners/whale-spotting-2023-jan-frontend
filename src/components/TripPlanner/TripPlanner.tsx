@@ -1,4 +1,5 @@
 import React from "react";
+import { MapChart } from "./Map";
 import './TripPlanner.scss'
 
 export function TripPlanner() {
@@ -10,7 +11,7 @@ export function TripPlanner() {
             SEARCH
         </div>
         <div className="tripplanner-map">
-            MAP
+            {<MapChart whaleSightings={[]} />}
         </div>
         <div className="tripplanner-table">
             TABLE

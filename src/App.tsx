@@ -15,6 +15,7 @@ import { Login } from './components/Login/Login';
 import { Footer } from './components/Footer';
 import './App.scss';
 import { LoginContext, LoginManager } from "./components/Login/LoginManager";
+import { TripPlanner } from "./components/TripPlanner/TripPlanner";
 
 function App() {
   const loginContext = useContext(LoginContext);
@@ -41,6 +42,7 @@ function App() {
         <Route path="/users/create" element={<CreateUser />}/>
         <Route path="/whale/species-identification" element={<SpeciesIdentification />} />
         <Route path="/users/leaderboard" element={<UserLeaderBoard />} />
+        <Route path="/plan-trip" element={<TripPlanner />} />
       </Routes>
       <Footer />
     </LoginManager>
