@@ -1,31 +1,21 @@
-import { useEffect, useState } from "react";
-import { TripPlannerRequest, TripPlannerResponse } from "../../clients/apiClient";
-import { getSightingsListByLocation } from "../../clients/apiClient";
+import { TripPlannerResponse } from "../../clients/apiClient";
 import './SightingTable.scss';
 
 interface SightingTableProps {
-    latLon?: TripPlannerRequest;
+    listSightings: TripPlannerResponse[];
 }
 
-export function SightingsTable({ latLon }: SightingTableProps) {
-
-    const [listSightings, setListSightings] = useState<TripPlannerResponse[]>([]);
-    console.log(latLon?.latitude, latLon?.longitude);
-
-    useEffect(() => {
-        if (latLon) {
-            getSightingsListByLocation(latLon)
-                .then(response => { if (response) { setListSightings(response); console.log(response); } })
-        }
-    }, [latLon]);
+export function SightingsTable(props: SightingTableProps) {
 
     return (
         <main>
             <div className="container">
                 {
-                    listSightings.map(ls =>
+                    props.listSightings.map(ls =>
                         <div className="card">
-                            <p className="sightings-image"><img src={ls.photoImageURL} /></p>
+                            <p className="sightings-image">
+                                <img src={ls.photoImageURL} />
+                            </p>
                             <div>
                                 <p>Lat: {ls.locationLatitude} </p>
                                 <p>Long: {ls.locationLongitude}</p>

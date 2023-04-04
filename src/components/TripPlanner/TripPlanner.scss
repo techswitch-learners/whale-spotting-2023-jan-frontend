@@ -1,6 +1,6 @@
 @import "../../Constants.scss";
 
-body {
+.tripplanner-main {
     background-color: $default-foreground;
 }
 
@@ -12,6 +12,7 @@ body {
     display: grid;
     grid-template-rows: auto auto auto;
     justify-items: center;
+    width: 100%;
 }
 
 .tripplanner-search {

@@ -216,12 +216,13 @@ export async function getLatLonFromLocation(location: string): Promise<TripPlann
   }
 }
 
-export async function getSightingsListByLocation(latlon: TripPlannerRequest): Promise<TripPlannerResponse[]> {
+export async function getTopFiveSightingsByLocation(latlon: TripPlannerRequest): Promise<TripPlannerResponse[]> {
   const response = await fetch(`${backendUrl}/plan-trip?lat=${latlon.latitude}&lon=${latlon.longitude}`)
   if (!response.ok) {
     throw new Error(await response.json());
   }
   else {
+    console.log(response);
     return await response.json();
   }
 }
