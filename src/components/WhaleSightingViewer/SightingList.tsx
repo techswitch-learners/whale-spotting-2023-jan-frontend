@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { WhaleSighting } from "../../clients/apiClient";
 import "./SightingList.scss";
@@ -14,8 +14,7 @@ export default function SightingList({
 }: sightingListProps) {
 
     const username = "username"; //to check against, will eventually be taken from the authheader
-
-    if (!sightings) return <p>Waiting for data...</p>
+    if (sightings.length === 0) return <p>Waiting for data...</p>
 
     const maxSightingOnPage = Math.min(sightings.length, ((pageNum-1) * 12 + 12));
 

@@ -1,19 +1,15 @@
 import { useEffect, useState } from "react";
-import { Login } from "../Login/Login";
 import SightingList from "./SightingList";
 import { fetchAllApprovedSightings, WhaleSighting } from "../../clients/apiClient";
 import "./WhaleSightingViewer.scss";
 import { WhaleSightingFilters } from "./WhaleSightingFilters";
-import { useState } from "react";
 
 interface WhaleSightingViewerProps {
 	loggedIn: boolean;
 }
 
 export function WhaleSightingViewer({ loggedIn }: WhaleSightingViewerProps) {
-
 	const [page, setPage] = useState(1);
-
 	const [sightings, setSightings] = useState<WhaleSighting[]>();
 
 	useEffect(() => {
@@ -28,13 +24,7 @@ export function WhaleSightingViewer({ loggedIn }: WhaleSightingViewerProps) {
 		<div className="whale-sighting-page">
 			<div className="whale-sighting-map-view-button">Switch to Map View</div>
 			<div className="whale-sighting-filter">
-				<WhaleSightingFilters
-				selectedWhaleSpecies={selectedWhaleSpecies} setSelectedWhaleSpecies={setSelectedWhaleSpecies}
-				selectedColour={selectedColour} setSelectedColour={setSelectedColour}
-				selectedTailType={selectedTailType} setSelectedTailType={setSelectedTailType}
-				selectedSize={selectedSize} setSelectedSize={setSelectedSize}
-				setMinLat={setMinLat} setMaxLat={setMaxLat} setMinLog={setMinLog} setMaxLog={setMaxLog} 
-				handleSearch={handleSearch} />
+				<WhaleSightingFilters setSightings={setSightings}/>
 			</div>
 			<div className="whale-sighting-sort">Sort to go here</div>
 			<SightingList pageNum={page} sightings={sightings} />
