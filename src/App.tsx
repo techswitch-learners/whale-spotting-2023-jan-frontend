@@ -40,7 +40,7 @@ function App() {
         <Route path="/sightings/:id" element={<WhaleSightingDetail />} />
         <Route path="/whale/about" element={<WhaleInfo />} />
         <Route path="/users/create" element={<CreateUser />}/>
-        <Route path="/whale/species-identification" element={<SpeciesIdentification />} />
+        <Route path="/whale/species" element={<SpeciesIdentification />} />
         <Route path="/users/leaderboard" element={<UserLeaderBoard />} />
         <Route path="/plan-trip" element={<TripPlanner />} />
       </Routes>
