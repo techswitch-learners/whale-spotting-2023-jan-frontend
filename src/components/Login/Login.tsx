@@ -17,7 +17,7 @@ export function Login() {
 		event.preventDefault();
 
 		const authHeader = btoa(`${username}:${password}`);
-		const isAdmin = await fetchIsAdmin(authHeader)
+		const isAdmin = await fetchIsAdmin();
 
 		try {
 			await fetchLogin(authHeader);

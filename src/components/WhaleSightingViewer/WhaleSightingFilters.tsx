@@ -2,27 +2,61 @@ import React, {
     useState,
     useEffect
 } from "react";
-import { fetchSpeciesQuery, SpeciesSearch, WhaleSighting, WhaleSpecies } from "../../clients/apiClient";
+import {
+    fetchSpeciesQuery,
+    SpeciesSearch, 
+    WhaleSighting, 
+    WhaleSpecies, 
+    fetchFilterQuery, 
+    WhaleSightingSearch
+} from "../../clients/apiClient";
 import "./WhaleSightingFilters.scss";
 
 interface WhaleSightingFiltersProps {
     setSightings: React.SetStateAction<React.Dispatch<WhaleSighting[]>>;
 }
 
-export function WhaleSightingFilters({setSightings}: WhaleSightingFiltersProps) {
+export function WhaleSightingFilters({ setSightings }: WhaleSightingFiltersProps) {
     const [listWhaleSpecies, setListWhaleSpecies] = useState<WhaleSpecies[]>([]);
+
     const [selectedWhaleSpecies, setSelectedWhaleSpecies] = useState("");
-	const [selectedColour, setSelectedColour] = useState("");
-	const [selectedTailType, setSelectedTailType] = useState("");
-	const [selectedSize, setSelectedSize] = useState("");
-	const [minLat, setMinLat] = useState("");
-	const [maxLat, setMaxLat] = useState("");
-	const [minLog, setMinLog] = useState("");
-	const [maxLog, setMaxLog] = useState("");
-	
-	function handleSearch(event: any) {
-		event.preventDefault();
-	}
+    const [selectedColour, setSelectedColour] = useState("");
+    const [selectedTailType, setSelectedTailType] = useState("");
+    const [selectedSize, setSelectedSize] = useState("");
+    const [minLat, setMinLat] = useState("");
+    const [maxLat, setMaxLat] = useState("");
+    const [minLog, setMinLog] = useState("");
+    const [maxLog, setMaxLog] = useState("");
+
+    function handleSearch(event: any) {
+        event.preventDefault();
+        let sightingSearch: WhaleSightingSearch =
+        {
+            whaleSpecies: selectedWhaleSpecies,
+            colour: selectedColour,
+            tailType: parseInt(selectedTailType),
+            whaleSize: parseInt(selectedSize), 
+            maxLatitude: parseFloat(maxLat), 
+            minLatitude: parseFloat(minLat), 
+            maxLongitude: parseFloat(maxLog), 
+            minLongitude: parseFloat(minLog),
+        }
+        useEffect(() => {
+            fetchFilterQuery(sightingSearch)
+                .then(response => setSightings(response));
+        }, []);
+    }
+
+    // export interface WhaleSightingSearch {
+    //     whaleSpecies: string | null;
+    //     colour: string | null;
+    //     tailType: number | null;
+    //     whaleSize: number | null; 
+    //     maxLatitude: number | null; 
+    //     minLatitude: number | null; 
+    //     maxLongitude: number | null; 
+    //     minLongitude: number | null; 
+    //   }
 
     let search: SpeciesSearch =
     {

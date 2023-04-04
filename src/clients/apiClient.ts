@@ -96,6 +96,17 @@ export interface UserLeaderboardResponse{
   likesReceived: number;
 }
 
+export interface WhaleSightingSearch {
+  whaleSpecies: string | null;
+  colour: string | null;
+  tailType: number | null;
+  whaleSize: number | null; 
+  maxLatitude: number | null; 
+  minLatitude: number | null; 
+  maxLongitude: number | null; 
+  minLongitude: number | null; 
+}
+
 export const checkBackendConnection = async (): Promise<boolean> => {
   let response: Response;
   try {
@@ -116,11 +127,10 @@ export async function fetchSightingById(sightingId: number): Promise<WhaleSighti
   }
 }
 
-export async function createSighting(newSighting: NewSighting, encodedUsernamePassword: string): Promise<Response> {
-  const response = await fetch(`${backendUrl}/sightings/submit`, {
+export async function createSighting(newSighting: NewSighting): Promise<Response> {
+  const response = await fetch(`https://${backendUrl}/sightings/submit`, {
     method: "POST",
     headers: {
-      "Authorization": `Basic ${encodedUsernamePassword}`,
       "Content-Type": "application/json"
     },
     body: JSON.stringify(newSighting),
@@ -142,15 +152,6 @@ export async function fetchLogin(encodedUsernamePassword: string): Promise<void>
 	if (!response.ok) {
 		throw new Error(JSON.stringify(await response.json()));
 	}
-}
-
-export async function fetchIsAdmin(encodedUsernamePassword: string): Promise<boolean> {
-	const response = await fetch(`${backendUrl}/login/admin`, {
-		headers: {
-			'Authorization': `Basic ${encodedUsernamePassword}`
-		}
-	});
-	return response.ok;
 }
 
 export async function createNewUser(newUser: NewUser): Promise<Response> {
@@ -191,6 +192,23 @@ export async function deleteLike(likeId: number): Promise<Response> {
   }
 }
 
+export async function fetchFilterQuery(whaleSightingSearch: WhaleSightingSearch): Promise<WhaleSighting[]> {
+  const whaleSpecies = whaleSightingSearch.whaleSpecies == null ? "" : "whaleSightingSearch.size";
+  const colour = whaleSightingSearch.colour == null ? "" : "whaleSightingSearch.colour";
+  const tailType = whaleSightingSearch.tailType == null ? "" : "whaleSightingSearch.tailType";
+  const size = whaleSightingSearch.whaleSize == null ? "" : "whaleSightingSearch.size";
+  const maxLatitude = whaleSightingSearch.maxLatitude == null ? "" : "whaleSightingSearch.size";
+  const minLatitude = whaleSightingSearch.minLatitude == null ? "" : "whaleSightingSearch.size";
+  const maxLongitude = whaleSightingSearch.maxLongitude == null ? "" : "whaleSightingSearch.size";
+  const minLongitude = whaleSightingSearch.minLongitude == null ? "" : "whaleSightingSearch.size";
+  
+  const response = await fetch(`${backendUrl}/sightings/search?WhaleSpecies=${whaleSpecies}&Colour=${colour}&TailType=${tailType}&Size=${size}&MaxLatitude=${maxLatitude}&MinLatitude=${minLatitude}&MaxLongitude=${maxLongitude}&MinLongitude=${minLongitude}`);
+  if (!response.ok) {
+    throw new Error(await response.json());
+  } else {
+    return await response.json();
+  }
+}
 export async function fetchAllApprovedSightings(): Promise<WhaleSighting[]> {
   const response = await fetch(`${backendUrl}/sightings`);
   if (!response.ok) {
@@ -245,4 +263,8 @@ export async function fetchLeaderboard(): Promise<UserLeaderboardResponse[]> {
   else {
     return await response.json();
   }
+}
+
+export function fetchIsAdmin() : boolean {
+  return true;
 }
