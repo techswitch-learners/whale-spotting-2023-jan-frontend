@@ -37,7 +37,6 @@ export const SpeciesIdentification: React.FunctionComponent = () => {
                         <td className="table-data">{species.location}</td>
                         <td className="table-data details"><p>Teeth: {TeethType[species.teethType]}</p>
                             <p>Tail: {TailType[species.tailType]}</p>
-                            <p>Teeth: {TailType[species.tailType]}</p>
                             <p>Size: {Size[species.size]}</p>
                             <p>Diet: {species.diet}</p>
                         </td>
