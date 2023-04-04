@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { WhaleSighting } from "../../clients/apiClient";
+import SightingButton from "./SightingButtons";
 import "./SightingList.scss";
 
 interface sightingListProps {
@@ -36,8 +37,10 @@ export default function SightingList({
                         <div>
                             <p className="username">{sightings[i].user.username}</p>
                             <p className="date">{(new Date(sightings[i].dateOfSighting)).toLocaleDateString('en-GB')}</p>
+                            
                         </div>
-                            {getButtons(loggedIn, sightings[i], isLiked, isAdmin)}
+                            {!isAdmin && <p className="likes">{`${sightings[i].likedBy.length} likes`}</p>}
+                            <SightingButton isLoggedIn={loggedIn} sighting={sightings[i]} isLiked={isLiked} isAdmin={isAdmin}/>
                     </div>
                 </div>
                 </Link>
@@ -49,37 +52,4 @@ export default function SightingList({
 			{sightingsList}
 		</ul>
     </>
-}
-
-function getButtons(isLoggedIn: boolean, sighting: WhaleSighting, isLiked: boolean, isAdmin: boolean) {
-    const handleLike = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-    }
-
-    const handleUnlike = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-    }
-
-    const handleApprove = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-    }
-
-    const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-    }
-    if (isAdmin) {
-        return <>
-            <button type="button" className="button-approve" onClick={(event) => handleApprove(event)}>Approve</button>
-            <button type="button" className="button-delete" onClick={(event) => handleDelete(event)}>Delete</button>
-        </>
-    }
-    else if (isLoggedIn && !isLiked) {
-        return <button type="button" className = "button-like" onClick={(event) => handleLike(event)}>{"\u2661"}</button>;
-    }
-    else if(isLoggedIn && isLiked){
-        <button type="button" className = "button-unlike" onClick={(event) => handleUnlike(event)}>{"\u2665"}</button>
-    }
-    else {
-        <></>
-    }
 }
