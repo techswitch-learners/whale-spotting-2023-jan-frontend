@@ -59,6 +59,7 @@ export interface WhaleSighting {
   approvalStatus: ApprovalStatus,
   whaleSpecies: WhaleSpecies,
   user: User,
+  likedBy: string[],
 }
 
 export interface NewUser {
