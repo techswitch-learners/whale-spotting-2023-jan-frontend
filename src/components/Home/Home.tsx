@@ -6,7 +6,7 @@ export const Home: React.FunctionComponent = () => {
 
   return (
     <main>
-      <h1 className="main-header">Whale Spotting</h1>
+      <h1 className="home-main-header">Whale Spotting</h1>
       <section className="image-info-section">
         <WhaleCarousel />
       </section >
