@@ -27,7 +27,10 @@ export function CreateSighting(){
 
     useEffect(() => {
         fetchSpeciesQuery(search)
-            .then(response => setListWhaleSpecies(response));
+            .then(response => {
+                setListWhaleSpecies(response);
+                setSelectedWhaleSpecies(response[0].name);
+            });
     }, []);
     
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -43,7 +46,7 @@ export function CreateSighting(){
             whaleSpecies: selectedWhaleSpecies
         }
     
-        createSighting(newSighting)
+        createSighting(newSighting, loginContext.authHeader)
             .then(() => { setStatus("Great! Your sighting has been submitted successfully.")
             })
             .catch((e) => setStatus(e.message))

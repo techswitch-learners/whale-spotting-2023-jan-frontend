@@ -34,7 +34,7 @@ export interface WhaleSpecies {
   name: string,
   tailType: TailType,
   teethType: TeethType,
-  whaleSize: Size,
+  size: Size,
   colour: string,
   location: string,
   diet: string,
@@ -59,6 +59,7 @@ export interface WhaleSighting {
   approvalStatus: ApprovalStatus,
   whaleSpecies: WhaleSpecies,
   user: User,
+  likedBy: string[],
 }
 
 export interface NewUser {
@@ -89,6 +90,28 @@ export interface SpeciesSearch {
   colour: string | null;
 }
 
+export interface TripPlannerRequest {
+  latitude: number;
+  longitude: number;
+}
+
+export interface TripPlannerResponse {
+  map: any;
+  id: number;
+  dateOfSighting: Date;
+  locationLatitude: number;
+  locationLongitude: number;
+  photoImageURL: string;
+  distance: number;
+  numberOfWhales: number;
+  whaleSpecies: WhaleSpecies;
+
+export interface UserLeaderboardResponse{
+  userName: string;
+  numberOfWhaleSightings: number;
+  likesReceived: number;
+}
+
 export const checkBackendConnection = async (): Promise<boolean> => {
   let response: Response;
   try {
@@ -109,10 +132,11 @@ export async function fetchSightingById(sightingId: number): Promise<WhaleSighti
   }
 }
 
-export async function createSighting(newSighting: NewSighting): Promise<Response> {
-  const response = await fetch(`https://${backendUrl}/sightings/submit`, {
+export async function createSighting(newSighting: NewSighting, encodedUsernamePassword: string): Promise<Response> {
+  const response = await fetch(`${backendUrl}/sightings/submit`, {
     method: "POST",
     headers: {
+      "Authorization": `Basic ${encodedUsernamePassword}`,
       "Content-Type": "application/json"
     },
     body: JSON.stringify(newSighting),
@@ -126,30 +150,39 @@ export async function createSighting(newSighting: NewSighting): Promise<Response
 }
 
 export async function fetchLogin(encodedUsernamePassword: string): Promise<void> {
-	const response = await fetch(`${backendUrl}/login`, {
+  const response = await fetch(`${backendUrl}/login`, {
+    headers: {
+      'Authorization': `Basic ${encodedUsernamePassword}`
+    }
+  });
+  if (!response.ok) {
+    throw new Error(JSON.stringify(await response.json()));
+  }
+}
+
+export async function fetchIsAdmin(encodedUsernamePassword: string): Promise<boolean> {
+	const response = await fetch(`${backendUrl}/login/admin`, {
 		headers: {
 			'Authorization': `Basic ${encodedUsernamePassword}`
 		}
 	});
-	if (!response.ok) {
-		throw new Error(JSON.stringify(await response.json()));
-	}
+	return response.ok;
 }
 
 export async function createNewUser(newUser: NewUser): Promise<Response> {
-	const response = await fetch(`${backendUrl}/users/create`, {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json"
-		},
-		body: JSON.stringify(newUser),
-	});
-	if (!response.ok) {
-		throw new Error(await response.json());
-	}
-	else {
-		return response;
-	}
+  const response = await fetch(`${backendUrl}/users/create`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newUser),
+  });
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return response;
+  }
 }
 
 export async function fetchSpeciesQuery(speciesSearch: SpeciesSearch): Promise<WhaleSpecies[]> {
@@ -210,8 +243,40 @@ export async function createLike(newLike: NewLike): Promise<Response> {
   }
 }
 
+export async function getLatLonFromLocation(location: string): Promise<TripPlannerRequest> {
+  const response = await fetch(`https://geocode.maps.co/search?q=${location}`);
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    const responseJson = await response.json();
+    let latlon: TripPlannerRequest = { latitude: responseJson[0].lat, longitude: responseJson[0].lon };
+    return (latlon);
+  }
+}
+
+export async function getTopFiveSightingsByLocation(latlon: TripPlannerRequest): Promise<TripPlannerResponse[]> {
+  const response = await fetch(`${backendUrl}/plan-trip?lat=${latlon.latitude}&lon=${latlon.longitude}`)
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return await response.json();
+  }
+}
+
 export async function fetchAllWhaleSpecies(): Promise<string[]> {
   const response = await fetch(`${backendUrl}/species/species-list`);
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return await response.json();
+  }
+}
+
+export async function fetchLeaderboard(): Promise<UserLeaderboardResponse[]> {
+  const response = await fetch(`${backendUrl}/users/leaderboard`);
   if (!response.ok) {
     throw new Error(await response.json());
   }

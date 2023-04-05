@@ -1,5 +1,6 @@
 import React from "react";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
+import './Map.scss';
 import {
   ComposableMap,
   Geographies,
@@ -7,21 +8,15 @@ import {
   ZoomableGroup,
   Marker
 } from "react-simple-maps";
-import {fetchAllApprovedSightings, WhaleSighting } from "../../clients/apiClient";
+import { WhaleSighting } from "../../clients/apiClient";
 
-export const MapChart: React.FC = () => {
-   const [listWhaleSighting, setListWhaleSighting] = useState<WhaleSighting[]>([]);
-    useEffect(() => {
-        fetchAllApprovedSightings()
-            .then(response => setListWhaleSighting(response));
-    }, []);
+interface MapProps {
+  whaleSightings: WhaleSighting[];
+}
 
-    const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
+export function MapChart({ whaleSightings } : MapProps) {
+  const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
 
-    if (listWhaleSighting.length === 0) {
-      return <div> Loading... </div>;
-    } 
-  
   return (
     <ComposableMap>
       <ZoomableGroup center={[0, 0]} zoom={1}>
@@ -37,7 +32,7 @@ export const MapChart: React.FC = () => {
           ))
         }
       </Geographies>
-      {listWhaleSighting.map((ws) => (
+      {whaleSightings.map((ws) => (
         <Marker key={ws.id} coordinates={[ws.locationLongitude,ws.locationLatitude]}>
           <g
             fill="none"
@@ -54,7 +49,11 @@ export const MapChart: React.FC = () => {
            <text
             textAnchor="middle"
             y={-30}
-            style={{ fontFamily: "system-ui", fill: "#5D5A6D" }}
+            style={{ 
+              fontFamily: "system-ui", 
+              fill: "#5D5A6D",
+              fontSize: "10px",
+            }}
           >
             {ws.dateOfSighting.slice(0,10)}
           </text>
