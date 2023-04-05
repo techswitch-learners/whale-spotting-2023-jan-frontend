@@ -90,6 +90,22 @@ export interface SpeciesSearch {
   colour: string | null;
 }
 
+export interface TripPlannerRequest {
+  latitude: number;
+  longitude: number;
+}
+
+export interface TripPlannerResponse {
+  map: any;
+  id: number;
+  dateOfSighting: Date;
+  locationLatitude: number;
+  locationLongitude: number;
+  photoImageURL: string;
+  distance: number;
+  numberOfWhales: number;
+  whaleSpecies: WhaleSpecies;
+
 export interface UserLeaderboardResponse{
   userName: string;
   numberOfWhaleSightings: number;
@@ -134,14 +150,14 @@ export async function createSighting(newSighting: NewSighting, encodedUsernamePa
 }
 
 export async function fetchLogin(encodedUsernamePassword: string): Promise<void> {
-	const response = await fetch(`${backendUrl}/login`, {
-		headers: {
-			'Authorization': `Basic ${encodedUsernamePassword}`
-		}
-	});
-	if (!response.ok) {
-		throw new Error(JSON.stringify(await response.json()));
-	}
+  const response = await fetch(`${backendUrl}/login`, {
+    headers: {
+      'Authorization': `Basic ${encodedUsernamePassword}`
+    }
+  });
+  if (!response.ok) {
+    throw new Error(JSON.stringify(await response.json()));
+  }
 }
 
 export async function fetchIsAdmin(encodedUsernamePassword: string): Promise<boolean> {
@@ -154,19 +170,19 @@ export async function fetchIsAdmin(encodedUsernamePassword: string): Promise<boo
 }
 
 export async function createNewUser(newUser: NewUser): Promise<Response> {
-	const response = await fetch(`${backendUrl}/users/create`, {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json"
-		},
-		body: JSON.stringify(newUser),
-	});
-	if (!response.ok) {
-		throw new Error(await response.json());
-	}
-	else {
-		return response;
-	}
+  const response = await fetch(`${backendUrl}/users/create`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newUser),
+  });
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return response;
+  }
 }
 
 export async function fetchSpeciesQuery(speciesSearch: SpeciesSearch): Promise<WhaleSpecies[]> {
@@ -219,6 +235,28 @@ export async function createLike(newLike: NewLike): Promise<Response> {
     },
     body: JSON.stringify(newLike),
   });
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return await response.json();
+  }
+}
+
+export async function getLatLonFromLocation(location: string): Promise<TripPlannerRequest> {
+  const response = await fetch(`https://geocode.maps.co/search?q=${location}`);
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    const responseJson = await response.json();
+    let latlon: TripPlannerRequest = { latitude: responseJson[0].lat, longitude: responseJson[0].lon };
+    return (latlon);
+  }
+}
+
+export async function getTopFiveSightingsByLocation(latlon: TripPlannerRequest): Promise<TripPlannerResponse[]> {
+  const response = await fetch(`${backendUrl}/plan-trip?lat=${latlon.latitude}&lon=${latlon.longitude}`)
   if (!response.ok) {
     throw new Error(await response.json());
   }

@@ -1,5 +1,6 @@
 import React from "react";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
+import './Map.scss';
 import {
   ComposableMap,
   Geographies,

@@ -1,98 +1,54 @@
-// Temporary border constants for designing. Remove or set to transparent 0px after use
-$border: 2px solid rgb(255, 0, 0);
+@import "../../Constants.scss";
 
-.tripplanner-container {
-    height: 90vh;
-    width: 1440px;
-    display: grid;
-    grid-template-rows: 10% 10% 40% 40%;
-    justify-items: center;
-    border: $border;
+.tripplanner-main {
+    background-color: $default-foreground;
 }
 
-.tripplanner-header {
-    border: $border;
-    margin: 0.5%;
-    grid-row-start: 1;
-    grid-row-end: 2;
+.tripplanner-container {
+    color: $light-font-color;
+    font-family: $fontType;
+    height: auto;
+    width: 1440px;
     display: grid;
-    align-items: center;
-    font-size: 2em;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    width: 100%;
 }
 
 .tripplanner-search {
-    border: $border;
-    width: 10%;
-    margin: 0.5%;
-    grid-row-start: 2;
-    grid-row-end: 3;
     display: grid;
     align-items: center;
 }
 
 .tripplanner-map {
-    border: $border;
-    width: 50%;
-    margin: 2%;
-    grid-row-start: 3;
-    grid-row-end: 4;
+    background-color: $light-background;
+    width: 30%;
     display: grid;
     align-items: center;
+    box-shadow: 0 4px 4px 0 $light-font-color;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.tripplanner-map:hover {
+    box-shadow: 0 8px 16px 0 $light-font-color;
 }
 
 .tripplanner-table {
-    border: $border;
-    margin: 2%;
     width: 80%;
-    grid-row-start: 4;
-    grid-row-end: 5;
     display: grid;
     align-items: center;
 }
 
-@media (max-width: 425px) {
-
-    .tripplanner-container {
-        width: 350px;
-        display: grid;
-        grid-template-rows: 10% 10% 80%;
-        justify-items: center;
-        border: $border;
-        margin: 1%;
-    }
-
-    .tripplanner-header {
-        border: $border;
-        margin: 1%;
-        grid-row-start: 1;
-        grid-row-end: 2;
-        display: grid;
-        align-items: center;
-        font-size: 0.75em;
-    }
-
-    .tripplanner-search {
-        border: $border;
-        width: 40%;
-        margin: 1%;
-        grid-row-start: 2;
-        grid-row-end: 3;
-        display: grid;
-        align-items: center;
-    }
-
+@media (max-width: 430px) {
     .tripplanner-map {
         display: none;
-
     }
 
-    .tripplanner-table {
-        border: $border;
-        margin: 1%;
-        width: 80%;
-        grid-row-start: 3;
-        grid-row-end: 4;
-        display: grid;
+    .tripplanner-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
         align-items: center;
     }
 }
