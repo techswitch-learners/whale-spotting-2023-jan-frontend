@@ -20,6 +20,15 @@
     justify-content: center;
 }
 
+.landing-message>a:visited{
+    color: $light-font-color;
+}
+
+.landing-message>a:hover{
+    color:$button-hover-color;
+}
+
+
 .landing-image {
     width: 100%;
     height: 100%;
