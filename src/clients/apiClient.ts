@@ -292,7 +292,6 @@ export async function approveSighting(sightingId: number, encodedUsernamePasswor
     method: "PATCH",
     headers: {
       "Authorization": `Basic ${encodedUsernamePassword}`,
-      //"Content-Type": "application/json"
     },
   });
   if (!response.ok) {
