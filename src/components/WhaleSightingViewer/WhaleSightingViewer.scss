@@ -4,7 +4,8 @@
     display: grid;
     text-align: left;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 2% 94% 4%;
+    grid-template-rows: 8% 86% 6%;
+    background-color: $darker-background;
 }
 
 .whale-sighting-heading{
@@ -12,11 +13,19 @@
     grid-row-end: 2;
     grid-column-start: 1;
     grid-column-end: 2;
-    
+    margin-top: 0px;
+    margin-bottom: 0px;
     background-color: $background;
+    color: $light-font-color;
+    padding: 2%;
+    font-size: 2em;
 
     @media screen and (max-width: 430px){
         font-size: $titleSizeMobile;
+
+        .whale-sighting-page {
+            grid-row: 90% 10%;
+        }
     }
     
     @media screen and (min-width: 431px){
@@ -33,12 +42,9 @@ button.whale-sighting-map-view-button,.whale-sighting-list-view-button{
     grid-row-end: 2;
     grid-column-start: 1;
     grid-column-end: 2;
-    background-color: $button-color;
-    border:0;
-    width: 200px;
-    box-sizing: border-box;
-    margin: 5px;
-
+    color: $light-font-color;
+    padding-left: 17%;
+    padding-top:15%;
     @media screen and (max-width: 430px){
         width: 100px;
         height: 35px;
@@ -79,7 +85,6 @@ button.whale-sighting-list-view-button:focus-visible
     grid-row-end: 4;
     grid-column-start: 2;
     grid-column-end: 3;
-
     display: flex;
     justify-content: flex-end;
     justify-content: space-around;
@@ -95,7 +100,7 @@ button.whale-sighting-list-view-button:focus-visible
 
 .nextlink, .prevlink {
     font-size: 35px;
-    color: $dark-font-color;
+    color: $light-font-color;
     text-align: center;
 
     @media screen and (max-width: 430px){
