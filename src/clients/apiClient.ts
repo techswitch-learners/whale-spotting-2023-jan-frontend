@@ -193,16 +193,17 @@ export async function deleteLike(likeId: number): Promise<Response> {
 }
 
 export async function fetchFilterQuery(whaleSightingSearch: WhaleSightingSearch): Promise<WhaleSighting[]> {
-  const whaleSpecies = whaleSightingSearch.whaleSpecies == null ? "" : "whaleSightingSearch.size";
-  const colour = whaleSightingSearch.colour == null ? "" : "whaleSightingSearch.colour";
-  const tailType = whaleSightingSearch.tailType == null ? "" : "whaleSightingSearch.tailType";
-  const size = whaleSightingSearch.whaleSize == null ? "" : "whaleSightingSearch.size";
-  const maxLatitude = whaleSightingSearch.maxLatitude == null ? "" : "whaleSightingSearch.size";
-  const minLatitude = whaleSightingSearch.minLatitude == null ? "" : "whaleSightingSearch.size";
-  const maxLongitude = whaleSightingSearch.maxLongitude == null ? "" : "whaleSightingSearch.size";
-  const minLongitude = whaleSightingSearch.minLongitude == null ? "" : "whaleSightingSearch.size";
+  const searchQuery = "".concat(whaleSightingSearch.whaleSpecies == "" ? "" : `Name=${whaleSightingSearch.whaleSpecies}`)
+                        .concat(whaleSightingSearch.colour == "" ? "" : `&Colour=${whaleSightingSearch.colour}`)
+                        .concat(Number.isNaN(whaleSightingSearch.tailType) ? "" : `&TailType=${whaleSightingSearch.tailType}`)
+                        .concat(Number.isNaN(whaleSightingSearch.whaleSize) ? "" : `&Size=${whaleSightingSearch.whaleSize}`)
+                        .concat(Number.isNaN(whaleSightingSearch.maxLatitude) ? "" : `&MaxLatitude=${whaleSightingSearch.maxLatitude}`)
+                        .concat(Number.isNaN(whaleSightingSearch.minLatitude) ? "" : `&MinLatitude=${whaleSightingSearch.minLatitude}`)
+                        .concat(Number.isNaN(whaleSightingSearch.maxLongitude) ? "" : `&MaxLongitude=${whaleSightingSearch.maxLongitude}`)
+                        .concat(Number.isNaN(whaleSightingSearch.minLongitude) ? "" : `&MinLongitude=${whaleSightingSearch.minLongitude}`);
+                        
+  const response = await fetch(`${backendUrl}/sightings/search?${searchQuery}`);
   
-  const response = await fetch(`${backendUrl}/sightings/search?WhaleSpecies=${whaleSpecies}&Colour=${colour}&TailType=${tailType}&Size=${size}&MaxLatitude=${maxLatitude}&MinLatitude=${minLatitude}&MaxLongitude=${maxLongitude}&MinLongitude=${minLongitude}`);
   if (!response.ok) {
     throw new Error(await response.json());
   } else {

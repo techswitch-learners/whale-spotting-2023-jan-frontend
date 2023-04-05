@@ -13,7 +13,7 @@ interface WhaleSightingViewerProps {
 export function WhaleSightingViewer({loggedIn, isAdminPage} : WhaleSightingViewerProps) {
 
 	const [page, setPage] = useState(1);
-	const [sightings, setSightings] = useState<WhaleSighting[]>();
+	const [sightings, setSightings] = useState<WhaleSighting[]>([]);
 
 
 	useEffect(() => {
@@ -38,7 +38,7 @@ export function WhaleSightingViewer({loggedIn, isAdminPage} : WhaleSightingViewe
 				<WhaleSightingFilters setSightings={setSightings}/>
 			</div>
 			<div className="whale-sighting-sort">Sort to go here</div>
-			<SightingList pageNum={page} sightings={sightings} loggedIn={loggedIn} isAdmin={isAdminPage}/>
+				<SightingList pageNum={page} sightings={sightings} loggedIn={loggedIn} isAdmin={isAdminPage}/>
 			<div className="page-buttons">
 				{page > 1
 					?

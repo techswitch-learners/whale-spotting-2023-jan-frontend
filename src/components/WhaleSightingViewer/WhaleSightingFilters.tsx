@@ -13,7 +13,7 @@ import {
 import "./WhaleSightingFilters.scss";
 
 interface WhaleSightingFiltersProps {
-    setSightings: React.SetStateAction<React.Dispatch<WhaleSighting[]>>;
+    setSightings: React.Dispatch<React.SetStateAction<WhaleSighting[]>>;
 }
 
 export function WhaleSightingFilters({ setSightings }: WhaleSightingFiltersProps) {
@@ -41,22 +41,10 @@ export function WhaleSightingFilters({ setSightings }: WhaleSightingFiltersProps
             maxLongitude: parseFloat(maxLog), 
             minLongitude: parseFloat(minLog),
         }
-        useEffect(() => {
-            fetchFilterQuery(sightingSearch)
-                .then(response => setSightings(response));
-        }, []);
+        
+        fetchFilterQuery(sightingSearch)
+            .then(response => setSightings(response));
     }
-
-    // export interface WhaleSightingSearch {
-    //     whaleSpecies: string | null;
-    //     colour: string | null;
-    //     tailType: number | null;
-    //     whaleSize: number | null; 
-    //     maxLatitude: number | null; 
-    //     minLatitude: number | null; 
-    //     maxLongitude: number | null; 
-    //     minLongitude: number | null; 
-    //   }
 
     let search: SpeciesSearch =
     {
@@ -173,7 +161,7 @@ export function WhaleSightingFilters({ setSightings }: WhaleSightingFiltersProps
                         </input>
                     </label>
                 </div>
-                <button className="btn-search-btn" title="search_button">Search</button>
+                <button type="submit" className="btn-search-btn" title="search_button">Search</button>
             </form>
         </div>
     )
