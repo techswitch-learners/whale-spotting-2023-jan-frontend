@@ -43,7 +43,7 @@ export function WhaleSightingFilters({setSightings}: WhaleSightingFiltersProps) 
             <form className="whalesightingfilterform" onSubmit={event => handleSearch(event)}>
                 <div className="filter-grid">
                     <label className="sighting-labels" htmlFor="whalespecies">
-                        Whale Species
+                        Species
                         <br></br>
                         <select className="selectOption" value={selectedWhaleSpecies} onChange={event => setSelectedWhaleSpecies(event.target.value)}>
                             <option value="">----</option>
