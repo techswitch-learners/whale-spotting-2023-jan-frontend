@@ -4,6 +4,7 @@ import { fetchAllApprovedSightings, WhaleSighting, getPendingSightings } from ".
 import { Login } from "../Login/Login";
 import "./WhaleSightingViewer.scss";
 import { WhaleSightingFilters } from "./WhaleSightingFilters";
+import { MapChart } from "../TripPlanner/Map";
 
 interface WhaleSightingViewerProps {
 	loggedIn: boolean,
@@ -14,6 +15,7 @@ export function WhaleSightingViewer({loggedIn, isAdminPage} : WhaleSightingViewe
 
 	const [page, setPage] = useState(1);
 	const [sightings, setSightings] = useState<WhaleSighting[]>();
+	const [mapView, setMapView] = useState<boolean>(false);
 
 
 	useEffect(() => {
@@ -28,12 +30,15 @@ export function WhaleSightingViewer({loggedIn, isAdminPage} : WhaleSightingViewe
 	
 
 	if (!sightings) return <p>Waiting for data...</p>
-
+	if (mapView) 
+		{
+			return <><MapChart whaleSightings={sightings} /></>
+		} else {
 	return <>
 
 		<h2 className="whale-sighting-heading">Whale Sighting Viewer</h2>
 		<div className="whale-sighting-page">
-			{!isAdminPage && <div className="whale-sighting-map-view-button">Switch to Map View</div>}
+			{!isAdminPage && <button className="whale-sighting-map-view-button" onClick={()=>setMapView(true)}>Switch to Map View</button>}
 			<div className="whale-sighting-filter">
 				<WhaleSightingFilters setSightings={setSightings}/>
 			</div>
@@ -59,4 +64,5 @@ export function WhaleSightingViewer({loggedIn, isAdminPage} : WhaleSightingViewe
 			        <Login /></>
 				: <></>}
 	</>
+}
 }
