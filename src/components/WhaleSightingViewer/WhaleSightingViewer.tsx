@@ -14,6 +14,8 @@ interface WhaleSightingViewerProps {
 export function WhaleSightingViewer({ loggedIn, isAdminPage }: WhaleSightingViewerProps) {
 
 	const [page, setPage] = useState(1);
+	const [sightings, setSightings] = useState<WhaleSighting[]>();
+	const [click, setClick] = useState<boolean>(true);
 	const [sightings, setSightings] = useState<WhaleSighting[]>([]);
 	const [mapView, setMapView] = useState<boolean>(false);
 
@@ -26,7 +28,9 @@ export function WhaleSightingViewer({ loggedIn, isAdminPage }: WhaleSightingView
 			getPendingSightings()
 				.then(data => setSightings(data));
 		}
+	}, [click])
 	}, [])
+
 
 	if (!sightings) return <p>Waiting for data...</p>
 	if (mapView) {
@@ -41,14 +45,21 @@ export function WhaleSightingViewer({ loggedIn, isAdminPage }: WhaleSightingView
 		<div className="whale-sighting-page">
 			{!isAdminPage && <div className="whale-sighting-map-view-button">Switch to Map View</div>}
 			<div className="whale-sighting-filter">
-				<WhaleSightingFilters setSightings={setSightings}/>
+				<WhaleSightingFilters setSightings={setSightings} />
 			</div>
+
+
+			<div className="whale-sighting-sort">Sort to go here</div>
+			<SightingList pageNum={page} sightings={sightings} loggedIn={loggedIn} isAdminPage={isAdminPage} click={click} setClick={setClick} />
+			<SightingList pageNum={page} sightings={sightings} loggedIn={loggedIn} isAdmin={isAdminPage}/>
+
 			<div className="whale-sighting-sort">Sort to go here</div>
 				<SightingList 
 				pageNum={page} 
 				sightings={sightings} 
 				loggedIn={loggedIn} 
 				isAdmin={isAdminPage}/>
+        
 			<div className="page-buttons">
 				{page > 1
 					?
@@ -64,10 +75,11 @@ export function WhaleSightingViewer({ loggedIn, isAdminPage }: WhaleSightingView
 					: <></>}
 			</div>
 		</div>
-			{!loggedIn 
-			    ? <><h3>Log in below to like posts:</h3>
-			        <Login /></>
-				: <></>}
-		</>
+
+		{!loggedIn
+			? <><h3>Log in below to like posts:</h3>
+				<Login /></>
+			: <></>}
+	</>
 	}
 }
