@@ -46,6 +46,10 @@ td.table-data {
     top: 0;
 }
 
+.species-details-paragraph{
+    color: $darker-background;
+}
+
 @media(max-width: 430px) {
     .species-image-container,
     .species-image {
