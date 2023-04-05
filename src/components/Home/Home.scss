@@ -3,9 +3,10 @@
 .image-info-section {
     position: relative;
     width: 200;
+    margin-bottom: 32px;
 }
 
-.main-header {
+h1.main-header {
     text-align: center;
 }
 
@@ -32,6 +33,9 @@
     .main-image {
         max-height: 200px;
     }
+    h1.main-header {
+        margin-left: 0px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -40,5 +44,8 @@
     }
     .main-image-description {
         height: 100px;
+    }
+    h1.main-header {
+        margin-left: 0px;
     }
 }

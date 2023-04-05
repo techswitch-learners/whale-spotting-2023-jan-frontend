@@ -30,24 +30,26 @@ export function Login() {
 	}
 
 	return <div>
-		<h1>Login</h1>
+		<h1 className="login-title">Login</h1>
 		<form className="login-form" onSubmit={handleSubmit}>
 			{error &&
 				<p>Login failed, please try again.</p>}
-			<label className="input-field">
+			<label className="login-input-field">
 				Username
-				<div>
+				<div className="username-input">
 					<input
+						className="username-field"
 						type="text"
 						value={username}
 						onChange={(event) => setUsername(event.target.value)}
 					/>
 				</div>
 			</label>
-			<label className="input-field">
+			<label className="login-input-field">
 				Password
 				<div className="password-input">
 					<input
+						className="password-field"
 						type={showPassword ? 'text' : 'password'}
 						value={password}
 						onChange={(event) => setPassword(event.target.value)}
@@ -61,7 +63,7 @@ export function Login() {
 			</label>
 			<button className="login-button" type="submit">Login</button>
 			<p>{!loginContext.isLoggedIn ? '' : 'Successfully logged in!'}</p>
+			<Link className="create-button" to="/users/create">Create account</Link>
 		</form>
-		<Link to="/user/create">Create account</Link>
 	</div>
 }

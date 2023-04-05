@@ -1,25 +1,78 @@
-.login-form .input-field {
-  display: flex;
+@import "../../Constants.scss";
+
+.login-form {
   flex-direction: column;
+  border-radius: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: $darker-background;
 }
 
-.login-button {
-  margin-top: 20px;
+.login-form .login-input-field {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  position: relative;
+  align-items: center;
+  margin-top: 0%;
+  padding: 1%;
+  color: aliceblue;
+}
+
+.login-title {
+  background-color: $background;
+  color: $light-font-color;
+  padding: 15px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.username-input {
+  border-radius: 30px;
+  margin-top: 1%;
 }
 
 .password-input {
+  border-radius: 30px;
+  margin-top: 1%;
   position: relative;
+}
+
+.login-button {
+  margin-top: 2%;
+  background-color: $button-color;
+  margin-bottom: 0%;
+}
+
+.create-button {
+  margin-top: 2%;
+  margin-bottom: 0%;
+  color:antiquewhite;
+}
+
+.login-button:hover {
+  background-color: $button-hover-color;
+}
+
+.password-field {
+  border-radius: 10px;
+  padding: 5px;
+  background-color: $light-background;
+}
+
+.username-field {
+  border-radius: 10px;
+  padding: 5px;
+  background-color: $light-background;
 }
 
 .password-toggle {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   border: none;
   background: none;
-  cursor: pointer;
-  padding:0 10px 0 0;
-  margin-left: -20px;
+  margin-left: -40px;
+  margin-top: -20px;
 }
 
 .password-toggle:hover,
