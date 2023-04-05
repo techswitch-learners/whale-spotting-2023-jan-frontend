@@ -105,8 +105,9 @@ export interface TripPlannerResponse {
   distance: number;
   numberOfWhales: number;
   whaleSpecies: WhaleSpecies;
+}
 
-export interface UserLeaderboardResponse{
+export interface UserLeaderboardResponse {
   userName: string;
   numberOfWhaleSightings: number;
   likesReceived: number;
@@ -161,12 +162,12 @@ export async function fetchLogin(encodedUsernamePassword: string): Promise<void>
 }
 
 export async function fetchIsAdmin(encodedUsernamePassword: string): Promise<boolean> {
-	const response = await fetch(`${backendUrl}/login/admin`, {
-		headers: {
-			'Authorization': `Basic ${encodedUsernamePassword}`
-		}
-	});
-	return response.ok;
+  const response = await fetch(`${backendUrl}/login/admin`, {
+    headers: {
+      'Authorization': `Basic ${encodedUsernamePassword}`
+    }
+  });
+  return response.ok;
 }
 
 export async function createNewUser(newUser: NewUser): Promise<Response> {
