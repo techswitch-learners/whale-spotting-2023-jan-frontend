@@ -296,7 +296,6 @@ export async function approveSighting(sightingId: number, encodedUsernamePasswor
     },
   });
   if (!response.ok) {
-    console.log(response);
     throw new Error(await response.json())
   } else {
     return (response);
@@ -304,7 +303,7 @@ export async function approveSighting(sightingId: number, encodedUsernamePasswor
 }
 
 export async function rejectSighting(sightingId: number, encodedUsernamePassword: string): Promise<Response> {
-  const response = await fetch(`${backendUrl}/sightings/${sightingId}/reject`, {
+  const response = await fetch(`${backendUrl}/sightings/reject/${sightingId}`, {
     method: "PATCH",
     headers: {
       "Authorization": `Basic ${encodedUsernamePassword}`,

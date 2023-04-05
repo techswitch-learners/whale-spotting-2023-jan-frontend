@@ -31,7 +31,6 @@ export default function SightingButton({
     }
 
     const handleApprove = (event: React.MouseEvent<HTMLButtonElement>) => {
-        console.log(sighting.id, loginContext.authHeader);
         approveSighting(sighting.id, loginContext.authHeader);
         setClick(!click);
         event.preventDefault();
