@@ -285,3 +285,36 @@ export async function fetchLeaderboard(): Promise<UserLeaderboardResponse[]> {
     return await response.json();
   }
 }
+
+export async function approveSighting(sightingId: number, encodedUsernamePassword: string): Promise<Response> {
+
+  const response = await fetch(`${backendUrl}/sightings/approve/${sightingId}`, {
+    method: "PATCH",
+    headers: {
+      "Authorization": `Basic ${encodedUsernamePassword}`,
+      //"Content-Type": "application/json"
+    },
+  });
+  if (!response.ok) {
+    console.log(response);
+    throw new Error(await response.json())
+  } else {
+    return (response);
+  }
+}
+
+export async function rejectSighting(sightingId: number, encodedUsernamePassword: string): Promise<Response> {
+  const response = await fetch(`${backendUrl}/sightings/${sightingId}/reject`, {
+    method: "PATCH",
+    headers: {
+      "Authorization": `Basic ${encodedUsernamePassword}`,
+      "Content-Type": "application/json"
+    },
+  });
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return await (response);
+  }
+}
