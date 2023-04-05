@@ -20,12 +20,14 @@
     justify-content: center;
 }
 
-.landing-message>a:visited{
+.landing-message>a,.landing-message>a:visited{
     color: $light-font-color;
+    text-decoration:none;
 }
 
 .landing-message>a:hover{
     color:$button-hover-color;
+    text-decoration:none;
 }
 
 
