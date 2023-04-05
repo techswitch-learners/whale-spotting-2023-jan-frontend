@@ -19,7 +19,7 @@ h1.whale-info-header {
     padding-top: 20px;
     align-items: center;
     font-size: 2em;
-    color:$light-font-color;
+    color: $light-font-color;
     margin-top: 0px;
 }
 
@@ -59,6 +59,18 @@ section.whale-info-content {
     padding: $cardPaddingDesktop;
 }
 
+.divider-line {
+    width: 90%;
+}
+
+.whale-conservation {
+    width: 90%;
+}
+
+.whale-info-content {
+    width: 95%;
+}
+
 @media (max-width: 425px) {
     section.whale-info-container {
         height: 100%;
@@ -78,5 +90,8 @@ section.whale-info-content {
         grid-column-start: 1;
         grid-column-end: 1;
         align-items: center;
+    }
+    .whale-info-content {
+        width: 90%;
     }
 }
