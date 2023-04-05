@@ -38,7 +38,11 @@ export function WhaleSightingViewer({loggedIn, isAdminPage} : WhaleSightingViewe
 				<WhaleSightingFilters setSightings={setSightings}/>
 			</div>
 			<div className="whale-sighting-sort">Sort to go here</div>
-				<SightingList pageNum={page} sightings={sightings} loggedIn={loggedIn} isAdmin={isAdminPage}/>
+				<SightingList 
+				pageNum={page} 
+				sightings={sightings} 
+				loggedIn={loggedIn} 
+				isAdmin={isAdminPage}/>
 			<div className="page-buttons">
 				{page > 1
 					?

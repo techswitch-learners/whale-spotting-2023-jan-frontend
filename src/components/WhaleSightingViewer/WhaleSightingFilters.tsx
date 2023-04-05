@@ -4,10 +4,10 @@ import React, {
 } from "react";
 import {
     fetchSpeciesQuery,
-    SpeciesSearch, 
-    WhaleSighting, 
-    WhaleSpecies, 
-    fetchFilterQuery, 
+    SpeciesSearch,
+    WhaleSighting,
+    WhaleSpecies,
+    fetchFilterQuery,
     WhaleSightingSearch
 } from "../../clients/apiClient";
 import "./WhaleSightingFilters.scss";
@@ -30,23 +30,23 @@ export function WhaleSightingFilters({ setSightings }: WhaleSightingFiltersProps
 
     function handleSearch(event: any) {
         event.preventDefault();
-        let sightingSearch: WhaleSightingSearch =
+        const sightingSearch: WhaleSightingSearch =
         {
             whaleSpecies: selectedWhaleSpecies,
             colour: selectedColour,
             tailType: parseInt(selectedTailType),
-            whaleSize: parseInt(selectedSize), 
-            maxLatitude: parseFloat(maxLat), 
-            minLatitude: parseFloat(minLat), 
-            maxLongitude: parseFloat(maxLog), 
+            whaleSize: parseInt(selectedSize),
+            maxLatitude: parseFloat(maxLat),
+            minLatitude: parseFloat(minLat),
+            maxLongitude: parseFloat(maxLog),
             minLongitude: parseFloat(minLog),
         }
-        
+
         fetchFilterQuery(sightingSearch)
             .then(response => setSightings(response));
     }
 
-    let search: SpeciesSearch =
+    const search: SpeciesSearch =
     {
         tailType: null,
         size: null,
