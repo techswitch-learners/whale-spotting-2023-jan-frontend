@@ -1,6 +1,6 @@
 export function WhaleConservation() {
     return (
-        <div>
+        <div className="whale-info-content">
             <p> Welcome to our Whale Spotting website,where we not only enjoy the beauty of these magnificent creatures
                 but also strive to protect and preserve their habitat.
             </p>
