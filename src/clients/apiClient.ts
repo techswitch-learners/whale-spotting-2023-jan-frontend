@@ -34,7 +34,7 @@ export interface WhaleSpecies {
   name: string,
   tailType: TailType,
   teethType: TeethType,
-  whaleSize: Size,
+  size: Size,
   colour: string,
   location: string,
   diet: string,
@@ -59,6 +59,7 @@ export interface WhaleSighting {
   approvalStatus: ApprovalStatus,
   whaleSpecies: WhaleSpecies,
   user: User,
+  likedBy: string[],
 }
 
 export interface NewUser {
@@ -104,6 +105,11 @@ export interface TripPlannerResponse {
   distance: number;
   numberOfWhales: number;
   whaleSpecies: WhaleSpecies;
+
+export interface UserLeaderboardResponse{
+  userName: string;
+  numberOfWhaleSightings: number;
+  likesReceived: number;
 }
 
 export const checkBackendConnection = async (): Promise<boolean> => {
@@ -126,10 +132,11 @@ export async function fetchSightingById(sightingId: number): Promise<WhaleSighti
   }
 }
 
-export async function createSighting(newSighting: NewSighting): Promise<Response> {
-  const response = await fetch(`https://${backendUrl}/sightings/submit`, {
+export async function createSighting(newSighting: NewSighting, encodedUsernamePassword: string): Promise<Response> {
+  const response = await fetch(`${backendUrl}/sightings/submit`, {
     method: "POST",
     headers: {
+      "Authorization": `Basic ${encodedUsernamePassword}`,
       "Content-Type": "application/json"
     },
     body: JSON.stringify(newSighting),
@@ -151,6 +158,15 @@ export async function fetchLogin(encodedUsernamePassword: string): Promise<void>
   if (!response.ok) {
     throw new Error(JSON.stringify(await response.json()));
   }
+}
+
+export async function fetchIsAdmin(encodedUsernamePassword: string): Promise<boolean> {
+	const response = await fetch(`${backendUrl}/login/admin`, {
+		headers: {
+			'Authorization': `Basic ${encodedUsernamePassword}`
+		}
+	});
+	return response.ok;
 }
 
 export async function createNewUser(newUser: NewUser): Promise<Response> {
@@ -251,6 +267,16 @@ export async function getTopFiveSightingsByLocation(latlon: TripPlannerRequest):
 
 export async function fetchAllWhaleSpecies(): Promise<string[]> {
   const response = await fetch(`${backendUrl}/species/species-list`);
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return await response.json();
+  }
+}
+
+export async function fetchLeaderboard(): Promise<UserLeaderboardResponse[]> {
+  const response = await fetch(`${backendUrl}/users/leaderboard`);
   if (!response.ok) {
     throw new Error(await response.json());
   }

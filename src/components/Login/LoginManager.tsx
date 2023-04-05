@@ -2,9 +2,10 @@ import React, {createContext, ReactNode, useState} from "react";
 
 export const LoginContext = createContext({
     authHeader: "",
+    username: "",
     isLoggedIn: false,
     isAdmin: false,
-    logIn: (value: string) => {},
+    logIn: (authHeader: string, isAdmin: boolean, username: string) => {},
     logOut: () => {},
 });
 
@@ -15,22 +16,25 @@ interface LoginManagerProps {
 export function LoginManager(props: LoginManagerProps): JSX.Element {
     const [loggedIn, setLoggedIn] = useState(false);
     const [authHeader, setAuthHeader] = useState("");
-    // const [isAdmin, setIsAdmin] = useState(false);
+    const [username, setUsername] = useState("");
+    const [isAdmin, setIsAdmin] = useState(false);
     
-    function logIn(newAuthHeader: string) {
+    function logIn(newAuthHeader: string, isUserAdmin: boolean, username: string) {
         setLoggedIn(true);
         setAuthHeader(newAuthHeader);
-        // setIsAdmin(isAdmin);
+        setIsAdmin(isUserAdmin);
+        setUsername(username);
     }
     
     function logOut() {
         setLoggedIn(false);
         setAuthHeader("");
-        // setIsAdmin(false);
+        setIsAdmin(false);
     }
     
     const context = {
         authHeader: authHeader,
+        username: username,
         isLoggedIn: loggedIn,
         isAdmin: loggedIn,
         logIn: logIn,

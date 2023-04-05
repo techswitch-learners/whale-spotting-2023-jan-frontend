@@ -1,8 +1,10 @@
+@import "../../Constants.scss";
+
 .whale-sighting-page {
     display: grid;
-    text-align: lef;
+    text-align: left;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 30% 90%;
+    grid-template-rows: 2% 94% 4%;
 }
 
 .whale-sighting-heading{
@@ -10,6 +12,20 @@
     grid-row-end: 2;
     grid-column-start: 1;
     grid-column-end: 2;
+    
+    background-color: $background;
+
+    @media screen and (max-width: 430px){
+        font-size: $titleSizeMobile;
+    }
+    
+    @media screen and (min-width: 431px){
+        font-size: $titleSizeTablet;
+    }
+
+    @media screen and (min-width: 1100px){
+        font-size: $titleSizeDesktop;
+    }
 }
 
 .whale-sighting-map-view-button{
@@ -33,37 +49,38 @@
     grid-column-end: 4;
 }
 
-.whale-sighting-posts{  
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 1;
-    grid-column-end: 4;
-    list-style: none;
+.page-buttons {
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
     display: flex;
-	justify-content: space-between;
-    flex-wrap: wrap;
+    justify-content: flex-end;
+    justify-content: space-around;
 
     @media screen and (max-width: 430px){
-        .whale-sighting-post{
-            width: 90%;
-            display: flex;
-            flex-direction: column;
-        }
+        margin-top: 40%;
     }
-
-    @media screen and (min-width: 431px){
-        .whale-sighting-post{
-            width: 45%;
-            display: flex;
-            flex-direction: column;
-        }
-    } 
 
     @media screen and (min-width: 1100px){
-        .whale-sighting-post{
-            width: 30%;
-            display: flex;
-            flex-direction: column;
-        }
+        margin-top: -4%;
     }
+}
+
+.nextlink, .prevlink {
+    font-size: 35px;
+    color: $dark-font-color;
+    text-align: center;
+
+    @media screen and (max-width: 430px){
+        margin-left: 5%;
+    }
+}
+
+.nextlink:hover, .prevlink:hover {
+    color: $light-background;
+    text-decoration: underline;
+    cursor: pointer;
+
 }

@@ -2,7 +2,7 @@ import "./Login.scss";
 import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
 import { LoginContext } from "./LoginManager";
-import { fetchLogin } from "../../clients/apiClient";
+import { fetchIsAdmin, fetchLogin } from "../../clients/apiClient";
 
 export function Login() {
 	const loginContext = useContext(LoginContext);
@@ -17,17 +17,16 @@ export function Login() {
 		event.preventDefault();
 
 		const authHeader = btoa(`${username}:${password}`);
+		const isAdmin = await fetchIsAdmin(authHeader)
+
 		try {
 			await fetchLogin(authHeader);
 		} catch (e) {
 			setError((e as Error).message);
 			return;
 		}
-		// const isAdministrator = await isAdmin(username);
-		loginContext.logIn(authHeader);
-		// alert to notify user they've successfully logged in
-		console.log("You're logged in");
-		setError(undefined);
+
+		loginContext.logIn(authHeader, isAdmin, username);
 	}
 
 	return <div>
