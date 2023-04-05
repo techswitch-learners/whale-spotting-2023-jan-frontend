@@ -1,0 +1,40 @@
+@import "../../Constants.scss";
+
+.btn-location-submit {
+    color: $button-color;
+    display: inline;
+    size: $buttonSizeDesktop;
+}
+
+.location-form {
+    display: flex;
+}
+
+.form-label {
+    font-size: $subtitleSizeDesktop;
+}
+
+@media (max-width: 430px) {
+    .location-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-label {
+        text-align: left;
+        margin-right: 5px;
+        color: $light-font-color;
+    }
+
+    .input-field {
+        width: 150px;
+        height: 30px;
+        background-color: $input-field-color;
+        border-radius: 5px;
+    }
+
+    .btn-location-submit {
+        width: 100px;
+    }
+}

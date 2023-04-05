@@ -1,12 +1,20 @@
 @import "../../App.scss";
+@import "../../Constants.scss";
 
 .image-info-section {
     position: relative;
     width: 200;
+    margin-bottom: 32px;
 }
 
-.main-header {
+.home-main-header {
     text-align: center;
+    background-color: $default-foreground;
+    color:$light-font-color;
+    padding-top:20px;
+    padding-bottom:20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .main-welcome-message {
@@ -32,6 +40,9 @@
     .main-image {
         max-height: 200px;
     }
+    h1.main-header {
+        margin-left: 0px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -40,5 +51,8 @@
     }
     .main-image-description {
         height: 100px;
+    }
+    h1.main-header {
+        margin-left: 0px;
     }
 }

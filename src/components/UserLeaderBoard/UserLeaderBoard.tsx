@@ -30,9 +30,9 @@ export const UserLeaderBoard: React.FC = () => {
                 <td className="leaderboard-data">{lb.likesReceived}</td>
                 <td className="leaderboard-badge">
                 {(() => {
-                        if (lb.numberOfWhaleSightings > 1) {
+                        if (lb.numberOfWhaleSightings >= 5) {
                             return <img className="badges" src="../../../public/golden_badge.jpg" />;
-                        }else if (lb.numberOfWhaleSightings > 0){
+                        }else if (lb.numberOfWhaleSightings >= 3){
                             return <img className="badges" src="../../../public/silver_badge.jpg" />;
                         }else{
                             return <img className="badges" src="../../../public/bronze_badge.jpg" />;
