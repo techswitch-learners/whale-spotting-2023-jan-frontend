@@ -31,14 +31,13 @@ export function WhaleSightingViewer({ loggedIn, isAdminPage }: WhaleSightingView
 	if (!sightings) return <p>Waiting for data...</p>
 	if (mapView) {
 		return <>
-		<button className="whale-sighting-list-view-button" onClick={() => setMapView(false)}>Switch to List View</button>
+		<button className="whale-sighting-list-view-button" onClick={() => setMapView(false)}>Go to List View</button>
 		<MapChart whaleSightings={sightings} /></>
 	} else {
 		return <>
-
 			<h2 className="whale-sighting-heading">Whale Sighting Viewer</h2>
 			<div className="whale-sighting-page">
-				{!isAdminPage && <button className="whale-sighting-map-view-button" onClick={() => setMapView(true)}>Switch to Map View</button>}
+				{!isAdminPage && <button className="whale-sighting-map-view-button" onClick={() => setMapView(true)}>Go to Map View</button>}
 				<div className="whale-sighting-filter">
 					<WhaleSightingFilters setSightings={setSightings} />
 				</div>

@@ -28,19 +28,36 @@
     }
 }
 
-.whale-sighting-map-view-button,.whale-sighting-list-view-button{
+button.whale-sighting-map-view-button,.whale-sighting-list-view-button{
     grid-row-start: 1;
     grid-row-end: 2;
     grid-column-start: 1;
     grid-column-end: 2;
     background-color: $button-color;
+    border:0;
     width: 200px;
     box-sizing: border-box;
+    margin: 5px;
+
+    @media screen and (max-width: 430px){
+        width: 100px;
+        height: 35px;
+        font-size: 10px;
+        padding: 5px;
+    }
 }
 
-.whale-sighting-map-view-button:hover,.whale-sighting-list-view-button:hover{
-    border: 0;
+.whale-sighting-map-view-button:hover,
+.whale-sighting-list-view-button:hover{
     background-color: $button-hover-color;
+}
+
+button.whale-sighting-map-view-button:focus,
+button.whale-sighting-list-view-button:focus,
+button.whale-sighting-map-view-button:focus-visible,
+button.whale-sighting-list-view-button:focus-visible
+{
+    outline:0;
 }
 
 .whale-sighting-filters{
