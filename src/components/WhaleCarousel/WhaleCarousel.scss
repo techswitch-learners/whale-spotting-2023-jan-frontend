@@ -9,6 +9,7 @@
 
 .image-info-section {
     position: relative;
+    background-color: $darker-background;
 }
 
 .left-right-home-buttons {
@@ -16,7 +17,7 @@
 
     :hover {
         cursor: pointer;
-        background-color: $default-foreground;
+        background-color: $darker-background;
     }
 }
 
@@ -36,7 +37,7 @@
     border-radius: $buttonRadius;
 
     .main-image-tag {
-        margin: 0 auto;
+        margin: 20px auto 20px auto;
         max-width: 98%;
         max-height: 98%;
         object-fit: cover;
