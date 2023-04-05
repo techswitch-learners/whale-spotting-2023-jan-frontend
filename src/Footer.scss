@@ -1,3 +1,5 @@
+@import "./Constants.scss";
+
 .about-site-paragraph {
     text-align: left;
     padding: 16px;
@@ -23,4 +25,8 @@
 .read-more-section {
     text-align: left;
     padding: 16px;
+}
+
+.footer-paragraph {
+ color: $darker-background;
 }
