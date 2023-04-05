@@ -2,29 +2,51 @@ import React, {
     useState,
     useEffect
 } from "react";
-import { fetchSpeciesQuery, SpeciesSearch, WhaleSighting, WhaleSpecies } from "../../clients/apiClient";
+import {
+    fetchSpeciesQuery,
+    SpeciesSearch,
+    WhaleSighting,
+    WhaleSpecies,
+    fetchFilterQuery,
+    WhaleSightingSearch
+} from "../../clients/apiClient";
 import "./WhaleSightingFilters.scss";
 
 interface WhaleSightingFiltersProps {
-    setSightings: React.SetStateAction<React.Dispatch<WhaleSighting[]>>;
+    setSightings: React.Dispatch<React.SetStateAction<WhaleSighting[]>>;
 }
 
-export function WhaleSightingFilters({setSightings}: WhaleSightingFiltersProps) {
+export function WhaleSightingFilters({ setSightings }: WhaleSightingFiltersProps) {
     const [listWhaleSpecies, setListWhaleSpecies] = useState<WhaleSpecies[]>([]);
-    const [selectedWhaleSpecies, setSelectedWhaleSpecies] = useState("");
-	const [selectedColour, setSelectedColour] = useState("");
-	const [selectedTailType, setSelectedTailType] = useState("");
-	const [selectedSize, setSelectedSize] = useState("");
-	const [minLat, setMinLat] = useState("");
-	const [maxLat, setMaxLat] = useState("");
-	const [minLog, setMinLog] = useState("");
-	const [maxLog, setMaxLog] = useState("");
-	
-	function handleSearch(event: any) {
-		event.preventDefault();
-	}
 
-    let search: SpeciesSearch =
+    const [selectedWhaleSpecies, setSelectedWhaleSpecies] = useState("");
+    const [selectedColour, setSelectedColour] = useState("");
+    const [selectedTailType, setSelectedTailType] = useState("");
+    const [selectedSize, setSelectedSize] = useState("");
+    const [minLat, setMinLat] = useState("");
+    const [maxLat, setMaxLat] = useState("");
+    const [minLog, setMinLog] = useState("");
+    const [maxLog, setMaxLog] = useState("");
+
+    function handleSearch(event: any) {
+        event.preventDefault();
+        const sightingSearch: WhaleSightingSearch =
+        {
+            whaleSpecies: selectedWhaleSpecies,
+            colour: selectedColour,
+            tailType: parseInt(selectedTailType),
+            whaleSize: parseInt(selectedSize),
+            maxLatitude: parseFloat(maxLat),
+            minLatitude: parseFloat(minLat),
+            maxLongitude: parseFloat(maxLog),
+            minLongitude: parseFloat(minLog),
+        }
+
+        fetchFilterQuery(sightingSearch)
+            .then(response => setSightings(response));
+    }
+
+    const search: SpeciesSearch =
     {
         tailType: null,
         size: null,
@@ -43,7 +65,7 @@ export function WhaleSightingFilters({setSightings}: WhaleSightingFiltersProps) 
             <form className="whalesightingfilterform" onSubmit={event => handleSearch(event)}>
                 <div className="filter-grid">
                     <label className="sighting-labels" htmlFor="whalespecies">
-                        Whale Species
+                        Species
                         <br></br>
                         <select className="selectOption" value={selectedWhaleSpecies} onChange={event => setSelectedWhaleSpecies(event.target.value)}>
                             <option value="">----</option>
@@ -139,7 +161,7 @@ export function WhaleSightingFilters({setSightings}: WhaleSightingFiltersProps) 
                         </input>
                     </label>
                 </div>
-                <button className="btn-search-btn" title="search_button">Search</button>
+                <button type="submit" className="btn-search-btn" title="search_button">Search</button>
             </form>
         </div>
     )

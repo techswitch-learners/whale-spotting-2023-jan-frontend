@@ -35,10 +35,11 @@ export const SpeciesIdentification: React.FunctionComponent = () => {
                     <tr className="table-data-row" key={species.name}>
                         <td className="table-data species-name">{species.name}</td>
                         <td className="table-data">{species.location}</td>
-                        <td className="table-data details"><p>Teeth: {TeethType[species.teethType]}</p>
-                            <p>Tail: {TailType[species.tailType]}</p>
-                            <p>Size: {Size[species.size]}</p>
-                            <p>Diet: {species.diet}</p>
+                        <td className="table-data details">
+                            <p className="species-details-paragraph">Teeth: {TeethType[species.teethType]}</p>
+                            <p className="species-details-paragraph">Tail: {TailType[species.tailType]}</p>
+                            <p className="species-details-paragraph">Size: {Size[species.size]}</p>
+                            <p className="species-details-paragraph">Diet: {species.diet}</p>
                         </td>
                         <td className="species-image-container">
                             <img className="species-image" src={species.imageUrl} alt="A lovely whale" />

@@ -17,7 +17,6 @@ export const WhaleCarousel: React.FunctionComponent = () => {
         { imageUrl: "https://rb.gy/jikek1", },
         { imageUrl: "https://rb.gy/oyh0kw", },
         { imageUrl: "https://rb.gy/datjr3", },
-        { imageUrl: "https://rb.gy/jklrt3", },
         { imageUrl: "https://rb.gy/ms4lfe", },
         { imageUrl: "https://rb.gy/4qoxol" },
     ];

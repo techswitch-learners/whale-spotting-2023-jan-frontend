@@ -2,13 +2,14 @@
 
 main.create-user {
     background-color: $background;
-    margin-top: $cardPaddingDesktop;
+    margin-top: 0px;
 }
 
 h1.createUser-Title {
     color: $light-font-color;
     font-family: $fontType;
     padding-top: 28px;
+    margin-top: 0px;
 }
 
 .create-user-status-msg{

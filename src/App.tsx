@@ -9,6 +9,7 @@ import { WhaleSightingViewer } from './components/WhaleSightingViewer/WhaleSight
 import { CreateSighting } from "./components/CreateSighting/CreateSighting";
 import { WhaleInfo } from './components/WhaleInfo/WhaleInfo';
 import { UserLeaderBoard } from "./components/UserLeaderBoard/UserLeaderBoard";
+import { TripPlanner } from "./components/TripPlanner/TripPlanner";
 import { ColourSchemeChecker } from './ColourSchemeChecker';
 import { Login } from './components/Login/Login';
 import { Footer } from './components/Footer';
@@ -46,6 +47,8 @@ function App() {
         <Route path="/users/create" element={<CreateUser />}/>
         <Route path="/whale/species" element={<SpeciesIdentification />} />
         <Route path="/users/leaderboard" element={<UserLeaderBoard />} />
+        <Route path="/whale/about" element={<WhaleInfo />} />
+        <Route path="/plan-trip" element={<TripPlanner />} />
       </Routes>
       <Footer />
     </LoginManager>
