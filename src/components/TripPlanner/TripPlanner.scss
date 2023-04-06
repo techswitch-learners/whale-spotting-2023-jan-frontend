@@ -17,6 +17,7 @@
 
 .tripplanner-header {
     background-color: $default-foreground;
+    color: $light-font-color;
     padding-bottom: 5px;
     margin: 2px;
 }
@@ -55,7 +56,8 @@
         width: 100%;
         align-items: center;
     }
+
     .tripplanner-table {
-        width:100%;
+        width: 100%;
     }
 }
