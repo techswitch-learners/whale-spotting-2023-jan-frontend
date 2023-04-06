@@ -24,6 +24,7 @@
 }
 
 .tripplanner-search {
+    padding-top: 15px;
     display: grid;
     align-items: center;
 }
@@ -57,7 +58,8 @@
         width: 100%;
         align-items: center;
     }
+
     .tripplanner-table {
-        width:100%;
+        width: 100%;
     }
 }

@@ -16,6 +16,8 @@ import { Footer } from './components/Footer';
 import './App.scss';
 import { LoginContext, LoginManager } from "./components/Login/LoginManager";
 import { CreateUser } from "./components/CreateUser/CreateUser";
+
+import{Landing} from "./components/Landing/Landing";
 function App() {
   const loginContext = useContext(LoginContext);
 
@@ -23,7 +25,8 @@ function App() {
     <LoginManager>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/backend-checker" element={<BackendConnectionChecker />} />
         <Route path="/sightings" element={
