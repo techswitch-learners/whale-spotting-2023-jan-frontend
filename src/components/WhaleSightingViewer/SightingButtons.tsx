@@ -2,8 +2,7 @@ import React, { useEffect, useState, useContext} from "react";
 import "./SightingList.scss";
 import { NewLike } from "../../clients/apiClient";
 import { LoginContext } from "../Login/LoginManager";
-import { WhaleSighting, createLike, deleteLike } from "../../clients/apiClient";
-import { WhaleSighting, rejectSighting, approveSighting } from "../../clients/apiClient";
+import { WhaleSighting, createLike, deleteLike, rejectSighting, approveSighting } from "../../clients/apiClient";
 
 interface SightingButtonProps {
     isLoggedIn: boolean,
@@ -25,7 +24,6 @@ export default function SightingButton({
     const loginContext = useContext(LoginContext);
     const [isLikeButtonClicked, setIsLikeButtonClicked] = useState(isLiked);
 
-    const loginContext = useContext(LoginContext);
     const handleLike = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         const newLike: NewLike = {
@@ -71,8 +69,7 @@ export default function SightingButton({
                 Delete
             </button>
         </>}
-        {isLoggedIn && !isLikeButtonClicked &&
-        {isLoggedIn && !isLiked && !isAdminPage &&
+        {isLoggedIn && !isLikeButtonClicked && !isAdminPage &&
             <button
                 type="button"
                 className="button-like"
@@ -80,8 +77,7 @@ export default function SightingButton({
                 {"\u2661"}
             </button>
         }
-        {isLoggedIn && isLikeButtonClicked &&
-        {isLoggedIn && isLiked && !isAdminPage &&
+        {isLoggedIn && isLikeButtonClicked && !isAdminPage &&
             <button
                 type="button"
                 className="button-unlike"

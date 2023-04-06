@@ -334,6 +334,8 @@ export async function rejectSighting(sightingId: number, encodedUsernamePassword
   }
   else {
     return await (response);
+  }
+}
 
 export async function fetchFilterQuery(whaleSightingSearch: WhaleSightingSearch): Promise<WhaleSighting[]> {
   const searchQuery = "".concat(whaleSightingSearch.whaleSpecies == "" ? "" : `Name=${whaleSightingSearch.whaleSpecies}`)
