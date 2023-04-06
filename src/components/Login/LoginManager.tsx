@@ -36,7 +36,7 @@ export function LoginManager(props: LoginManagerProps): JSX.Element {
         authHeader: authHeader,
         username: username,
         isLoggedIn: loggedIn,
-        isAdmin: loggedIn,
+        isAdmin: isAdmin,
         logIn: logIn,
         logOut: logOut,
     };

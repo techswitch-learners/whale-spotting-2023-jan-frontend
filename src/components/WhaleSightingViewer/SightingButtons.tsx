@@ -1,25 +1,31 @@
 import React, { useEffect, useState, useContext} from "react";
 import "./SightingList.scss";
-import { WhaleSighting, createLike, deleteLike } from "../../clients/apiClient";
 import { NewLike } from "../../clients/apiClient";
 import { LoginContext } from "../Login/LoginManager";
+import { WhaleSighting, createLike, deleteLike } from "../../clients/apiClient";
+import { WhaleSighting, rejectSighting, approveSighting } from "../../clients/apiClient";
 
 interface SightingButtonProps {
     isLoggedIn: boolean,
     sighting: WhaleSighting,
     isLiked: boolean,
-    isAdmin: boolean;
+    isAdminPage: boolean;
+    click: boolean;
+    setClick: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function SightingButton({
     isLoggedIn,
     sighting,
     isLiked,
-    isAdmin
+    isAdminPage,
+    click,
+    setClick
 }: SightingButtonProps) {
     const loginContext = useContext(LoginContext);
     const [isLikeButtonClicked, setIsLikeButtonClicked] = useState(isLiked);
 
+    const loginContext = useContext(LoginContext);
     const handleLike = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         const newLike: NewLike = {
@@ -39,15 +45,19 @@ export default function SightingButton({
     }
 
     const handleApprove = (event: React.MouseEvent<HTMLButtonElement>) => {
+        approveSighting(sighting.id, loginContext.authHeader);
+        setClick(!click);
         event.preventDefault();
     }
 
     const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
+        rejectSighting(sighting.id, loginContext.authHeader);
+        setClick(!click);
         event.preventDefault();
     }
 
     return <>
-        {isAdmin && <>
+        {isAdminPage && <>
             <button
                 type="button"
                 className="button-approve"
@@ -62,6 +72,7 @@ export default function SightingButton({
             </button>
         </>}
         {isLoggedIn && !isLikeButtonClicked &&
+        {isLoggedIn && !isLiked && !isAdminPage &&
             <button
                 type="button"
                 className="button-like"
@@ -70,6 +81,7 @@ export default function SightingButton({
             </button>
         }
         {isLoggedIn && isLikeButtonClicked &&
+        {isLoggedIn && isLiked && !isAdminPage &&
             <button
                 type="button"
                 className="button-unlike"

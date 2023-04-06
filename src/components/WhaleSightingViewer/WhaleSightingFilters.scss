@@ -1,17 +1,20 @@
 @import "../../Constants.scss";
 
 .filterCard {
-    background-color: $background;
+    background-color: $darker-background;
 }
 
 .sighting-labels {
     color: $light-font-color;
+    font-size: small;
 }
 
 .btn-search-btn {
     background-color: $button-color;
     color: $dark-font-color;
-    margin: 1%;
+    margin: 3%;
+    margin-left: 37%;
+    margin-top: -5%;
 }
 
 .selectOption {
@@ -36,16 +39,25 @@
     display: grid;
     grid-template-rows: 33% 33% 33%;
     grid-template-columns: 25% 25% 25% 25%;
+    padding: 25px 0px 25px 25px;
+    row-gap: 20px;
 }
 
 @media only screen and (max-width: 430px) {
 
     .filter-grid {
-        display: flex;
+        display: grid;
         flex-direction: column;
+        padding: 5px;
+        margin: 0px;
+        row-gap: 2px;
+        grid-template-columns: 50% 50%;
+        margin-left: 10%;
     }
 
     .btn-search-btn {
         margin: 2%;
+        margin-top: 30%;
+        margin-left: 20%;
     }
 }
