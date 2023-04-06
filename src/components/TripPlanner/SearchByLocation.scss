@@ -4,10 +4,13 @@
     color: $button-color;
     display: inline;
     size: $buttonSizeDesktop;
+    background-color: $nav-background;
+    margin:3px;
 }
 
 .location-form {
     display: flex;
+    flex-direction: row;
 }
 
 .form-label {

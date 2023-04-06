@@ -42,7 +42,7 @@ export const WhaleCarousel: React.FunctionComponent = () => {
             </article>
             <article className="left-right-home-buttons">
                 <button className="previous-left-button"
-                    onClick={() => { selectedImage > 0 ? setSelectedImage(selectedImage - 1) : setSelectedImage(0) }}>
+                    onClick={() => { selectedImage > 0 ? setSelectedImage(selectedImage - 1) : setSelectedImage(whaleImages.length - 1 ) }}>
                     <FaArrowCircleLeft className="button-icon" />
                 </button>
                 <button className="next-right-button"
