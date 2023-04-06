@@ -40,39 +40,34 @@ export function WhaleSightingViewer({ loggedIn, isAdminPage }: WhaleSightingView
 
 		return <>
 
-		<h1 className="whale-sighting-heading">Whale Sighting Viewer</h1>
-		<div className="whale-sighting-page">
-			{!isAdminPage && <button className="whale-sighting-map-view-button" onClick={() => setMapView(true)}>Go to Map View</button>}
-			<div className="whale-sighting-filter">
-				<WhaleSightingFilters setSightings={setSightings} />
-			</div>
+			<h1 className="whale-sighting-heading">Whale Sighting Viewer</h1>
+			<div className="whale-sighting-page">
+				{!isAdminPage && <button className="whale-sighting-map-view-button" onClick={() => setMapView(true)}>Go to Map View</button>}
+				<div className="whale-sighting-filter">
+					<WhaleSightingFilters setSightings={setSightings} />
+				</div>
 
+				<SightingList
+					pageNum={page}
+					sightings={sightings}
+					loggedIn={loggedIn}
+					isAdminPage={isAdminPage}
+					click={click}
+					setClick={setClick} />
 
-			<div className="whale-sighting-sort">Sort to go here</div>
-			<SightingList pageNum={page} sightings={sightings} loggedIn={loggedIn} isAdminPage={isAdminPage} click={click} setClick={setClick} />
-			<SightingList pageNum={page} sightings={sightings} loggedIn={loggedIn} isAdmin={isAdminPage}/>
-
-				<SightingList 
-				pageNum={page} 
-				sightings={sightings} 
-				loggedIn={loggedIn} 
-				isAdminPage={isAdminPage}
-				click={click}
-				setClick={setClick}/>
-        
-			<div className="page-buttons">
-				{page > 1
-					?
-					<p className="prevlink" onClick={() => setPage(page - 1)}>
-						Previous
-					</p>
-					: <></>}
-				{(sightings.length > page * 12)
-					?
-					<p className="nextlink" onClick={() => setPage(page + 1)}>
-						Next
-					</p>
-					: <></>}
+				<div className="page-buttons">
+					{page > 1
+						?
+						<p className="prevlink" onClick={() => setPage(page - 1)}>
+							Previous
+						</p>
+						: <></>}
+					{(sightings.length > page * 12)
+						?
+						<p className="nextlink" onClick={() => setPage(page + 1)}>
+							Next
+						</p>
+						: <></>}
 				</div>
 			</div>
 
