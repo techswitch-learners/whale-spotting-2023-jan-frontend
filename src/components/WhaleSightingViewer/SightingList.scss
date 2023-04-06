@@ -5,24 +5,26 @@
     grid-row-end: 3;
     grid-column-start: 1;
     grid-column-end: 4;
-
     list-style: none;
     display: flex;
     justify-content: start;
     flex-wrap: wrap;
     background-color: $darker-background;
-
     padding: 4%;
 
     .whale-sighting-post {
         margin-bottom: 5%;
-        border: solid 5px grey;
-        background-color: $light-background;
+        border: solid 5px $background;
+        background-color: $nav-background;
         margin: 2%;
 
         p {
-            color: $dark-font-color;
+            color: $fontLight;
             font-weight: $fontNormal;
+            
+            .username{
+                text-decoration: none;
+            }
         }
     }
 
@@ -76,11 +78,13 @@
     align-items: flex-start;
     justify-content: center;
     margin-left: 1rem;
+    margin-right: 1rem; 
 }
 
 .sighting-info p {
     margin: 0;
     text-align: left;
+    text-decoration: none;
 }
 
 .sighting-info button {
@@ -108,7 +112,7 @@
 
 .button-like,
 .button-unlike {
-    background-color: $light-background;
+    background-color:  $nav-background;
     color: red;
     border: 0px;
     padding: 0px;

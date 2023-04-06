@@ -90,6 +90,17 @@ export interface SpeciesSearch {
   colour: string | null;
 }
 
+export interface WhaleSightingSearch {
+  whaleSpecies: string | null;
+  colour: string | null;
+  tailType: number | null;
+  whaleSize: number | null;
+  maxLatitude: number | null;
+  minLatitude: number | null;
+  maxLongitude: number | null;
+  minLongitude: number | null;
+}
+
 export interface TripPlannerRequest {
   latitude: number;
   longitude: number;
@@ -283,5 +294,56 @@ export async function fetchLeaderboard(): Promise<UserLeaderboardResponse[]> {
   }
   else {
     return await response.json();
+  }
+}
+
+export async function approveSighting(sightingId: number, encodedUsernamePassword: string): Promise<Response> {
+
+  const response = await fetch(`${backendUrl}/sightings/approve/${sightingId}`, {
+    method: "PATCH",
+    headers: {
+      "Authorization": `Basic ${encodedUsernamePassword}`,
+    },
+  });
+  if (!response.ok) {
+    throw new Error(await response.json())
+  }
+  else {
+    return (response);
+  }
+}
+
+export async function rejectSighting(sightingId: number, encodedUsernamePassword: string): Promise<Response> {
+  const response = await fetch(`${backendUrl}/sightings/reject/${sightingId}`, {
+    method: "PATCH",
+    headers: {
+      "Authorization": `Basic ${encodedUsernamePassword}`,
+    },
+  });
+  if (!response.ok) {
+    throw new Error(await response.json());
+  }
+  else {
+    return (response);
+  }
+}
+
+export async function fetchFilterQuery(whaleSightingSearch: WhaleSightingSearch): Promise<WhaleSighting[]> {
+  const searchQuery = "".concat(whaleSightingSearch.whaleSpecies == "" ? "" : `Name=${whaleSightingSearch.whaleSpecies}`)
+    .concat(whaleSightingSearch.colour == "" ? "" : `&Colour=${whaleSightingSearch.colour}`)
+    .concat(Number.isNaN(whaleSightingSearch.tailType) ? "" : `&TailType=${whaleSightingSearch.tailType}`)
+    .concat(Number.isNaN(whaleSightingSearch.whaleSize) ? "" : `&Size=${whaleSightingSearch.whaleSize}`)
+    .concat(Number.isNaN(whaleSightingSearch.maxLatitude) ? "" : `&MaxLatitude=${whaleSightingSearch.maxLatitude}`)
+    .concat(Number.isNaN(whaleSightingSearch.minLatitude) ? "" : `&MinLatitude=${whaleSightingSearch.minLatitude}`)
+    .concat(Number.isNaN(whaleSightingSearch.maxLongitude) ? "" : `&MaxLongitude=${whaleSightingSearch.maxLongitude}`)
+    .concat(Number.isNaN(whaleSightingSearch.minLongitude) ? "" : `&MinLongitude=${whaleSightingSearch.minLongitude}`);
+
+  const response = await fetch(`${backendUrl}/sightings/search?${searchQuery}`);
+
+  if (!response.ok) {
+    throw new Error(await response.json());
+  } else {
+    return await response.json();
+
   }
 }
