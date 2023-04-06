@@ -34,11 +34,11 @@ export function WhaleSightingViewer({ loggedIn, isAdminPage }: WhaleSightingView
 	if (!sightings) return <p>Waiting for data...</p>
 	if (mapView) {
 		return <>
-		<button className="whale-sighting-list-view-button" onClick={() => setMapView(false)}>Go to List View</button>
-		<MapChart whaleSightings={sightings} /></>
+			<button className="whale-sighting-list-view-button" onClick={() => setMapView(false)}>Go to List View</button>
+			<MapChart whaleSightings={sightings} /></>
 	} else {
 
-	return <>
+		return <>
 
 		<h1 className="whale-sighting-heading">Whale Sighting Viewer</h1>
 		<div className="whale-sighting-page">
@@ -47,11 +47,11 @@ export function WhaleSightingViewer({ loggedIn, isAdminPage }: WhaleSightingView
 				<WhaleSightingFilters setSightings={setSightings} />
 			</div>
 
-			<div className="whale-sighting-sort">Sort to go here</div>
-			<SightingList pageNum={page} sightings={sightings} loggedIn={loggedIn} isAdminPage={isAdminPage} click={click} setClick={setClick} />
-			{/* <SightingList pageNum={page} sightings={sightings} loggedIn={loggedIn} isAdmin={isAdminPage}/> */}
 
 			<div className="whale-sighting-sort">Sort to go here</div>
+			<SightingList pageNum={page} sightings={sightings} loggedIn={loggedIn} isAdminPage={isAdminPage} click={click} setClick={setClick} />
+			<SightingList pageNum={page} sightings={sightings} loggedIn={loggedIn} isAdmin={isAdminPage}/>
+
 				<SightingList 
 				pageNum={page} 
 				sightings={sightings} 
@@ -73,13 +73,13 @@ export function WhaleSightingViewer({ loggedIn, isAdminPage }: WhaleSightingView
 						Next
 					</p>
 					: <></>}
+				</div>
 			</div>
-		</div>
 
-		{!loggedIn
-			? <><h3>Log in below to like posts:</h3>
-				<Login /></>
-			: <></>}
-	</>
+			{!loggedIn
+				? <><h3>Log in below to like posts:</h3>
+					<Login /></>
+				: <></>}
+		</>
 	}
 }
