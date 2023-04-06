@@ -42,28 +42,28 @@ export const Navbar: React.FunctionComponent = () => {
         setDropDownOpen3(false);
     };
 
-    return (
-        <div className="navbar">
-            <img className="logo" src="/logo.png" />
-            <nav>
-                <div className="burger-button" onClick={toggleHamburger}>
-                    <Hamburger isOpen={hamburgerOpen} />
-                </div>
-                <ul className={hamburgerOpen ? "hamburger-open" : "hamburger-closed"}>
-                    <li>
-                        <Link className="navigation-button" to="/" onClick={closeHamburger}>
-                            <AiFillHome />
+  return (
+    <div className="navbar">
+        <img className="logo" src="/logo.png" />
+        <nav>
+            <div className="burger-button" onClick={toggleHamburger}>
+              <Hamburger isOpen={hamburgerOpen} />
+            </div>
+            <ul className={hamburgerOpen ? "hamburger-open" : "hamburger-closed"}>
+                <li>
+                    <Link className="navigation-button" to="/home" onClick={closeHamburger}>
+                        <AiFillHome />                
+                        <br/>
+                        Home
+                    </Link>
+                </li>
+                <li>
+                    <div className="dropdown">
+                        <button onClick={toggleDropdown1} className="dropbtn">
+                            <GiWhaleTail />
                             <br />
-                            Home
-                        </Link>
-                    </li>
-                    <li>
-                        <div className="dropdown">
-                            <button onClick={toggleDropdown1} className="dropbtn">
-                                <GiWhaleTail />
-                                <br />
-                                Whale Information
-                            </button>
+                            Whale Information
+                        </button>
                             <div id="myDropdown1" className={dropDownOpen1 ? "dropdown-content show" : "dropdown-content"}>
                                 <Link to="/whale/about" onClick={closeHamburger} >
                                     <GiWhaleTail />
@@ -126,13 +126,6 @@ export const Navbar: React.FunctionComponent = () => {
                                 </Link>
                             </div>
                         </div>
-                    </li>
-                    <li>
-                        <Link className="navigation-button" to="/login" onClick={closeHamburger}>
-                            <FiLogIn />
-                            <br />
-                            Login
-                        </Link>
                     </li>
                 </ul>
             </nav>

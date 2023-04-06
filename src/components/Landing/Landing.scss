@@ -1,0 +1,61 @@
+@import "../../App.scss";
+@import "../../Constants.scss";
+
+.landing {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.landing-message {
+    position: absolute;
+    opacity: 0.5;
+    font-size: 100px;
+    color: $light-font-color;
+    left: 0;
+    right: 0;
+    top: 3%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+.landing-message>a,.landing-message>a:visited{
+    color: $light-font-color;
+    text-decoration:none;
+}
+
+.landing-message>a:hover{
+    color:$button-hover-color;
+    text-decoration:none;
+}
+
+
+.landing-image {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 1280px) {
+    .landing-message {
+        font-size: 70px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .landing-message {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 730px) {
+    .landing-message {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 430px) {
+    .landing-message {
+        font-size: 20px;
+    }
+}

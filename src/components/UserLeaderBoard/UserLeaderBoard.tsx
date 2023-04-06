@@ -4,7 +4,7 @@ import './UserLeaderBoard.scss'
 
 export const UserLeaderBoard: React.FC = () => {
 
-    const [listLeaderboard, setListLeaderboard] = useState<UserLeaderboardResponse[]>();
+    const [listLeaderboard, setListLeaderboard] = useState<UserLeaderboardResponse[]>([]);
 
     useEffect(() => {
         fetchLeaderboard()

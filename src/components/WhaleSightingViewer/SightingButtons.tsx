@@ -1,7 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState, useContext} from "react";
 import "./SightingList.scss";
-import { WhaleSighting, rejectSighting, approveSighting } from "../../clients/apiClient";
+import { NewLike } from "../../clients/apiClient";
 import { LoginContext } from "../Login/LoginManager";
+import { WhaleSighting, createLike, deleteLike, rejectSighting, approveSighting } from "../../clients/apiClient";
 
 interface SightingButtonProps {
     isLoggedIn: boolean,
@@ -20,14 +21,25 @@ export default function SightingButton({
     click,
     setClick
 }: SightingButtonProps) {
-
     const loginContext = useContext(LoginContext);
+    const [isLikeButtonClicked, setIsLikeButtonClicked] = useState(isLiked);
+
     const handleLike = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
+        const newLike: NewLike = {
+            whaleSightingId: sighting.id,
+        }
+        createLike(newLike, loginContext.authHeader);
+        setIsLikeButtonClicked(true);
     }
 
     const handleUnlike = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
+        const newUnlike: NewLike = {
+            whaleSightingId: sighting.id,
+        }
+        deleteLike(newUnlike, loginContext.authHeader);
+        setIsLikeButtonClicked(false);
     }
 
     const handleApprove = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -57,7 +69,7 @@ export default function SightingButton({
                 Delete
             </button>
         </>}
-        {isLoggedIn && !isLiked && !isAdminPage &&
+        {isLoggedIn && !isLikeButtonClicked && !isAdminPage &&
             <button
                 type="button"
                 className="button-like"
@@ -65,7 +77,7 @@ export default function SightingButton({
                 {"\u2661"}
             </button>
         }
-        {isLoggedIn && isLiked && !isAdminPage &&
+        {isLoggedIn && isLikeButtonClicked && !isAdminPage &&
             <button
                 type="button"
                 className="button-unlike"

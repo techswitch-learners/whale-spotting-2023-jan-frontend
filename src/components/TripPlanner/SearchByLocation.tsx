@@ -19,7 +19,7 @@ export function SearchByLocation(props: SearchByLocationProps): JSX.Element {
 
     return (
         <form className="location-form" onSubmit={(e) => { handleSubmit(e) }} >
-            <label className="form-label"> Enter location </label>
+            <label className="form-label"> Enter location to view nearest 5 sightings </label>
             <input className="input-field"
                 type="text"
                 name="location"

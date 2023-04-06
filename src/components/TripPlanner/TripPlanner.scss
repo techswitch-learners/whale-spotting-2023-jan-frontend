@@ -1,18 +1,24 @@
 @import "../../Constants.scss";
 
 .tripplanner-main {
-    background-color: $default-foreground;
+    background-color: $darker-background;
 }
 
 .tripplanner-container {
     color: $light-font-color;
     font-family: $fontType;
     height: auto;
-    width: 1440px;
+    width: 100%;
+    max-width: none;
     display: grid;
     grid-template-rows: auto auto auto;
     justify-items: center;
-    width: 100%;
+}
+
+.tripplanner-header {
+    background-color: $default-foreground;
+    padding-bottom: 5px;
+    margin: 2px;
 }
 
 .tripplanner-search {
@@ -28,16 +34,14 @@
     box-shadow: 0 4px 4px 0 $light-font-color;
     transition: 0.3s;
     border-radius: 5px;
-}
-
-.tripplanner-map:hover {
-    box-shadow: 0 8px 16px 0 $light-font-color;
+    margin-bottom: 5px;
 }
 
 .tripplanner-table {
-    width: 80%;
-    display: grid;
+    width: 100%;
+    margin-left: 5px;
     align-items: center;
+    display: grid;
 }
 
 @media (max-width: 430px) {
@@ -50,5 +54,8 @@
         flex-direction: column;
         width: 100%;
         align-items: center;
+    }
+    .tripplanner-table {
+        width:100%;
     }
 }

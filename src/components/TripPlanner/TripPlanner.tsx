@@ -39,6 +39,7 @@ export function TripPlanner() {
         setNearestFiveSightings(listNearestFiveSightings);
     }
     return <main className="tripplanner-main">
+        <h1 className="tripplanner-header">Plan Your Trip!</h1>
         <section className="tripplanner-container">
             <div className="tripplanner-search">
                 <SearchByLocation latLon={latLon} setLatLon={setLatLon} />
