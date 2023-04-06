@@ -42,7 +42,7 @@ export function WhaleSightingViewer({ loggedIn, isAdminPage }: WhaleSightingView
 
 		<h1 className="whale-sighting-heading">Whale Sighting Viewer</h1>
 		<div className="whale-sighting-page">
-			{!isAdminPage && <div className="whale-sighting-map-view-button">Switch to Map View</div>}
+			{!isAdminPage && <button className="whale-sighting-map-view-button" onClick={() => setMapView(true)}>Go to Map View</button>}
 			<div className="whale-sighting-filter">
 				<WhaleSightingFilters setSightings={setSightings} />
 			</div>
