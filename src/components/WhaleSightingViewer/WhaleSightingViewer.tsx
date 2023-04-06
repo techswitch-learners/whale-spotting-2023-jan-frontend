@@ -43,10 +43,10 @@ export function WhaleSightingViewer({ loggedIn, isAdminPage }: WhaleSightingView
 			<h1 className="whale-sighting-heading">Whale Sighting Viewer</h1>
 			<div className="whale-sighting-page">
 				{!isAdminPage && <button className="whale-sighting-map-view-button" onClick={() => setMapView(true)}>Go to Map View</button>}
+        {isAdminPage && <div></div>}
 				<div className="whale-sighting-filter">
 					<WhaleSightingFilters setSightings={setSightings} />
 				</div>
-
 				<SightingList
 					pageNum={page}
 					sightings={sightings}
@@ -54,7 +54,6 @@ export function WhaleSightingViewer({ loggedIn, isAdminPage }: WhaleSightingView
 					isAdminPage={isAdminPage}
 					click={click}
 					setClick={setClick} />
-
 				<div className="page-buttons">
 					{page > 1
 						?
