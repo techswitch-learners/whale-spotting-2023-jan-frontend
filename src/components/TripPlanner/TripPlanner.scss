@@ -18,11 +18,13 @@
 .tripplanner-header {
     background-color: $default-foreground;
     color: $light-font-color;
-    padding-bottom: 5px;
-    margin: 2px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin: 0px;
 }
 
 .tripplanner-search {
+    padding-top: 15px;
     display: grid;
     align-items: center;
 }
