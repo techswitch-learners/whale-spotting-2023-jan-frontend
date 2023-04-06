@@ -91,7 +91,34 @@ section.whale-info-content {
         grid-column-end: 1;
         align-items: center;
     }
+}
+
     .whale-info-content {
         width: 90%;
     }
-}
+
+    @media (max-width: 1000px) {
+        section.whale-info-container {
+            height: 100%;
+            display: grid;
+            grid-template-columns: 100%;
+            justify-items: center;
+            border: $border;
+        }
+
+        .whale-info-sidebar {
+            display: none;
+        }
+
+        .whale-info-main-info {
+            border: $border;
+            width: 100%;
+            grid-column-start: 1;
+            grid-column-end: 1;
+            align-items: center;
+        }
+
+        .whale-info-content {
+            width: 90%;
+        }
+    }
