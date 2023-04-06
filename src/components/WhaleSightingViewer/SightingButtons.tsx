@@ -25,6 +25,7 @@ export default function SightingButton({
     const [isLikeButtonClicked, setIsLikeButtonClicked] = useState(isLiked);
 
     const handleLike = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setClick(!click);
         event.preventDefault();
         const newLike: NewLike = {
             whaleSightingId: sighting.id,
@@ -34,6 +35,7 @@ export default function SightingButton({
     }
 
     const handleUnlike = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setClick(!click);
         event.preventDefault();
         const newUnlike: NewLike = {
             whaleSightingId: sighting.id,
