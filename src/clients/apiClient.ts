@@ -209,13 +209,20 @@ export async function fetchSpeciesQuery(speciesSearch: SpeciesSearch): Promise<W
   }
 }
 
-export async function deleteLike(likeId: number): Promise<Response> {
-  const response = await fetch(`${backendUrl}/likes/delete/${likeId}`);
+export async function deleteLike(newUnlike: NewLike, encodedUsernamePassword: string): Promise<Response> {
+  const response = await fetch(`${backendUrl}/likes/delete/`, {
+  method: "DELETE",
+    headers: {
+      "Authorization": `Basic ${encodedUsernamePassword}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(newUnlike),
+  });
   if (!response.ok) {
     throw new Error(await response.json());
   }
   else {
-    return response;
+    return await response;
   }
 }
 
@@ -239,10 +246,11 @@ export async function getPendingSightings(): Promise<WhaleSighting[]> {
   }
 }
 
-export async function createLike(newLike: NewLike): Promise<Response> {
+export async function createLike(newLike: NewLike, encodedUsernamePassword: string): Promise<Response> {
   const response = await fetch(`${backendUrl}/likes/create`, {
     method: "POST",
     headers: {
+      "Authorization": `Basic ${encodedUsernamePassword}`,
       "Content-Type": "application/json"
     },
     body: JSON.stringify(newLike),
@@ -251,7 +259,7 @@ export async function createLike(newLike: NewLike): Promise<Response> {
     throw new Error(await response.json());
   }
   else {
-    return await response.json();
+    return await response;
   }
 }
 
