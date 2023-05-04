@@ -16,14 +16,16 @@ export const WhaleInfo: React.FC = () => {
             </div>
             <div className="whale-info-main-info">
                 <div id="whale-facts">
-                    <h2 className="whale-info-section-header">
-                        Amazing Whale Facts!
-                    </h2>
+                    <div className="whale-info-section-header-container">
+                        <h2 className="whale-info-section-header">
+                            Amazing Whale Facts!
+                        </h2>
+                    </div>
                     <section className="whale-info-section-contents">
                         <WhaleFacts />
                     </section>
                 </div>
-                <hr className="divider-line"/>
+                <hr className="divider-line" />
                 <div id="famous-whales">
                     <h2 className="whale-info-section-header">
                         Famous Whales!
@@ -32,7 +34,7 @@ export const WhaleInfo: React.FC = () => {
                         <FamousWhales />
                     </section>
                 </div>
-                <hr className="divider-line"/>
+                <hr className="divider-line" />
                 <div id="whale-conservation">
                     <h2 className="whale-info-section-header">
                         Whale Conservation

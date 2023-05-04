@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { fetchSpeciesQuery, SpeciesSearch, TeethType, TailType, Size, WhaleSpecies } from "../../clients/apiClient";
 
 import "./SpeciesIdentification.scss"
+import { GiFrontTeeth, GiWhaleTail, GiBodyHeight } from "react-icons/gi";
+import { CiForkAndKnife } from "react-icons/ci";
 
 export const SpeciesIdentification: React.FunctionComponent = () => {
     const [listWhaleSpecies, setListWhaleSpecies] = useState<WhaleSpecies[]>();
@@ -36,10 +38,10 @@ export const SpeciesIdentification: React.FunctionComponent = () => {
                         <td className="table-data species-name">{species.name}</td>
                         <td className="table-data">{species.location}</td>
                         <td className="table-data details">
-                            <p className="species-details-paragraph">Teeth: {TeethType[species.teethType]}</p>
-                            <p className="species-details-paragraph">Tail: {TailType[species.tailType]}</p>
-                            <p className="species-details-paragraph">Size: {Size[species.size]}</p>
-                            <p className="species-details-paragraph">Diet: {species.diet}</p>
+                            <p className="species-details-paragraph"><span className="icon-container"><GiFrontTeeth /></span> {TeethType[species.teethType]}</p>
+                            <p className="species-details-paragraph"><span className="icon-container"><GiWhaleTail /></span> {TailType[species.tailType]}</p>
+                            <p className="species-details-paragraph"><span className="icon-container"><GiBodyHeight /></span> {Size[species.size]}</p>
+                            <p className="species-details-paragraph"><span className="icon-container"><CiForkAndKnife /></span> {species.diet}</p>
                         </td>
                         <td className="species-image-container">
                             <img className="species-image" src={species.imageUrl} alt="A lovely whale" />
